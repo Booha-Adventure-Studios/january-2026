@@ -1,0 +1,376 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset128 HiraginoSans-W3;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+<meta charset="utf-8" />\
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />\
+<title>The Boo-riculum \'96 January Week 1 Game Deck</title>\
+<meta name="theme-color" content="#000">\
+<link rel="icon" type="image/png" href="booha-ghost.png">\
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&display=swap" rel="stylesheet" />\
+<style>\
+:root\{\
+  --pink:#ff7eb9; --blue:#5ee6ff; --yellow:#fff680;\
+  --purple:#c77dff; --mint:#a6f7b2; --orange:#ffb366;\
+  --spinDur: 5s;\
+\}\
+\
+/* Reset & layout */\
+*\{box-sizing:border-box;margin:0;padding:0\}\
+html,body\{\
+  height:100%;\
+  font-family:'Cinzel',serif;\
+  background:#000;\
+  color:#fff;\
+  overflow:hidden;\
+\}\
+#welcome\{\
+  display:flex;\
+  flex-direction:column;\
+  align-items:center;\
+  justify-content:center;\
+  height:100%;\
+  text-align:center;\
+  animation:fadeIn 1s ease;\
+  position:relative;\
+  padding:1rem;\
+\}\
+h1\{font-size:clamp(32px,5vw,60px);margin-bottom:.4em;font-weight:900;\}\
+h2\{font-size:clamp(22px,3vw,36px);margin-bottom:.3em;font-weight:800;color:#ccc;\}\
+h3\{font-size:clamp(18px,2.5vw,28px);color:#aaa;margin-bottom:2em;\}\
+\
+/* Grid \'96 responsive */\
+.deck-links\{\
+  display:grid;\
+  grid-template-columns:repeat(3, minmax(0, 1fr));\
+  gap:1.5rem;\
+  justify-content:center;\
+  align-items:center;\
+  max-width:720px;\
+  width:100%;\
+\}\
+\
+/* Boxes */\
+a.deck\{\
+  position:relative;\
+  display:flex;\
+  flex-direction:column;\
+  align-items:center;\
+  justify-content:center;\
+  width:100%;\
+  aspect-ratio:1 / 1;\
+  border-radius:20px;\
+  text-decoration:none;\
+  color:#111;\
+  font-weight:900;\
+  font-size:1.1rem;\
+  overflow:hidden;\
+  cursor:pointer;\
+  border:8px solid #000;\
+  box-shadow:0 0 8px rgba(255,215,0,0.3),0 0 16px rgba(255,215,0,0.15);\
+  transition:box-shadow .3s ease,transform .3s ease,filter .4s ease;\
+  will-change:transform;\
+\}\
+\
+a.deck.active\{\
+  box-shadow:0 0 14px rgba(255,215,0,0.9),0 0 36px rgba(255,215,0,0.6);\
+\}\
+\
+/* Hide original tile when animating a clone */\
+a.deck.is-hidden\{ visibility:hidden; \}\
+\
+/* Base colors */\
+a.deck:nth-child(1)\{background:var(--pink);\}\
+a.deck:nth-child(2)\{background:var(--blue);\}\
+a.deck:nth-child(3)\{background:var(--yellow);\}\
+a.deck:nth-child(4)\{background:var(--purple);\}\
+a.deck:nth-child(5)\{background:var(--mint);\}\
+a.deck:nth-child(6)\{background:var(--orange);\}\
+\
+/* Spiral animation */\
+a.deck::after\{\
+  content:"";\
+  position:absolute;\
+  top:50%;\
+  left:50%;\
+  width:170%;\
+  height:170%;\
+  border-radius:50%;\
+  transform:translate(-50%,-50%) rotate(0deg);\
+  background:conic-gradient(from 0deg,\
+    rgba(255,255,255,0.8) 0deg 20deg,\
+    rgba(255,255,255,0) 20deg 40deg,\
+    rgba(255,255,255,0.8) 40deg 60deg,\
+    rgba(255,255,255,0) 60deg 80deg,\
+    rgba(255,255,255,0.8) 80deg 100deg,\
+    rgba(255,255,255,0) 100deg 120deg,\
+    rgba(255,255,255,0.8) 120deg 140deg,\
+    rgba(255,255,255,0) 140deg 160deg,\
+    rgba(255,255,255,0.8) 160deg 180deg,\
+    rgba(255,255,255,0) 180deg 200deg,\
+    rgba(255,255,255,0.8) 200deg 220deg,\
+    rgba(255,255,255,0) 220deg 240deg,\
+    rgba(255,255,255,0.8) 240deg 260deg,\
+    rgba(255,255,255,0) 260deg 280deg,\
+    rgba(255,255,255,0.8) 280deg 300deg,\
+    rgba(255,255,255,0) 300deg 320deg,\
+    rgba(255,255,255,0.8) 320deg 340deg,\
+    rgba(255,255,255,0) 340deg 360deg\
+  );\
+  opacity:.55;\
+  mix-blend-mode:overlay;\
+  animation:spin var(--spinDur) linear infinite;\
+  pointer-events:none;\
+  z-index:0;\
+\}\
+\
+a.deck:hover\{filter:brightness(1.25);\}\
+a.deck span\{\
+  font-size:0.85em;\
+  color:#222;\
+  position:relative;\
+  z-index:1;\
+\}\
+a.deck b\{\
+  position:relative;\
+  z-index:1;\
+  display:block;\
+\}\
+\
+@keyframes spin\{\
+  0%\{transform:translate(-50%,-50%) rotate(0deg);\}\
+  100%\{transform:translate(-50%,-50%) rotate(360deg);\}\
+\}\
+@keyframes fadeIn\{\
+  from\{opacity:0;\}\
+  to\{opacity:1;\}\
+\}\
+footer\{\
+  position:absolute;\
+  bottom:20px;\
+  width:100%;\
+  text-align:center;\
+  font-size:clamp(14px,2vw,18px);\
+  color:#888;\
+\}\
+\
+/* Sparkles */\
+.sparkle\{\
+  position:fixed;\
+  width:8px;\
+  height:8px;\
+  border-radius:50%;\
+  background:radial-gradient(circle at 35% 35%, #fff, #ffd86d 60%, rgba(255,215,0,0) 70%);\
+  box-shadow:0 0 8px rgba(255,215,0,.9),0 0 22px rgba(255,215,0,.7);\
+  pointer-events:none;\
+  opacity:0;\
+  animation:sparkleFly 2.5s ease-out forwards;\
+\}\
+@keyframes sparkleFly\{\
+  0%\{transform:translate(0,0) scale(1);opacity:1;\}\
+  100%\{transform:translate(var(--dx),var(--dy)) scale(0.4);opacity:0;\}\
+\}\
+\
+/* Black swipe screen */\
+#fadeScreen\{\
+  position:fixed;\
+  inset:0;\
+  background:#000;\
+  transform:translateY(100%);\
+  opacity:1;\
+  pointer-events:none;\
+  transition:transform 0.085s ease-in-out;\
+  z-index:9000;\
+\}\
+#fadeScreen.show\{\
+  transform:translateY(0%);\
+\}\
+\
+/* ===== Mobile tweaks ===== */\
+@media (max-width: 768px)\{\
+  #welcome\{\
+    justify-content:flex-start;\
+    padding-top:1.5rem;\
+  \}\
+  h1\{margin-bottom:.2em;\}\
+  h2\{margin-bottom:.2em;\}\
+  h3\{margin-bottom:1.2em;\}\
+  .deck-links\{\
+    grid-template-columns:repeat(2, minmax(0, 1fr));\
+    gap:1.2rem;\
+  \}\
+  footer\{\
+    font-size:13px;\
+    bottom:10px;\
+  \}\
+\}\
+</style>\
+</head>\
+<body>\
+\
+<section id="welcome">\
+  <h1>The Boo-riculum</h1>\
+  <h2>
+\f1 \'83\'75\'81\'5b\'81\'45\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80
+\f0 </h2>\
+  <h3>January Week 1 Game Deck<br>
+\f1 \'82\'50\'8c\'8e\'91\'e6\'82\'50\'8f\'54\'83\'51\'81\'5b\'83\'80\'83\'66\'83\'62\'83\'4c
+\f0 </h3>\
+\
+  <div class="deck-links">\
+    <a class="deck" href="tapmatch.html"><b>Tap Match</b><span>
+\f1 \'83\'5e\'83\'62\'83\'76\'83\'7d\'83\'62\'83\'60
+\f0 </span></a>\
+    <a class="deck" href="saytheword.html"><b>Say the Word</b><span>
+\f1 \'83\'8f\'81\'5b\'83\'68\'82\'f0\'8c\'be\'82\'a8\'82\'a4
+\f0 </span></a>\
+    <a class="deck" href="wordbuilder.html"><b>Word Builder</b><span>
+\f1 \'83\'8f\'81\'5b\'83\'68\'83\'72\'83\'8b\'83\'5f\'81\'5b
+\f0 </span></a>\
+    <a class="deck" href="eigoperapera.html"><b>Eigo Pera Pera</b><span>
+\f1 \'89\'70\'8c\'ea\'83\'79\'83\'89\'83\'79\'83\'89
+\f0 </span></a>\
+    <a class="deck" href="makethesentences.html"><b>Make the Sentences</b><span>
+\f1 \'95\'b6\'82\'f0\'8d\'ec\'82\'eb\'82\'a4
+\f0 </span></a>\
+    <a class="deck" href="eigoadventure.html"><b>Eigo Adventure</b><span>
+\f1 \'89\'70\'8c\'ea\'83\'41\'83\'68\'83\'78\'83\'93\'83\'60\'83\'83\'81\'5b
+\f0 </span></a>\
+  </div>\
+\
+  <footer>\
+    Bryan's English School\
+  </footer>\
+</section>\
+\
+<div id="fadeScreen"></div>\
+\
+<!-- Audio -->\
+<audio id="introSound" src="assets/audio/intro.mp3" preload="auto"></audio>\
+<audio id="openSound" src="assets/audio/gameopening.mp3" preload="auto"></audio>\
+\
+<script>\
+const intro = document.getElementById('introSound');\
+const openSound = document.getElementById('openSound');\
+const deckContainer = document.querySelector('.deck-links');\
+let isTransitioning = false;\
+\
+function sparkleBurst(rect, count = 35)\{\
+  const cx = rect.left + rect.width / 2;\
+  const cy = rect.top + rect.height / 2;\
+  for(let i = 0; i < count; i++)\{\
+    const a = Math.random() * Math.PI * 2;\
+    const x = cx + Math.cos(a) * (rect.width / 2);\
+    const y = cy + Math.sin(a) * (rect.height / 2);\
+    const dx = (Math.cos(a) * (70 + Math.random() * 40)).toFixed(2);\
+    const dy = (Math.sin(a) * (70 + Math.random() * 40)).toFixed(2);\
+    const s = document.createElement('div');\
+    s.className = 'sparkle';\
+    s.style.left = (x - 3.5) + 'px';\
+    s.style.top = (y - 3.5) + 'px';\
+    s.style.setProperty('--dx', dx + 'px');\
+    s.style.setProperty('--dy', dy + 'px');\
+    document.body.appendChild(s);\
+    setTimeout(() => s.remove(), 2500);\
+  \}\
+\}\
+\
+function safePlay(aud, vol = 1)\{\
+  if(!aud) return;\
+  try\{\
+    aud.pause();\
+    aud.currentTime = 0;\
+    aud.volume = vol;\
+    aud.play().catch(() => \{\});\
+  \}catch(e)\{\}\
+\}\
+\
+if (deckContainer) \{\
+  deckContainer.addEventListener('click', (e) => \{\
+    const deck = e.target.closest('.deck');\
+    if (!deck) return;\
+\
+    e.preventDefault();\
+    if (isTransitioning) return;\
+    isTransitioning = true;\
+\
+    const target = deck.getAttribute('href');\
+    const fadeScreen = document.getElementById('fadeScreen');\
+\
+    // stop intro (optional)\
+    if (intro) \{ try \{ intro.pause(); \} catch(_)\{\} \}\
+\
+    // play opening sound immediately\
+    safePlay(openSound, 1);\
+\
+    // make it "alive"\
+    deck.classList.add('active');\
+    deck.style.setProperty('--spinDur','1.2s');\
+\
+    // ---- SMOOTH CLONE ANIMATION (no grid jitter) ----\
+    const r = deck.getBoundingClientRect();\
+\
+    const clone = deck.cloneNode(true);\
+    clone.classList.add('active');\
+    clone.style.setProperty('--spinDur','1.2s');\
+\
+    clone.style.position = 'fixed';\
+    clone.style.left = r.left + 'px';\
+    clone.style.top = r.top + 'px';\
+    clone.style.width = r.width + 'px';\
+    clone.style.height = r.height + 'px';\
+    clone.style.margin = '0';\
+    clone.style.transform = 'translate(0px,0px) scale(1)';\
+    clone.style.zIndex = '9999';\
+    clone.style.pointerEvents = 'none';\
+    clone.style.willChange = 'transform';\
+\
+    document.body.appendChild(clone);\
+    deck.classList.add('is-hidden');\
+\
+    const cx = window.innerWidth / 2 - (r.left + r.width / 2);\
+    const cy = window.innerHeight / 2 - (r.top + r.height / 2);\
+\
+    const maxWidthScale = (window.innerWidth * 0.9) / r.width;\
+    const maxHeightScale = (window.innerHeight * 0.9) / r.height;\
+    const safeScale = Math.min(3, maxWidthScale, maxHeightScale);\
+\
+    // ===== 5s AUDIO: slightly longer so it never cuts out =====\
+    const MOVE_MS = 5500;  // finishes after the music\
+    const OPEN_MS = 5800;  // open after audio fully ends\
+\
+    // sparkle pop on click\
+    sparkleBurst(r, 35);\
+\
+    // swipe near the end of the music\
+    if (fadeScreen) \{\
+      setTimeout(() => \{\
+        fadeScreen.classList.remove('show');\
+        requestAnimationFrame(() => fadeScreen.classList.add('show'));\
+      \}, 4700);\
+    \}\
+\
+    // animate clone to center\
+    clone.animate(\
+      [\
+        \{ transform: 'translate(0px,0px) scale(1)' \},\
+        \{ transform: `translate($\{cx\}px,$\{cy\}px) scale($\{safeScale\})` \}\
+      ],\
+      \{ duration: MOVE_MS, easing: 'ease-in-out', fill: 'forwards' \}\
+    );\
+\
+    // navigate after sound + swipe finish\
+    setTimeout(() => \{\
+      window.location.href = target;\
+    \}, OPEN_MS);\
+  \});\
+\}\
+</script>\
+</body>\
+</html>}

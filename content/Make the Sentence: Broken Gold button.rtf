@@ -1,0 +1,1211 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;\f2\fnil\fcharset128 HiraginoSans-W3;
+\f3\fnil\fcharset0 AppleColorEmoji;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20360\viewh10980\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="ja">\
+<head>\
+<meta charset="utf-8" />\
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />\
+<title>Booha Make the Sentences \'96 January Week 1</title>\
+<meta name="theme-color" content="#0b1530" />\
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />\
+\
+<style>\
+:root\{\
+  --bg:#0b1530; --ink:#fff; --outline:#ffffff26; --radius:26px;\
+  --goldGlow:0 0 10px rgba(255,214,120,.55),0 0 22px rgba(255,214,120,.45);\
+  --slotGlow:0 0 0 4px rgba(255,214,120,.28), 0 0 18px rgba(255,214,120,.55), 0 12px 22px rgba(0,0,0,.35);\
+\}\
+\
+*\{box-sizing:border-box;margin:0;padding:0;\}\
+html,body\{height:100%;\}\
+body\{\
+  background:var(--bg);\
+  color:var(--ink);\
+  font-family:system-ui,"Noto Sans JP",sans-serif;\
+  transition:background 1s;\
+  overflow-x:hidden;\
+  overflow-y:auto;\
+  -webkit-overflow-scrolling:touch;\
+  padding-bottom:env(safe-area-inset-bottom);\
+\}\
+\
+/* Header */\
+header\{text-align:center;padding:26px 12px 12px\}\
+.h1\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(34px,6.2vw,56px);\}\
+.h2\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(22px,4.5vw,36px);\}\
+.h3\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(16px,3.6vw,22px);\}\
+.h4\{font-weight:800;font-size:clamp(14px,3.4vw,20px);color:#cfe1ff;\}\
+\
+.wrap\{max-width:1100px;margin:0 auto;padding:8px 16px 90px\}\
+.panel\{\
+  padding:20px;\
+  border:1px solid var(--outline);\
+  border-radius:var(--radius);\
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));\
+  box-shadow:0 6px 24px rgba(0,0,0,.4);\
+  overflow:visible;\
+\}\
+\
+/* JP card */\
+.jpCard\{\
+  border-radius:var(--radius);\
+  border:1px solid var(--outline);\
+  height:160px;\
+  display:flex;\
+  align-items:center;\
+  justify-content:center;\
+  margin-bottom:10px;\
+  background:repeating-linear-gradient(to bottom,#ff6ec7 0 28px,#5ee6ff 28px 56px,#ffd166 56px 84px,\
+  #8aff80 84px 112px,#c77dff 112px 140px,#fff680 140px 168px);\
+  background-size:100% 600px;\
+  animation:stripeSlide 18s linear infinite;\
+  user-select:none;\
+  -webkit-tap-highlight-color:transparent;\
+\}\
+.jpCard.replay\{ cursor:pointer; \}\
+.jpCard.locked\{\
+  cursor:default;\
+  filter:saturate(.92) brightness(.98);\
+\}\
+@keyframes stripeSlide\{from\{background-position-y:0\}to\{background-position-y:-600px\}\}\
+.jpText\{\
+  font-weight:900;\
+  font-size:46px;\
+  color:#0b1530;\
+  text-shadow:0 1px 0 rgba(255,255,255,.6);\
+  text-align:center;\
+  padding:0 10px;\
+\}\
+.hira\{\
+  text-align:center;\
+  color:#d8e7ff;\
+  font-size:clamp(14px,3.5vw,18px);\
+  margin-bottom:18px\
+\}\
+\
+/* Areas */\
+.wordbank,.sentence\{\
+  display:flex;\
+  flex-wrap:wrap;\
+  gap:12px;\
+  padding:12px;\
+  margin-bottom:14px;\
+\}\
+.wordbank\{justify-content:center;\}\
+.sentence\{\
+  justify-content:flex-start;\
+  align-items:center;\
+  min-height:120px;\
+  width:100%;\
+  border:1px dashed rgba(255,255,255,.25);\
+  border-radius:14px;\
+  padding:16px 12px;\
+  position:relative;\
+\}\
+\
+/* gold play button (appears after 3 wrong in a row) */\
+.playBtn\{\
+  position:absolute;\
+  left:12px;\
+  bottom:-64px;\
+  width:54px;\
+  height:54px;\
+  border:none;\
+  border-radius:50%;\
+  background:linear-gradient(135deg,#c59b10 0%,#ffd95e 40%,#ffe898 60%,#b68006 100%);\
+  box-shadow:var(--goldGlow);\
+  color:#2a1b00;\
+  font-weight:900;\
+  font-size:26px;\
+  opacity:0;\
+  pointer-events:none;\
+  transition:opacity .28s, transform .15s;\
+  z-index:3;\
+\}\
+.playBtn.show\{opacity:1;pointer-events:auto;animation:twinkle 2.4s ease-in-out infinite;\}\
+.playBtn:active\{transform:scale(.96)\}\
+.playBtn::before\{content:"
+\f1 \uc0\u9654 
+\f0 ";display:block;text-align:center;line-height:54px;\}\
+@keyframes twinkle\{\
+  0%,100%\{box-shadow:var(--goldGlow);\}\
+  50%\{box-shadow:0 0 14px rgba(255,235,94,1),0 0 26px rgba(255,235,94,1);\}\
+\}\
+\
+/* chips */\
+.word\{\
+  padding:14px 18px;\
+  font-weight:900;\
+  font-size:clamp(18px,4.2vw,26px);\
+  border:none;\
+  border-radius:20px;\
+  cursor:pointer;\
+  user-select:none;\
+  -webkit-tap-highlight-color:transparent;\
+  touch-action:manipulation;\
+  box-shadow:0 0 0 4px var(--color),0 10px 22px rgba(0,0,0,.35);\
+  background:#fff;\
+  color:#06101f;\
+  text-shadow:0 1px 0 rgba(255,255,255,.65);\
+  transition:transform .12s, box-shadow .12s, filter .12s;\
+\}\
+.word:active\{transform:scale(.96)\}\
+.word.selected\{\
+  transform:translateY(-2px) scale(1.03);\
+  filter:saturate(1.15) brightness(1.06);\
+  box-shadow:\
+    0 0 0 4px rgba(125,211,252,.55),\
+    0 0 18px rgba(125,211,252,.55),\
+    0 12px 22px rgba(0,0,0,.35);\
+\}\
+\
+/* glow when in the sentence area */\
+.word.inSentence\{\
+  box-shadow:var(--slotGlow);\
+  background:#fff7cf;\
+  color:#000;\
+\}\
+\
+/* buttons */\
+.btn\{\
+  display:block;\
+  margin:16px auto 8px;\
+  border:none;\
+  border-radius:999px;\
+  padding:16px 36px;\
+  font-weight:900;\
+  font-size:clamp(18px,4vw,22px);\
+  cursor:pointer;\
+\}\
+.btn.green\{\
+  background:radial-gradient(circle at 30% 30%,#1ee99a,#15c473,#0ea85d);\
+  color:#00230f;\
+  box-shadow:0 0 0 5px rgba(34,197,94,.22),0 0 18px rgba(34,197,94,.8);\
+\}\
+.btn.blue\{\
+  background:radial-gradient(circle at 30% 30%,#66b3ff,#1e6eff);\
+  color:#00163a;\
+  box-shadow:0 0 0 5px rgba(102,179,255,.22),0 0 18px rgba(102,179,255,.8);\
+\}\
+.btn:disabled\{opacity:.45;cursor:not-allowed\}\
+\
+/* ONE big heart / ONE big fart (SVG) */\
+.bigFx\{\
+  position:fixed;\
+  left:50%; top:52%;\
+  transform:translate(-50%,-50%) scale(.6);\
+  opacity:0;\
+  pointer-events:none;\
+  z-index:9999;\
+  filter:drop-shadow(0 0 18px rgba(255,255,255,.22));\
+  will-change:transform,opacity;\
+\}\
+.bigFx.show\{animation:bigPop 900ms ease-out both;\}\
+@keyframes bigPop\{\
+  0%\{opacity:0;transform:translate(-50%,-50%) scale(.6)\}\
+  20%\{opacity:1;transform:translate(-50%,-54%) scale(1.25)\}\
+  100%\{opacity:0;transform:translate(-50%,-64%) scale(1.55)\}\
+\}\
+.bigFx svg\{width:140px;height:140px;display:block;\}\
+\
+/* results glow colors */\
+.redGlow\{background:#5c0000;\}\
+.orangeGlow\{background:#773b00;\}\
+.blueGlow\{background:#001b5f;\}\
+.goldGlow\{background:#5a4600;\}\
+.confetti\{position:fixed;width:10px;height:14px;top:-10px;animation:fall linear forwards;z-index:9998\}\
+@keyframes fall\{\
+  0%\{transform:translateY(-10px) rotate(0deg);\}\
+  100%\{transform:translateY(110vh) rotate(720deg);\}\
+\}\
+\
+.end\{\
+  position:fixed;\
+  inset:0;\
+  display:none;\
+  flex-direction:column;\
+  align-items:center;\
+  justify-content:center;\
+  text-align:center;\
+  padding:24px 16px;\
+\}\
+.end .msg\{font-weight:900;font-size:clamp(26px,6vw,42px);\}\
+.end .score\{font-weight:900;font-size:clamp(22px,5vw,30px);margin:10px auto 20px;\}\
+footer\{text-align:center;color:#c9d4ec;font-family:'Cinzel',serif;font-weight:700;padding:40px 10px\}\
+\
+/* Quit + Help */\
+.top-nav-btn\{\
+  position:fixed; top:10px; left:10px; z-index:12001;\
+  border-radius:999px; padding:6px 14px;\
+  border:1px solid #ffffff66;\
+  background:rgba(15,23,42,.95);\
+  color:#fff; font-size:.78rem; font-weight:700; letter-spacing:.04em;\
+  cursor:pointer; display:flex; align-items:center; gap:4px;\
+  box-shadow:0 0 12px rgba(0,0,0,.6);\
+  backdrop-filter:blur(4px);\
+\}\
+.top-nav-btn .jp\{font-size:.72em;\}\
+.top-nav-btn .en\{font-size:.8em;\}\
+\
+.help-btn\{\
+  position:fixed; top:10px; right:10px; z-index:12001;\
+  width:40px; height:40px; border-radius:999px;\
+  border:1px solid #ffffff88;\
+  background:radial-gradient(circle at 30% 30%,#7dd3fc,#1e3a8a 65%,#020617 100%);\
+  color:#fff; font-weight:900; font-size:20px;\
+  cursor:pointer; display:flex; align-items:center; justify-content:center;\
+  box-shadow:0 0 12px rgba(125,211,252,.9),0 0 28px rgba(59,130,246,.9),0 0 52px rgba(56,189,248,.9);\
+  backdrop-filter:blur(4px);\
+\}\
+.help-btn:active\{transform:scale(.95)\}\
+\
+/* Help modal */\
+.help-modal\{position:fixed; inset:0; z-index:12000; display:none; align-items:center; justify-content:center;\}\
+.help-modal.show\{display:flex;\}\
+.help-backdrop\{position:absolute; inset:0; background:rgba(15,23,42,.8); backdrop-filter:blur(6px);\}\
+.help-dialog\{\
+  position:relative; z-index:1;\
+  max-width:720px; width:calc(100% - 32px); max-height:80vh;\
+  border-radius:20px; border:1px solid #ffffff33;\
+  background:radial-gradient(circle at top,#111827,#020617 55%);\
+  box-shadow:0 22px 70px rgba(0,0,0,.9);\
+  padding:18px 18px 20px;\
+  display:flex; flex-direction:column;\
+\}\
+.help-dialog h2\{font-family:'Cinzel',serif;font-size:1.2rem;text-align:center;margin-bottom:6px\}\
+.help-sub\{font-size:.85rem;text-align:center;color:#c7d2fe;margin-bottom:10px\}\
+.help-body\{\
+  margin-top:6px;\
+  padding-right:4px;\
+  font-size:.9rem;\
+  line-height:1.6;\
+  color:#e5e7f5;\
+  overflow-y:auto;\
+  -webkit-overflow-scrolling:touch;\
+\}\
+.help-body h3\{font-size:.9rem;margin:10px 0 4px;color:#bfdbfe\}\
+.help-body ul\{padding-left:1.1rem;margin:4px 0 10px\}\
+.help-body li\{margin-bottom:4px\}\
+.help-close\{position:absolute;top:8px;right:10px;border:none;background:transparent;color:#e5e7f5;font-size:22px;cursor:pointer\}\
+@media (max-width:480px)\{\
+  .help-dialog\{max-height:82vh;padding:16px 14px 18px;\}\
+  .jpText\{font-size:38px;\}\
+\}\
+</style>\
+</head>\
+\
+<body>\
+\
+<!-- Quit + Help -->\
+<button type="button" class="top-nav-btn" onclick="window.location.href='index.html'">\
+  <span class="jp">
+\f2 \'82\'e2\'82\'df\'82\'e9
+\f0 </span>\
+  <span class="en">QUIT</span>\
+</button>\
+<button id="helpBtn" type="button" class="help-btn">?</button>\
+\
+<header>\
+  <div class="h1">THE BOO-RICULUM</div>\
+  <div class="h2">MAKE THE SENTENCES</div>\
+  <div class="h3">January Week 1 \'96 Sentences</div>\
+  <div class="h4">
+\f2 \'82\'50\'8c\'8e\'91\'e6\'82\'50\'8f\'54
+\f0  \'96 
+\f2 \'95\'b6\'82\'cc\'97\'fb\'8f\'4b
+\f0 </div>\
+</header>\
+\
+<div class="wrap" id="page-round">\
+  <div class="panel" id="panel">\
+    <div class="jpCard locked" id="jpCard">\
+      <div id="jp" class="jpText"></div>\
+    </div>\
+    <div id="hira" class="hira"></div>\
+\
+    <div id="bank" class="wordbank"></div>\
+\
+    <div style="position:relative;">\
+      <div id="sentence" class="sentence">\
+        <button id="playBtn" class="playBtn" type="button" aria-label="Play"></button>\
+      </div>\
+    </div>\
+\
+    <button id="checkBtn" class="btn green" disabled>Check</button>\
+\
+    <div id="nextWrap" style="text-align:center;display:none">\
+      <button id="nextBtn" class="btn blue">Next</button>\
+    </div>\
+\
+    <div id="progress" style="text-align:center;opacity:.9;font-weight:800;margin-top:6px">1 / 15</div>\
+  </div>\
+</div>\
+\
+<!-- Help popup (JP -> EN) -->\
+<div id="helpModal" class="help-modal" aria-hidden="true">\
+  <div class="help-backdrop" data-close-help></div>\
+  <div class="help-dialog">\
+    <button class="help-close" type="button" data-close-help>\'d7</button>\
+    <h2>
+\f2 \'97\'56\'82\'d1\'95\'fb
+\f0  
+\f2 \'81\'5e
+\f0  HOW TO PLAY</h2>\
+    <div class="help-sub">Booha Make the Sentences</div>\
+    <div class="help-body">\
+\
+      <h3>
+\f2 \'93\'fa\'96\'7b\'8c\'ea\'81\'69\'90\'e6\'82\'c9\'82\'b1\'82\'bf\'82\'e7\'81\'6a
+\f0 </h3>\
+      <ul>\
+        <li>
+\f2 \'8f\'e3\'82\'cc
+\f0 <strong>
+\f2 \'93\'fa\'96\'7b\'8c\'ea\'82\'cc\'95\'b6
+\f0 </strong>
+\f2 \'81\'69\'81\'7b\'82\'d0\'82\'e7\'82\'aa\'82\'c8\'83\'71\'83\'93\'83\'67\'81\'6a\'82\'f0\'8c\'a9\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'89\'ba\'82\'cc\'94\'92\'82\'a2\'92\'50\'8c\'ea\'83\'5e\'83\'43\'83\'8b\'82\'f0
+\f0 <strong>
+\f2 \'83\'5e\'83\'62\'83\'76
+\f0 </strong>
+\f2 \'82\'b5\'82\'c4\'81\'41\'83\'4f\'83\'8c\'81\'5b\'82\'cc\'83\'47\'83\'8a\'83\'41\'82\'c9\'93\'fc\'82\'ea\'82\'c4\'95\'b6\'82\'f0\'8d\'ec\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'83\'4f\'83\'8c\'81\'5b\'82\'cc\'83\'47\'83\'8a\'83\'41\'82\'cc\'92\'50\'8c\'ea\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b7\'82\'e9\'82\'c6\'81\'41\'92\'50\'8c\'ea\'83\'6f\'83\'93\'83\'4e\'82\'c9\'96\'df\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li><strong>
+\f2 \'95\'c0\'82\'d7\'91\'d6\'82\'a6
+\f0 </strong>
+\f2 \'81\'46\'83\'4f\'83\'8c\'81\'5b\'82\'cc\'92\'86\'82\'cc\'92\'50\'8c\'ea\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'c4\'91\'49\'82\'f1\'82\'c5\'82\'a9\'82\'e7\'81\'41\'95\'ca\'82\'cc\'92\'50\'8c\'ea\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b7\'82\'e9\'82\'c6\'81\'41\'82\'bb\'82\'cc\'91\'4f\'82\'c9\'93\'fc\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'82\'c5\'82\'ab\'82\'bd\'82\'e7
+\f0  <strong>Check</strong> 
+\f2 \'82\'f0\'89\'9f\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'90\'b3\'89\'f0\'81\'46
+\f0 <strong>
+\f2 \'91\'e5\'82\'ab\'82\'a2\'83\'6e\'81\'5b\'83\'67
+\f0 </strong> 
+\f1 \uc0\u8594 
+\f0  <strong>ding</strong> 
+\f1 \uc0\u8594 
+\f0  
+\f2 \'89\'b9\'90\'ba
+\f0  
+\f1 \uc0\u8594 
+\f0  <strong>Next</strong></li>\
+        <li>
+\f2 \'95\'73\'90\'b3\'89\'f0\'81\'46
+\f0 <strong>
+\f2 \'91\'e5\'82\'ab\'82\'a2\'82\'a8\'82\'c8\'82\'e7
+\f0 </strong> 
+\f1 \uc0\u8594 
+\f0  <strong>fart</strong> 
+\f1 \uc0\u8594 
+\f0  
+\f2 \'83\'5e\'83\'43\'83\'8b\'82\'aa\'96\'df\'82\'e9\'82\'cc\'82\'c5\'81\'41\'82\'e0\'82\'a4\'88\'ea\'93\'78\'82\'c8\'82\'e7\'82\'d7\'92\'bc\'82\'b5\'82\'dc\'82\'b7\'81\'69\'93\'5f\'90\'94\'82\'cd\'91\'9d\'82\'a6\'82\'dc\'82\'b9\'82\'f1\'81\'6a\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'90\'b3\'89\'f0\'82\'b5\'82\'bd\'82\'a0\'82\'c6\'81\'41\'82\'e0\'82\'a4\'88\'ea\'93\'78\'95\'b7\'82\'ab\'82\'bd\'82\'a2\'82\'c6\'82\'ab\'82\'cd\'8f\'e3\'82\'cc
+\f0 <strong>
+\f2 \'83\'4a\'83\'89\'83\'74\'83\'8b\'82\'c8\'95\'b6
+\f0 </strong>
+\f2 \'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'93\'af\'82\'b6\'95\'b6\'82\'f0
+\f0 <strong>3
+\f2 \'89\'f1\'98\'41\'91\'b1\'82\'c5\'82\'dc\'82\'bf\'82\'aa\'82\'a6\'82\'bd
+\f0 </strong>
+\f2 \'82\'c6\'82\'ab\'82\'cd\'81\'41\'8b\'e0\'90\'46\'82\'cc
+\f0 <strong>
+\f1 \uc0\u9654 
+\f0 </strong>
+\f2 \'82\'aa\'8f\'6f\'82\'c4\'83\'71\'83\'93\'83\'67\'82\'aa\'95\'b7\'82\'af\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+      </ul>\
+\
+      <h3>English</h3>\
+      <ul>\
+        <li>Look at the <strong>Japanese sentence</strong> (and the hiragana hint).</li>\
+        <li><strong>Tap</strong> the word tiles to move them into the gray sentence area.</li>\
+        <li>Tap a word in the sentence area to send it back to the bank.</li>\
+        <li><strong>Reorder</strong>: tap a word in the sentence area to select it, then tap another word to insert it before that word.</li>\
+        <li>Tap <strong>Check</strong> when you finish.</li>\
+        <li>Correct: <strong>big heart</strong> 
+\f1 \uc0\u8594 
+\f0  <strong>ding</strong> 
+\f1 \uc0\u8594 
+\f0  voice 
+\f1 \uc0\u8594 
+\f0  <strong>Next</strong></li>\
+        <li>Wrong: <strong>big fart</strong> 
+\f1 \uc0\u8594 
+\f0  <strong>fart</strong> 
+\f1 \uc0\u8594 
+\f0  tiles return, try again (no point).</li>\
+        <li>After you get it correct, tap the <strong>colorful sentence</strong> to hear it again.</li>\
+        <li>If you get the same sentence wrong <strong>3 times in a row</strong>, a gold <strong>
+\f1 \uc0\u9654 
+\f0 </strong> button appears to help you.</li>\
+      </ul>\
+\
+    </div>\
+  </div>\
+</div>\
+\
+<!-- Results page -->\
+<div id="page-results" class="end">\
+  <div class="msg" id="resultMsg"></div>\
+  <div class="score" id="resultScore"></div>\
+  <button class="btn blue" onclick="window.location.href='index.html'">Back to Main Menu</button>\
+  <footer style="opacity:.8">Bryan\'92s English School</footer>\
+</div>\
+\
+<!-- Big FX nodes (no emoji) -->\
+<div class="bigFx" id="bigHeart" aria-hidden="true">\
+  <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false">\
+    <path d="M64 112S14 84 14 44c0-16 12-28 28-28 10 0 18 5 22 12 4-7 12-12 22-12 16 0 28 12 28 28 0 40-50 68-50 68Z" fill="#ff3b6e"/>\
+    <path d="M64 112S14 84 14 44c0-16 12-28 28-28 10 0 18 5 22 12 4-7 12-12 22-12 16 0 28 12 28 28 0 40-50 68-50 68Z" fill="none" stroke="#ffffff" stroke-opacity=".7" stroke-width="4"/>\
+  </svg>\
+</div>\
+<div class="bigFx" id="bigFart" aria-hidden="true">\
+  <svg viewBox="0 0 128 128" aria-hidden="true" focusable="false">\
+    <g fill="#cbd5e1">\
+      <path d="M44 92c-14 0-26-10-26-23 0-11 8-20 19-22 3-13 15-23 30-23 12 0 23 6 28 16 10 1 18 10 18 21 0 12-10 21-22 21H44Z"/>\
+    </g>\
+    <g fill="none" stroke="#ffffff" stroke-opacity=".65" stroke-width="4" stroke-linecap="round">\
+      <path d="M28 50c-8-10-2-22 10-26"/>\
+      <path d="M92 44c6-10 18-12 24-4"/>\
+      <path d="M78 98c12 4 20 14 18 22"/>\
+    </g>\
+  </svg>\
+</div>\
+\
+<footer>Bryan\'92s English School</footer>\
+\
+<!-- SFX (week1/assets/audio) -->\
+<audio id="s_ding" src="assets/audio/ding.mp3" preload="auto"></audio>\
+<audio id="s_fart" src="assets/audio/fart.mp3" preload="auto"></audio>\
+\
+<!-- RESULTS AUDIO (week1/assets/audio) -->\
+<audio id="s_r05" src="assets/audio/result_0-5.mp3" preload="auto"></audio>\
+<audio id="s_r610" src="assets/audio/result_6-10.mp3" preload="auto"></audio>\
+<audio id="s_r1114" src="assets/audio/result_11-14.mp3" preload="auto"></audio>\
+<audio id="s_r15" src="assets/audio/result_15.mp3" preload="auto"></audio>\
+\
+<!-- Sage player (single element, reliable) -->\
+<audio id="sageVoice" preload="auto"></audio>\
+\
+<script>\
+/* =========================\
+   DATA (KEEP ORDER for s01...s15)\
+   ========================= */\
+const BASE_DATA=[\
+  \{id:1, en:"I will study every day.", jp:"
+\f2 \'96\'88\'93\'fa\'95\'d7\'8b\'ad\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'dc\'82\'a2\'82\'c9\'82\'bf
+\f0  
+\f2 \'82\'d7\'82\'f1\'82\'ab\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'b5\'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:2, en:"I\'92m going to try something new.", jp:"
+\f2 \'90\'56\'82\'b5\'82\'a2\'82\'b1\'82\'c6\'82\'f0\'82\'e2\'82\'c1\'82\'c4\'82\'dd\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'a0\'82\'bd\'82\'e7\'82\'b5\'82\'a2
+\f0  
+\f2 \'82\'b1\'82\'c6
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'e2\'82\'c1\'82\'c4\'82\'dd\'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:3, en:"I will do my best this year.", jp:"
+\f2 \'8d\'a1\'94\'4e\'82\'cd\'82\'aa\'82\'f1\'82\'ce\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'b1\'82\'c6\'82\'b5
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'aa\'82\'f1\'82\'ce\'82\'e8\'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:4, en:"I will make a new friend.", jp:"
+\f2 \'90\'56\'82\'b5\'82\'a2\'97\'46\'82\'be\'82\'bf\'82\'f0\'8d\'ec\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'a0\'82\'bd\'82\'e7\'82\'b5\'82\'a2
+\f0  
+\f2 \'82\'c6\'82\'e0\'82\'be\'82\'bf
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'c2\'82\'ad\'82\'e8
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:5, en:"I will not be late anymore.", jp:"
+\f2 \'82\'e0\'82\'a4\'92\'78\'8d\'8f\'82\'b5\'82\'dc\'82\'b9\'82\'f1\'81\'42
+\f0 ", hira:"
+\f2 \'82\'e0\'82\'a4
+\f0  
+\f2 \'82\'bf\'82\'b1\'82\'ad
+\f0  
+\f2 \'82\'b5\'82\'dc\'82\'b9\'82\'f1
+\f0 "\},\
+  \{id:6, en:"I will help my classmates.", jp:"
+\f2 \'83\'4e\'83\'89\'83\'58\'83\'81\'81\'5b\'83\'67\'82\'f0\'8f\'95\'82\'af\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'ad\'82\'e7\'82\'b7\'82\'df\'81\'5b\'82\'c6
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'bd\'82\'b7\'82\'af
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:7, en:"I will clean my desk today.", jp:"
+\f2 \'8d\'a1\'93\'fa\'82\'cd\'8a\'f7\'82\'f0\'95\'d0\'82\'c3\'82\'af\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'ab\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'c2\'82\'ad\'82\'a6
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'a9\'82\'bd\'82\'c3\'82\'af
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:8, en:"I will read more books.", jp:"
+\f2 \'82\'e0\'82\'c1\'82\'c6\'96\'7b\'82\'f0\'93\'c7\'82\'dd\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'e0\'82\'c1\'82\'c6
+\f0  
+\f2 \'82\'d9\'82\'f1
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'e6\'82\'dd
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:9, en:"I will start a good habit.", jp:"
+\f2 \'97\'c7\'82\'a2\'8f\'4b\'8a\'b5\'82\'f0\'8e\'6e\'82\'df\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'e6\'82\'a2
+\f0  
+\f2 \'82\'b5\'82\'e3\'82\'a4\'82\'a9\'82\'f1
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'cd\'82\'b6\'82\'df
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:10, en:"I will speak more English.", jp:"
+\f2 \'82\'e0\'82\'c1\'82\'c6\'89\'70\'8c\'ea\'82\'f0\'98\'62\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'e0\'82\'c1\'82\'c6
+\f0  
+\f2 \'82\'a6\'82\'a2\'82\'b2
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'cd\'82\'c8\'82\'b5
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:11, en:"I will write in my diary every week.", jp:"
+\f2 \'96\'88\'8f\'54\'93\'fa\'8b\'4c\'82\'f0\'8f\'91\'82\'ab\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'dc\'82\'a2\'82\'b5\'82\'e3\'82\'a4
+\f0  
+\f2 \'82\'c9\'82\'c1\'82\'ab
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'a9\'82\'ab
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:12, en:"I will wake up earlier.", jp:"
+\f2 \'82\'e0\'82\'c1\'82\'c6\'91\'81\'82\'ad\'8b\'4e\'82\'ab\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'e0\'82\'c1\'82\'c6
+\f0  
+\f2 \'82\'cd\'82\'e2\'82\'ad
+\f0  
+\f2 \'82\'a8\'82\'ab
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:13, en:"I will listen carefully in class.", jp:"
+\f2 \'8e\'f6\'8b\'c6\'82\'c5\'82\'b5\'82\'c1\'82\'a9\'82\'e8\'95\'b7\'82\'ab\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'b6\'82\'e3\'82\'ac\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'c5
+\f0  
+\f2 \'82\'b5\'82\'c1\'82\'a9\'82\'e8
+\f0  
+\f2 \'82\'ab\'82\'ab
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:14, en:"I will smile more.", jp:"
+\f2 \'82\'e0\'82\'c1\'82\'c6\'8f\'ce\'82\'a2\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'e0\'82\'c1\'82\'c6
+\f0  
+\f2 \'82\'ed\'82\'e7\'82\'a2
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\},\
+  \{id:15, en:"I will enjoy learning.", jp:"
+\f2 \'8a\'77\'82\'d4\'82\'b1\'82\'c6\'82\'f0\'8a\'79\'82\'b5\'82\'dd\'82\'dc\'82\'b7\'81\'42
+\f0 ", hira:"
+\f2 \'82\'dc\'82\'c8\'82\'d4
+\f0  
+\f2 \'82\'b1\'82\'c6
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'bd\'82\'cc\'82\'b5\'82\'dd
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0 "\}\
+];\
+\
+// 
+\f3 \uc0\u55357 \u56576 
+\f0  shuffle questions each refresh (audio stays tied to BASE id)\
+const DATA = shuffle([...BASE_DATA]);\
+\
+/* =========================\
+   DOM\
+   ========================= */\
+const qs = s => document.querySelector(s);\
+const jp=qs('#jp'), hira=qs('#hira'), bank=qs('#bank'), sent=qs('#sentence');\
+const jpCard = qs('#jpCard');\
+const playBtn = qs('#playBtn');\
+const check=qs('#checkBtn'), nextWrap=qs('#nextWrap'), nextBtn=qs('#nextBtn');\
+const progress=qs('#progress');\
+\
+const bigHeart = qs('#bigHeart');\
+const bigFart  = qs('#bigFart');\
+\
+const sfxDing = qs('#s_ding');\
+const sfxFart = qs('#s_fart');\
+\
+const sageVoice = qs('#sageVoice');\
+let sagePrimed = false;\
+\
+/* =========================\
+   STATE\
+   ========================= */\
+let i=0;\
+let score=0;\
+let wrongMode=false;\
+let selectedWord = null;\
+let locked=false;\
+\
+let wrongStreak=0;   // wrong answers in a row for the current sentence\
+let solved=false;    // once correct, hide Check and lock tiles\
+\
+let helpReady=false; // turns true after 3 wrong on THIS sentence\
+\
+let flowToken = 0;   // cancels old audio callbacks\
+let dingTimer = null;\
+\
+/* =========================\
+   AUDIO CANCEL / GUARD\
+   ========================= */\
+function cancelAudioFlow()\{\
+  flowToken++; // invalidate any pending callbacks\
+\
+  try\{ sfxDing.pause(); sfxDing.currentTime = 0; \}catch(_)\{\}\
+  sfxDing.onended = null;\
+\
+  try\{ sageVoice.pause(); sageVoice.currentTime = 0; \}catch(_)\{\}\
+  sageVoice.onended = null;\
+  sageVoice.onerror = null;\
+\
+  if(dingTimer)\{ clearTimeout(dingTimer); dingTimer = null; \}\
+\}\
+\
+/* =========================\
+   SAGE\
+   ========================= */\
+function slugFromSentence(en)\{\
+  return (en||'')\
+    .toLowerCase()\
+    .trim()\
+    .replace(/[\'92\'91\'b4`]/g,"'")\
+    .replace(/\\b(i'm|i\'92m)\\b/g,'im')\
+    .replace(/\\b(can't|can\'92t)\\b/g,'cant')\
+    .replace(/\\b(won't|won\'92t)\\b/g,'wont')\
+    .replace(/[^a-z0-9]+/g,'_')\
+    .replace(/^_+|_+$/g,'');\
+\}\
+function sNum(n)\{ return String(n).padStart(2,'0'); \}\
+\
+function sagePathForIndex(idx)\{\
+  const item = DATA[idx];\
+  const id = item?.id ?? (idx+1);\
+  const slug = slugFromSentence(item?.en || '');\
+  return `audio/sentences/s$\{sNum(id)\}_$\{slug\}.mp3`;\
+\}\
+\
+async function primeSage()\{\
+  if(sagePrimed) return;\
+  sagePrimed = true;\
+  try\{\
+    sageVoice.muted = true;\
+    sageVoice.src = sagePathForIndex(0);\
+    const p = sageVoice.play();\
+    if(p && p.then) await p;\
+    sageVoice.pause();\
+    sageVoice.currentTime = 0;\
+    sageVoice.muted = false;\
+  \}catch(e)\{\
+    sageVoice.muted = false;\
+  \}\
+\}\
+\
+// 
+\f3 \uc0\u9989 
+\f0  single reliable Sage play (with filename logging)\
+function playSageForIndex(idx, onEnd)\{\
+  const src = sagePathForIndex(idx);\
+  const myToken = flowToken;\
+  let done=false;\
+\
+  const finish = ()=>\{\
+    if(done) return;\
+    done=true;\
+    sageVoice.onended=null; sageVoice.onerror=null;\
+    if(onEnd) onEnd();\
+  \};\
+\
+  // helpful debug (you can leave this in)\
+  console.log('[Sage src]', src);\
+\
+  sageVoice.onended = ()=>\{ if(myToken!==flowToken) return; finish(); \};\
+  sageVoice.onerror = ()=>\{ \
+    if(myToken!==flowToken) return;\
+    console.warn('[Sage missing or blocked]', src);\
+    finish();\
+  \};\
+\
+  try\{\
+    sageVoice.src = src;\
+    sageVoice.currentTime = 0;\
+    const p = sageVoice.play();\
+    if(p && p.catch) p.catch((err)=>\{\
+      if(myToken!==flowToken) return;\
+      console.warn('[Sage play blocked]', err, 'src=', src);\
+      finish();\
+    \});\
+  \}catch(err)\{\
+    console.warn('[Sage play error]', err, 'src=', src);\
+    finish();\
+  \}\
+\
+  // failsafe\
+  setTimeout(()=>\{ if(myToken!==flowToken) return; finish(); \}, 9000);\
+\}\
+\
+/* =========================\
+   UI helpers\
+   ========================= */\
+function chipColor(n)\{\
+  const c=["#ff6ec7","#5ee6ff","#ffd166","#8aff80","#c77dff","#fff680","#ff9a8b","#9bffb7","#7cc6ff","#f7a6ff"];\
+  return c[n%c.length];\
+\}\
+function updateProgress()\{ progress.textContent=`$\{i+1\} / $\{DATA.length\}`; \}\
+\
+function showBig(el)\{\
+  el.classList.remove('show');\
+  void el.offsetWidth;\
+  el.classList.add('show');\
+  setTimeout(()=>el.classList.remove('show'), 950);\
+\}\
+\
+function setSelected(w)\{\
+  clearSelected();\
+  selectedWord = w;\
+  if(selectedWord) selectedWord.classList.add('selected');\
+\}\
+function clearSelected()\{\
+  if(selectedWord) selectedWord.classList.remove('selected');\
+  selectedWord = null;\
+\}\
+\
+function refreshCheckState()\{\
+  if(solved) \{ check.disabled = true; return; \}\
+  check.disabled = (bank.querySelectorAll('.word').length !== 0) || locked;\
+\}\
+\
+function moveToBank(word)\{\
+  word.classList.remove('inSentence','selected');\
+  bank.appendChild(word);\
+  refreshCheckState();\
+\}\
+function moveToSentence(word, beforeEl=null)\{\
+  word.classList.add('inSentence');\
+  word.classList.remove('selected');\
+  if(beforeEl && beforeEl.parentElement === sent)\{\
+    sent.insertBefore(word, beforeEl);\
+  \}else\{\
+    sent.insertBefore(word, playBtn); // keep play button last\
+  \}\
+  refreshCheckState();\
+\}\
+\
+function lockTiles(on)\{\
+  [...document.querySelectorAll('.word')].forEach(w=>w.disabled = !!on);\
+\}\
+\
+function lockUI(on)\{\
+  locked = !!on;\
+  lockTiles(locked);\
+  playBtn.disabled = locked;\
+  refreshCheckState();\
+\}\
+\
+function showPlayHint(on)\{\
+  helpReady = !!on;\
+  if(on) playBtn.classList.add('show');\
+  else playBtn.classList.remove('show');\
+\}\
+\
+/* =========================\
+   Build round\
+   ========================= */\
+function mount()\{\
+  cancelAudioFlow();\
+\
+  bank.innerHTML='';\
+  sent.innerHTML='';\
+  sent.appendChild(playBtn);\
+\
+  nextWrap.style.display='none';\
+\
+  check.style.display='block';\
+  check.disabled=true;\
+\
+  wrongMode=false;\
+  clearSelected();\
+  locked=false;\
+\
+  wrongStreak=0;\
+  showPlayHint(false);\
+  solved=false;\
+\
+  // Rainbow is display-only (no Sage)\
+  jpCard.classList.remove('replay');\
+  jpCard.classList.add('locked');\
+\
+  const item = DATA[i];\
+  jp.textContent=item.jp;\
+  hira.textContent=item.hira;\
+\
+  const words = item.en.trim().split(/\\s+/);\
+  shuffle(words).forEach((w,idx)=>\{\
+    const b=document.createElement('button');\
+    b.type='button';\
+    b.textContent=w;\
+    b.className='word';\
+    b.style.setProperty('--color', chipColor(idx));\
+\
+    b.addEventListener('click',(e)=>\{\
+      e.stopPropagation();\
+      if(locked || solved) return;\
+\
+      const parent = b.parentElement;\
+      if(parent === bank)\{\
+        moveToSentence(b);\
+        clearSelected();\
+      \}else\{\
+        if(selectedWord && selectedWord !== b && selectedWord.parentElement === sent)\{\
+          const moving = selectedWord;\
+          clearSelected();\
+          moveToSentence(moving, b);\
+        \}else\{\
+          if(b.classList.contains('selected'))\{\
+            moveToBank(b);\
+            clearSelected();\
+          \}else\{\
+            setSelected(b);\
+          \}\
+        \}\
+      \}\
+    \});\
+\
+    bank.appendChild(b);\
+  \});\
+\
+  updateProgress();\
+  refreshCheckState();\
+\
+  check.onclick = () => \{\
+    primeSage();\
+    checkLogic();\
+  \};\
+\}\
+\
+sent.addEventListener('click',(e)=>\{\
+  if(e.target === sent || e.target === playBtn) clearSelected();\
+\});\
+bank.addEventListener('click',(e)=>\{ if(e.target === bank) clearSelected(); \});\
+\
+// Rainbow touch disabled completely\
+if(jpCard)\{\
+  jpCard.addEventListener('click', (e)=>\{\
+    e.preventDefault();\
+    e.stopPropagation();\
+  \});\
+\}\
+\
+\
+/* =========================\
+   Logic\
+   ========================= */\
+function currentBuilt()\{\
+  return [...sent.querySelectorAll('.word')]\
+    .filter(el => el !== playBtn)\
+    .map(e=>e.textContent).join(' ').trim();\
+\}\
+function currentCorrect()\{\
+  return DATA[i].en.trim();\
+\}\
+\
+function playOnce(el)\{\
+  try\{ el.pause(); el.currentTime = 0; \}catch(_)\{ \}\
+  try\{ return el.play(); \}catch(_)\{ return null; \}\
+\}\
+\
+function checkLogic()\{\
+  cancelAudioFlow();\
+  if(locked || solved) return;\
+\
+  const correct = currentCorrect();\
+  const built = currentBuilt();\
+\
+  if(built === correct)\{\
+    solved = true;\
+    lockUI(true);\
+\
+    if(!wrongMode) score++;\
+    showBig(bigHeart);\
+\
+    wrongStreak = 0;\
+    showPlayHint(false);\
+\
+    check.style.display = 'none';\
+    nextWrap.style.display = 'block';\
+\
+    // 
+\f3 \uc0\u9989 
+\f0  Correct flow: ding -> Sage (ONLY ONCE)\
+    const myToken = ++flowToken;\
+    let fired = false;\
+\
+    const afterDingOnce = ()=>\{\
+      if(fired) return;               // 
+\f3 \uc0\u9989 
+\f0  prevents double call\
+      fired = true;\
+\
+      if(dingTimer)\{ clearTimeout(dingTimer); dingTimer = null; \} // 
+\f3 \uc0\u9989 
+\f0  kill fallback timer\
+      sfxDing.onended = null;\
+\
+      if(myToken !== flowToken) return;\
+\
+      playSageForIndex(i, ()=>\{\
+        if(myToken !== flowToken) return;\
+        // tiles stay locked; Next works\
+      \});\
+    \};\
+\
+    sfxDing.onended = afterDingOnce;\
+\
+    const p = playOnce(sfxDing);\
+\
+    // fallback in case onended doesn't fire\
+    dingTimer = setTimeout(afterDingOnce, 3500);\
+\
+    if(p && p.catch) p.catch(()=>afterDingOnce());\
+\
+  \}else\{\
+    wrongMode = true;\
+    cancelAudioFlow(); // extra safety\
+\
+    showBig(bigFart);\
+    playOnce(sfxFart);\
+\
+    wrongStreak++;\
+    if(wrongStreak >= 3)\{\
+      showPlayHint(true);\
+    \}\
+\
+    [...sent.querySelectorAll('.word')].forEach(ch=>\{\
+      if(ch !== playBtn) moveToBank(ch);\
+    \});\
+    clearSelected();\
+\
+    refreshCheckState();\
+  \}\
+\}\
+\
+nextBtn.onclick = () => \{\
+  cancelAudioFlow();\
+  i++;\
+  if(i >= DATA.length) return finish();\
+  mount();\
+\};\
+\
+/* =========================\
+   Results\
+   ========================= */\
+function finish()\{\
+  qs('#page-round').style.display='none';\
+  showResults();\
+\}\
+\
+function showResults()\{\
+  qs('#page-results').style.display='flex';\
+\
+  const totalScore = score;\
+  const pct = Math.round((totalScore/15)*100);\
+\
+  const msgEl = qs('#resultMsg');\
+  const scoreEl= qs('#resultScore');\
+\
+  let bg="blueGlow", msg="
+\f2 \'82\'a2\'82\'a2\'82\'cb\'81\'49\'82\'a0\'82\'c6\'8f\'ad\'82\'b5\'82\'c5\'83\'70\'81\'5b\'83\'74\'83\'46\'83\'4e\'83\'67\'81\'49
+\f0 ", snd=qs('#s_r1114');\
+  if(totalScore<=5)\{ bg="redGlow"; msg="
+\f2 \'83\'75\'81\'5b\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80\'8c\'a9\'82\'c4\'82\'c8\'82\'a2\'82\'c5\'82\'b5\'82\'e5\'81\'49
+\f0 "; snd=qs('#s_r05'); \}\
+  else if(totalScore<=10)\{ bg="orangeGlow"; msg="YouTube
+\f2 \'8c\'a9\'82\'b7\'82\'ac\'81\'49\'83\'75\'81\'5b\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80\'82\'e0\'82\'e2\'82\'eb\'82\'a4\'81\'49
+\f0 "; snd=qs('#s_r610'); \}\
+  else if(totalScore===15)\{ bg="goldGlow"; msg="
+\f2 \'82\'b7\'82\'b2\'82\'a2\'81\'49\'82\'a0\'82\'c8\'82\'bd\'82\'cd\'92\'6e\'8b\'85\'82\'c5\'88\'ea\'94\'d4\'93\'aa\'82\'aa\'82\'a2\'82\'a2\'81\'49
+\f0 "; snd=qs('#s_r15'); \}\
+\
+  document.body.className = bg;\
+  msgEl.textContent = msg;\
+  scoreEl.textContent = `$\{totalScore\}/15
+\f2 \'81\'69
+\f0 $\{pct\}%
+\f2 \'81\'6a
+\f0 `;\
+\
+  try\{ snd.currentTime=0; snd.play().catch(()=>\{\}); \}catch(_)\{ \}\
+\
+  if(totalScore===15)\{\
+    for(let k=0;k<160;k++)\{\
+      setTimeout(()=>\{\
+        const c=document.createElement('div');\
+        c.className='confetti';\
+        c.style.left=(Math.random()*100)+'vw';\
+        c.style.background=`hsl($\{Math.random()*360\},100%,60%)`;\
+        c.style.animationDuration=(0.9+Math.random()*0.9)+'s';\
+        document.body.appendChild(c);\
+        setTimeout(()=>c.remove(),1900);\
+      \}, k*10);\
+    \}\
+  \}\
+\}\
+\
+/* =========================\
+   Utils\
+   ========================= */\
+function shuffle(a)\{\
+  for(let i=a.length-1;i>0;i--)\{\
+    const j=Math.floor(Math.random()*(i+1));\
+    [a[i],a[j]]=[a[j],a[i]];\
+  \}\
+  return a;\
+\}\
+\
+/* =========================\
+   Help modal\
+   ========================= */\
+const helpBtnEl = qs('#helpBtn');\
+const helpModal = qs('#helpModal');\
+if(helpBtnEl && helpModal)\{\
+  const closeEls = helpModal.querySelectorAll('[data-close-help]');\
+  const openHelp = ()=>\{ helpModal.classList.add('show'); helpModal.setAttribute('aria-hidden','false'); \};\
+  const closeHelp= ()=>\{ helpModal.classList.remove('show'); helpModal.setAttribute('aria-hidden','true'); \};\
+  helpBtnEl.addEventListener('click', openHelp);\
+  closeEls.forEach(el=>el.addEventListener('click', closeHelp));\
+  helpModal.addEventListener('click', e=>\{ if(e.target===helpModal) closeHelp(); \});\
+  document.addEventListener('keydown', e=>\{ if(e.key==='Escape') closeHelp(); \});\
+\}\
+\
+/* =========================\
+   Init (SAFE AUDIO + GOLD HELP FIX)\
+   ========================= */\
+mount();\
+\
+/* \
+  
+\f3 \uc0\u55357 \u56594 
+\f0  HARD BIND GOLD HELP\
+  This guarantees:\
+  - Gold button always works (Q1\'96Q15)\
+  - No duplicate listeners\
+  - No accidental Sage after wrong\
+*/\
+(function bindGoldHelpSafely()\{\
+  if(!playBtn) return;\
+\
+  playBtn.onclick = (e)=>\{\
+    e.preventDefault();\
+    e.stopPropagation();\
+\
+    // Guard rails\
+    if(locked) return;\
+    if(!helpReady) return;\
+    if(solved) return;\
+\
+    // Kill anything pending (ding timers, old Sage, etc.)\
+    cancelAudioFlow();\
+\
+    primeSage();\
+\
+    console.log(\
+      '[Gold 
+\f1 \uc0\u9654 
+\f0 ]',\
+      'question=', i+1,\
+      'id=', DATA[i]?.id,\
+      'src=', sagePathForIndex(i)\
+    );\
+\
+    playSageForIndex(i);\
+  \};\
+\})();\
+</script>\
+\
+</body>\
+</html>\
+}

@@ -1,0 +1,1413 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;\f2\fnil\fcharset128 HiraginoSans-W3;
+\f3\fnil\fcharset0 LucidaGrande;\f4\fnil\fcharset77 ZapfDingbatsITC;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="ja">\
+<head>\
+<meta charset="utf-8" />\
+<meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover" />\
+<title>Booha Eigo Pera Pera \'96 January Week 1</title>\
+<meta name="theme-color" content="#0b1530" />\
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />\
+\
+<!-- Preload all audio (per-question + results) -->\
+<link rel="preload" as="audio" href="assets/audio/0-43.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/44-74.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/75-99.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/100.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/result_0-5.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/result_6-10.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/result_11-14.mp3" />\
+<link rel="preload" as="audio" href="assets/audio/result_15.mp3" />\
+\
+<style>\
+:root\{--bg:#0b1530;--ink:#fff;--outline:#ffffff26;--radius:26px\}\
+*\{box-sizing:border-box;margin:0\}\
+body\{background:var(--bg);color:var(--ink);font-family:"Noto Sans JP",sans-serif\}\
+header\{text-align:center;padding:24px 10px\}\
+.h1\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(34px,6vw,54px)\}\
+.h2\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(22px,4.5vw,36px)\}\
+.h3\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(16px,3.6vw,22px)\}\
+.h4\{font-weight:800;font-size:clamp(14px,3.4vw,20px);color:#cfe1ff\}\
+footer\{text-align:center;color:#c9d4ec;font-family:'Cinzel',serif;font-weight:700;padding:30px 10px\}\
+.wrap\{max-width:1100px;margin:auto;padding:0 16px 80px\}\
+.panel\{position:relative;z-index:1;padding:20px;border:1px solid var(--outline);border-radius:var(--radius);\
+background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));overflow:visible\}\
+.card\{position:relative;z-index:1;border:1px solid var(--outline);border-radius:var(--radius);\
+padding:22px 16px 22px 80px;margin-bottom:10px;overflow:hidden;background:rgba(255,255,255,.04)\}\
+\
+/* Sweeping yellow meter */\
+.sweep\{position:absolute;inset:0;width:100%;height:100%;background:linear-gradient(0deg,rgba(255,246,128,.9),rgba(255,246,128,.7));mix-blend-mode:screen;opacity:.8;border-radius:6px;transform:translateX(-100%);z-index:0\}\
+@keyframes sweepAcross\{from\{transform:translateX(-100%)\}to\{transform:translateX(0)\}\}\
+.sweep.run\{animation:sweepAcross var(--dur,6s) linear forwards\}\
+\
+.en\{font-weight:900;font-size:clamp(26px,7.4vw,48px);text-align:center;line-height:1.25;position:relative;z-index:2\}\
+.en .word\{\
+display:inline-block;\
+padding:0 .06em;\
+color:#fff;\
+transition:color .2s,transform .2s;\
+text-shadow:0 0 6px rgba(255,255,255,.4);\
+\}\
+.en .word.blue\{color:#3aa0ff;text-shadow:0 0 2px #000,0 0 12px #3aa0ff,0 0 24px #3aa0ff;transform:translateY(-8px) scale(1.08)\}\
+.en .word.red\{color:#ff2a2a;text-shadow:0 0 2px #000,0 0 10px #ff2a2a,0 0 18px #ff2a2a\}\
+\
+.heart\{position:fixed;left:0;top:0;transform:translate(-50%,0);font-size:24px;color:#ff7eb9;opacity:0;z-index:9999;animation:heartUp .9s ease-out forwards;pointer-events:none\}\
+@keyframes heartUp\{0%\{transform:translate(-50%,0) scale(1);opacity:1\}100%\{transform:translate(-50%,-90px) scale(1.5);opacity:0\}\}\
+\
+.playBtn\{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;font-weight:900;font-size:20px;color:#351b00;z-index:3;background:radial-gradient(circle at 30% 30%,#ffe8a3,#ffd36a 60%,#ffb800 100%);box-shadow:0 0 0 3px rgba(255,213,120,.35),0 0 16px rgba(255,214,120,.45),inset 0 3px 6px rgba(255,255,255,.6),inset 0 -6px 14px rgba(201,112,0,.55);animation:goldPulse 1.8s ease-in-out infinite\}\
+@keyframes goldPulse\{0%,100%\{box-shadow:0 0 0 3px rgba(255,213,120,.25),0 0 10px rgba(255,214,120,.35),inset 0 2px 5px rgba(255,255,255,.55),inset 0 -6px 14px rgba(201,112,0,.55)\}50%\{box-shadow:0 0 0 4px rgba(255,213,120,.45),0 0 22px rgba(255,214,120,.85),inset 0 4px 8px rgba(255,255,255,.85),inset 0 -8px 18px rgba(201,112,0,.75)\}\}\
+\
+.jp\{text-align:center;font-weight:700;font-size:clamp(16px,3.8vw,22px);color:#d8e7ff\}\
+.hira\{text-align:center;font-size:clamp(14px,3.4vw,18px);color:#bcd3ff;margin-top:6px\}\
+\
+.meterWrap\{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:22px 0\}\
+.meter\{position:relative;width:min(64vw,280px);height:min(64vw,280px);display:grid;place-items:center\}\
+.ring\{position:absolute;inset:0;border-radius:50%;background:conic-gradient(#ff7eb9,#a6f7b2,#7dd3fc,#fff680,#c77dff,#8aff80,#ff7eb9);-webkit-mask:radial-gradient(circle,transparent 60%,black 62%);mask:radial-gradient(circle,transparent 60%,black 62%);animation:rainbowCycle 3s linear infinite\}\
+@keyframes rainbowCycle\{0%\{filter:hue-rotate(0)\}100%\{filter:hue-rotate(360deg)\}\}\
+.meterCore\{position:absolute;inset:12%;border-radius:50%;background:radial-gradient(circle at 50% 40%,rgba(255,255,255,.2),rgba(255,255,255,.05));display:grid;place-items:center;text-align:center;transition:transform .3s ease\}\
+.meterText\{font-weight:900;font-size:clamp(28px,8vw,42px);line-height:1.25\}\
+.counter\{margin-top:8px;font-weight:700;font-size:clamp(16px,4vw,22px);color:#fff;opacity:.9\}\
+\
+/* GO! pulse/glow in center of circle */\
+.flashGo\{animation:flashGlow .85s ease-in-out 2\}\
+@keyframes flashGlow\{0%\{text-shadow:0 0 0 #fff680;transform:scale(.9)\}50%\{text-shadow:0 0 30px #fff680;transform:scale(1.06)\}100%\{text-shadow:0 0 0 #fff680;transform:scale(1)\}\}\
+\
+.popNum\{animation:pop .5s ease;transform-origin:center;font-size:clamp(80px,18vw,120px)\}\
+@keyframes pop\{0%\{transform:scale(.2);opacity:0\}50%\{transform:scale(1.35);opacity:1\}100%\{transform:scale(1)\}\}\
+\
+.btnRow\{display:flex;justify-content:center;gap:10px;margin-top:10px\}\
+.btn\{border:none;border-radius:999px;padding:14px 20px;font-weight:900;font-size:clamp(18px,4vw,22px);cursor:pointer\}\
+.btn.begin\{background:linear-gradient(180deg,#1ee99a,#0ea85d);color:#002a11\}\
+.btn.retry\{background:linear-gradient(180deg,#8ec5ff,#1e6eff);color:#00163a\}\
+.btn.next\{background:linear-gradient(180deg,#ff9ad7,#ff4fa6);color:#38001a\}\
+.scoreBox\{margin:14px auto 6px;max-width:620px;text-align:center;padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.05);font-weight:900;font-size:clamp(18px,4.2vw,24px)\}\
+\
+/* FULL-SCREEN RESULT PAGES (glow + header + footer) */\
+.resultPage\{display:none;position:fixed;inset:0;z-index:9999;color:#fff\}\
+.resultInner\{min-height:100vh;display:flex;flex-direction:column\}\
+.resultCenter\{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px\}\
+.resultMsg\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(44px,10vw,96px);margin-bottom:16px;text-shadow:0 0 28px rgba(255,255,255,.9)\}\
+.resultScore\{font-weight:900;font-size:clamp(40px,9vw,78px);margin-bottom:28px;text-shadow:0 0 26px rgba(255,255,255,.9)\}\
+.btnSmall\{font-size:clamp(14px,3vw,20px);padding:10px 18px;margin:6px;border-radius:999px;font-weight:900;border:none;cursor:pointer\}\
+.btnRestart\{background:#00e676;color:#002a11\}\
+.btnMenu\{background:#1ee99a;color:#002a11\}\
+.glowRed\{background:radial-gradient(circle at center,#ff1a1a,#3b0d0d 60%);animation:glowRed 3s ease-in-out infinite\}\
+.glowOrange\{background:radial-gradient(circle at center,#ffae00,#3b2a0d 60%);animation:glowOrange 3s ease-in-out infinite\}\
+.glowBlue\{background:radial-gradient(circle at center,#00c0ff,#0b1530 60%);animation:glowBlue 3s ease-in-out infinite\}\
+.glowGold\{background:radial-gradient(circle at center,#ffd700,#2b2509 60%);animation:glowGold 3s ease-in-out infinite\}\
+@keyframes glowRed\{0%,100%\{filter:brightness(1)\}50%\{filter:brightness(1.3)\}\}\
+@keyframes glowOrange\{0%,100%\{filter:brightness(1)\}50%\{filter:brightness(1.3)\}\}\
+@keyframes glowBlue\{0%,100%\{filter:brightness(1)\}50%\{filter:brightness(1.3)\}\}\
+@keyframes glowGold\{0%,100%\{filter:brightness(1)\}50%\{filter:brightness(1.3)\}\}\
+\
+/* Confetti */\
+.confetti\{position:fixed;top:-12px;width:10px;height:14px;opacity:.9;animation:fall linear forwards\}\
+@keyframes fall\{to\{transform:translateY(110vh) rotate(720deg);opacity:1\}\}\
+\
+/* 
+\f1 \uc0\u55357 \u56600 
+\f0  Standard Booha QUIT button (small version) */\
+.top-nav-btn\{\
+position:fixed;\
+top:10px;\
+left:10px;\
+z-index:12001;\
+border-radius:999px;\
+padding:6px 14px;\
+border:1px solid #ffffff66;\
+background:rgba(15,23,42,.95);\
+color:#fff;\
+font-size:.78rem;\
+font-weight:700;\
+letter-spacing:.04em;\
+cursor:pointer;\
+display:flex;\
+align-items:center;\
+gap:4px;\
+box-shadow:0 0 12px rgba(0,0,0,.6);\
+backdrop-filter:blur(4px);\
+\}\
+.top-nav-btn .jp\{font-size:.72em;\}\
+.top-nav-btn .en\{font-size:.8em;\}\
+\
+/* 
+\f1 \uc0\u10067 
+\f0  Glowing help button */\
+.help-btn\{\
+position:fixed;\
+top:10px;\
+right:10px;\
+z-index:12001;\
+width:40px;\
+height:40px;\
+border-radius:999px;\
+border:1px solid #ffffff88;\
+background:radial-gradient(circle at 30% 30%,#7dd3fc,#1e3a8a 65%,#020617 100%);\
+color:#fff;\
+font-weight:900;\
+font-size:20px;\
+cursor:pointer;\
+display:flex;\
+align-items:center;\
+justify-content:center;\
+box-shadow:\
+0 0 12px rgba(125,211,252,.9),\
+0 0 28px rgba(59,130,246,.9),\
+0 0 52px rgba(56,189,248,.9);\
+backdrop-filter:blur(4px);\
+\}\
+\
+/* 
+\f1 \uc0\u55358 \u56991 
+\f0  Help modal */\
+.help-modal\{\
+position:fixed;\
+inset:0;\
+z-index:12000;\
+display:none;\
+align-items:center;\
+justify-content:center;\
+\}\
+.help-modal.show\{display:flex;\}\
+.help-backdrop\{\
+position:absolute;\
+inset:0;\
+background:rgba(15,23,42,.8);\
+backdrop-filter:blur(6px);\
+\}\
+.help-dialog\{\
+position:relative;\
+z-index:1;\
+max-width:720px;\
+width:calc(100% - 32px);\
+max-height:80vh;\
+border-radius:20px;\
+border:1px solid #ffffff33;\
+background:radial-gradient(circle at top,#111827,#020617 55%);\
+box-shadow:0 22px 70px rgba(0,0,0,.9);\
+padding:18px 18px 20px;\
+display:flex;\
+flex-direction:column;\
+\}\
+.help-dialog h2\{\
+font-family:'Cinzel',serif;\
+font-size:1.2rem;\
+text-align:center;\
+margin-bottom:6px;\
+\}\
+.help-sub\{\
+font-size:.85rem;\
+text-align:center;\
+color:#c7d2fe;\
+margin-bottom:10px;\
+\}\
+.help-body\{\
+margin-top:6px;\
+padding-right:4px;\
+font-size:.9rem;\
+line-height:1.6;\
+color:#e5e7f5;\
+overflow-y:auto;\
+\}\
+.help-body h3\{\
+font-size:.9rem;\
+margin:10px 0 4px;\
+color:#bfdbfe;\
+\}\
+.help-body ul\{\
+padding-left:1.1rem;\
+margin:4px 0 10px;\
+\}\
+.help-body li\{\
+margin-bottom:4px;\
+\}\
+.help-close\{\
+position:absolute;\
+top:8px;\
+right:10px;\
+border:none;\
+background:transparent;\
+color:#e5e7f5;\
+font-size:22px;\
+cursor:pointer;\
+\}\
+@media (max-width:480px)\{\
+.help-dialog\{\
+max-height:82vh;\
+padding:16px 14px 18px;\
+\}\
+\}\
+\
+/* 
+\f1 \uc0\u55356 \u57166 
+\f0  iOS-only overlay */\
+.ios-overlay\{\
+position:fixed;\
+inset:0;\
+background:rgba(15,23,42,.94);\
+display:none;\
+align-items:center;\
+justify-content:center;\
+z-index:13000;\
+\}\
+.ios-overlay.show\{display:flex;\}\
+.ios-dialog\{\
+max-width:520px;\
+width:calc(100% - 40px);\
+border-radius:22px;\
+padding:18px 20px 20px;\
+background:radial-gradient(circle at top,#111827,#020617 60%);\
+border:1px solid #ffffff44;\
+box-shadow:0 24px 70px rgba(0,0,0,.9);\
+color:#e5e7eb;\
+font-size:.9rem;\
+line-height:1.7;\
+\}\
+.ios-title\{\
+font-weight:800;\
+font-size:1rem;\
+margin-bottom:10px;\
+text-align:center;\
+\}\
+.ios-body\{\
+font-size:.9rem;\
+line-height:1.7;\
+white-space:pre-line;\
+\}\
+.ios-ok-btn\{\
+margin-top:14px;\
+display:block;\
+margin-left:auto;\
+margin-right:auto;\
+border:none;\
+border-radius:999px;\
+padding:10px 24px;\
+font-weight:800;\
+font-size:.95rem;\
+background:#22c55e;\
+color:#022c16;\
+cursor:pointer;\
+box-shadow:0 0 14px rgba(34,197,94,.7);\
+\}\
+</style>\
+</head>\
+<body>\
+\
+<!-- 
+\f1 \uc0\u55357 \u56600 
+\f0  Quit + 
+\f1 \uc0\u10067 
+\f0  Help -->\
+<button type="button" class="top-nav-btn" onclick="window.location.href='index.html'">\
+<span class="jp">
+\f2 \'82\'e2\'82\'df\'82\'e9
+\f0 </span>\
+<span class="en">QUIT</span>\
+</button>\
+<button id="helpBtn" type="button" class="help-btn">?</button>\
+\
+<header>\
+<div class="h1">THE BOO-RICULUM</div>\
+<div class="h2">EIGO PERA PERA</div>\
+<div class="h3">January Week 1 \'96 Speaking Practice</div>\
+<div class="h4">
+\f2 \'82\'50\'8c\'8e\'91\'e6\'82\'50\'8f\'54
+\f0  \'96 
+\f2 \'83\'58\'83\'73\'81\'5b\'83\'4c\'83\'93\'83\'4f\'97\'fb\'8f\'4b
+\f0 </div>\
+</header>\
+\
+<div class="wrap">\
+<div class="panel">\
+<div class="card">\
+<div id="sweep" class="sweep"></div>\
+<button id="playBtn" class="playBtn">
+\f3 \uc0\u9654 
+\f0 </button>\
+<div id="en" class="en">Press 
+\f2 \'83\'58\'83\'5e\'81\'5b\'83\'67
+\f0  to start</div>\
+</div>\
+<div id="jp" class="jp"></div>\
+<div id="hira" class="hira"></div>\
+\
+<div class="meterWrap">\
+<div class="meter">\
+<div class="ring"></div>\
+<div id="meterCore" class="meterCore"><div id="meterText" class="meterText">Ready<br><small>
+\f2 \'83\'58\'83\'5e\'83\'93\'83\'6f\'83\'43
+\f0 </small></div></div>\
+</div>\
+<div id="counter" class="counter">1 / 15</div>\
+</div>\
+\
+<div class="btnRow">\
+<button id="beginBtn" class="btn begin">
+\f2 \'83\'58\'83\'5e\'81\'5b\'83\'67
+\f0 <br><small>Start</small></button>\
+<button id="retryBtn" class="btn retry" style="display:none">
+\f2 \'82\'e0\'82\'a4\'88\'ea\'89\'f1
+\f0 <br><small>Retry</small></button>\
+<button id="nextBtn" class="btn next" style="display:none">
+\f2 \'82\'c2\'82\'ac\'82\'d6
+\f0 <br><small>Next</small></button>\
+</div>\
+<div id="scoreBox" class="scoreBox" style="display:none"></div>\
+</div>\
+</div>\
+\
+<!-- 
+\f1 \uc0\u10067 
+\f0  Help popup -->\
+<div id="helpModal" class="help-modal" aria-hidden="true">\
+<div class="help-backdrop" data-close-help></div>\
+<div class="help-dialog">\
+<button class="help-close" type="button" data-close-help>\'d7</button>\
+<h2>How to Play 
+\f2 \'81\'5e
+\f0  
+\f2 \'97\'56\'82\'d1\'95\'fb
+\f0 </h2>\
+<div class="help-sub">Booha Eigo Pera Pera Game</div>\
+<div class="help-body">\
+<h3>English</h3>\
+<ul>\
+<li>Tap <strong>Start</strong> to show the first speaking question.</li>\
+<li>Tap the <strong>gold 
+\f3 \uc0\u9654 
+\f0  button</strong> to hear Sage read the question.</li>\
+<li>Watch the circle in the middle. When it says <strong>Listening</strong>, answer aloud in English the whole time.</li>\
+<li>Important keywords you say correctly turn <strong>blue</strong> with hearts. Missed words turn <strong>red</strong> after the timer.</li>\
+<li>You get a score from <strong>0\'96100%</strong> for each question (first try only).</li>\
+<li>If you get <strong>100%</strong>, tap <strong>Next</strong>. If not, tap <strong>Retry</strong> and try again.</li>\
+<li>After all <strong>15 questions</strong>, your average score and number of perfect answers decide your final result color and sound.</li>\
+</ul>\
+\
+<h3>
+\f2 \'93\'fa\'96\'7b\'8c\'ea
+\f0 </h3>\
+<ul>\
+<li><strong>
+\f2 \'83\'58\'83\'5e\'81\'5b\'83\'67
+\f0 </strong>
+\f2 \'83\'7b\'83\'5e\'83\'93\'82\'f0\'89\'9f\'82\'b7\'82\'c6\'81\'41\'8d\'c5\'8f\'89\'82\'cc\'83\'58\'83\'73\'81\'5b\'83\'4c\'83\'93\'83\'4f\'8e\'bf\'96\'e2\'82\'aa\'8f\'6f\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+<li><strong>
+\f2 \'8b\'e0\'90\'46\'82\'cc
+\f0  
+\f3 \uc0\u9654 
+\f0  
+\f2 \'83\'7b\'83\'5e\'83\'93
+\f0 </strong>
+\f2 \'82\'f0\'89\'9f\'82\'b7\'82\'c6\'81\'41
+\f0 Sage 
+\f2 \'82\'aa\'89\'70\'8c\'ea\'82\'cc\'8e\'bf\'96\'e2\'82\'f0\'93\'c7\'82\'f1\'82\'c5\'82\'ad\'82\'ea\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+<li>
+\f2 \'82\'dc\'82\'f1\'82\'c8\'82\'a9\'82\'cc\'8a\'db\'82\'a2\'83\'81\'81\'5b\'83\'5e\'81\'5b\'82\'aa
+\f0 <strong>Listening</strong>
+\f2 \'81\'69\'95\'b7\'82\'ab\'8e\'e6\'82\'e8\'92\'86\'81\'6a\'82\'c9\'82\'c8\'82\'c1\'82\'bd\'82\'e7\'81\'41\'82\'bb\'82\'cc\'82\'a0\'82\'a2\'82\'be\'82\'b8\'82\'c1\'82\'c6\'89\'70\'8c\'ea\'82\'c5\'93\'9a\'82\'a6\'82\'f0\'98\'62\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+<li>
+\f2 \'8c\'be\'82\'a6\'82\'bd\'91\'e5\'8e\'96\'82\'c8\'83\'4c\'81\'5b\'83\'8f\'81\'5b\'83\'68\'82\'cd
+\f0 <strong>
+\f2 \'90\'c2\'90\'46
+\f0 </strong>
+\f2 \'82\'c9\'82\'c8\'82\'e8\'81\'41\'83\'6e\'81\'5b\'83\'67\'82\'aa\'8f\'6f\'82\'dc\'82\'b7\'81\'42\'8c\'be\'82\'a6\'82\'c8\'82\'a9\'82\'c1\'82\'bd\'92\'50\'8c\'ea\'82\'cd\'81\'41\'83\'5e\'83\'43\'83\'7d\'81\'5b\'82\'cc\'8c\'e3\'82\'c9
+\f0 <strong>
+\f2 \'90\'d4\'90\'46
+\f0 </strong>
+\f2 \'82\'c9\'82\'c8\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+<li>
+\f2 \'8a\'65\'8e\'bf\'96\'e2\'82\'cd\'81\'41
+\f0 <strong>
+\f2 \'8d\'c5\'8f\'89\'82\'cc\'83\'60\'83\'83\'83\'8c\'83\'93\'83\'57\'82\'be\'82\'af
+\f0 </strong>
+\f2 \'83\'58\'83\'52\'83\'41\'81\'69
+\f0 0
+\f2 \'81\'60
+\f0 100
+\f2 \'81\'93\'81\'6a\'82\'aa\'82\'c2\'82\'ab\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+<li><strong>100
+\f2 \'81\'93
+\f0 </strong>
+\f2 \'82\'f0\'8e\'e6\'82\'c1\'82\'bd\'82\'e7
+\f0  <strong>Next
+\f2 \'81\'69\'82\'c2\'82\'ac\'82\'d6\'81\'6a
+\f0 </strong> 
+\f2 \'82\'f0\'89\'9f\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 100
+\f2 \'81\'93\'82\'c5\'82\'c8\'82\'af\'82\'ea\'82\'ce
+\f0  <strong>Retry
+\f2 \'81\'69\'82\'e0\'82\'a4\'88\'ea\'89\'f1\'81\'6a
+\f0 </strong> 
+\f2 \'82\'f0\'89\'9f\'82\'b5\'82\'c4\'83\'60\'83\'83\'83\'8c\'83\'93\'83\'57\'82\'c5\'82\'ab\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+<li><strong>15
+\f2 \'96\'e2
+\f0 </strong>
+\f2 \'82\'ba\'82\'f1\'82\'d4\'8f\'49\'82\'ed\'82\'e9\'82\'c6\'81\'41\'95\'bd\'8b\'cf\'83\'70\'81\'5b\'83\'5a\'83\'93\'83\'67\'82\'c6\'81\'75\'83\'70\'81\'5b\'83\'74\'83\'46\'83\'4e\'83\'67\'82\'cc\'89\'f1\'90\'94\'81\'76\'82\'c5\'81\'41\'8d\'c5\'8c\'e3\'82\'cc\'8c\'8b\'89\'ca\'89\'e6\'96\'ca\'81\'69\'90\'46\'82\'c6\'89\'b9\'81\'6a\'82\'aa\'8c\'88\'82\'dc\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+</ul>\
+\
+<h3>Mic & Browser 
+\f2 \'81\'5e
+\f0  
+\f2 \'83\'7d\'83\'43\'83\'4e\'82\'c6\'83\'75\'83\'89\'83\'45\'83\'55
+\f0 </h3>\
+<ul>\
+<li>
+\f2 \'83\'7d\'83\'43\'83\'4e\'82\'cc\'83\'41\'83\'4e\'83\'5a\'83\'58\'82\'f0
+\f0 <strong>
+\f2 \'8b\'96\'89\'c2
+\f0 </strong>
+\f2 \'82\'b5\'82\'c8\'82\'a2\'82\'c6\'81\'41\'83\'51\'81\'5b\'83\'80\'82\'cd\'93\'ae\'82\'ab\'82\'dc\'82\'b9\'82\'f1\'81\'42
+\f0 </li>\
+<li>Chrome 
+\f2 \'82\'a9
+\f0  Edge 
+\f2 \'82\'cc
+\f0 <strong>
+\f2 \'8d\'c5\'90\'56\'83\'6f\'81\'5b\'83\'57\'83\'87\'83\'93
+\f0 </strong>
+\f2 \'82\'c5\'82\'cc\'83\'76\'83\'8c\'83\'43\'82\'f0\'82\'a8\'82\'b7\'82\'b7\'82\'df\'82\'b5\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+</ul>\
+</div>\
+</div>\
+</div>\
+\
+<!-- 
+\f1 \uc0\u55356 \u57166 
+\f0  iOS-only notice -->\
+<div id="iosNotice" class="ios-overlay" aria-hidden="true">\
+<div class="ios-dialog">\
+<div class="ios-title">iPad / iPhone 
+\f2 \'82\'f0\'82\'a8\'8e\'67\'82\'a2\'82\'cc\'82\'dd\'82\'c8\'82\'b3\'82\'f1\'82\'d6
+\f0 </div>\
+<div class="ios-body">\
+
+\f2 \'82\'b1\'82\'cc\'83\'51\'81\'5b\'83\'80\'82\'cc\'81\'75\'96\'7b\'8b\'43\'83\'82\'81\'5b\'83\'68\'81\'69\'83\'7d\'83\'43\'83\'4e\'82\'c5\'90\'ba\'82\'f0\'82\'ab\'82\'ab\'82\'c6\'82\'c1\'82\'c4\'83\'57\'83\'83\'83\'62\'83\'57\'82\'b7\'82\'e9\'83\'82\'81\'5b\'83\'68\'81\'6a\'81\'76\'82\'cd\'81\'41
+\f0 \
+Android
+\f2 \'83\'58\'83\'7d\'83\'7a
+\f0  
+\f2 \'82\'c6
+\f0  
+\f2 \'83\'70\'83\'5c\'83\'52\'83\'93
+\f0  
+\f2 \'82\'be\'82\'af\'82\'c5\'97\'56\'82\'d7\'82\'dc\'82\'b7\'81\'42
+\f0 \
+\
+iPad / iPhone 
+\f2 \'94\'c5\'82\'cd\'81\'41
+\f0 \
+
+\f2 \'83\'75\'81\'5b\'83\'6e\'81\'5b\'97\'ac\'81\'45\'83\'79\'83\'89\'83\'79\'83\'89\'82\'ea\'82\'f1\'82\'b5\'82\'e3\'82\'a4\'83\'82\'81\'5b\'83\'68
+\f0  
+\f2 \'82\'c9\'82\'c8\'82\'c1\'82\'c4\'82\'a2\'82\'dc\'82\'b7\'81\'42
+\f0 \
+\
+
+\f2 \'87\'40
+\f0  
+\f2 \'82\'ab\'82\'f1\'82\'a2\'82\'eb\'82\'cc
+\f0  
+\f3 \uc0\u9654 
+\f0  
+\f2 \'83\'7b\'83\'5e\'83\'93\'82\'f0\'89\'9f\'82\'b5\'82\'c4\'81\'41\'95\'b6\'82\'f0\'82\'e6\'82\'ad\'95\'b7\'82\'b1\'82\'a4\'81\'42
+\f0 \
+
+\f2 \'87\'41
+\f0  
+\f2 \'83\'58\'83\'5e\'81\'5b\'83\'67
+\f0  
+\f2 \'83\'7b\'83\'5e\'83\'93\'82\'f0\'89\'9f\'82\'b7\'81\'42
+\f0 \
+
+\f2 \'87\'42
+\f0  
+\f2 \'83\'81\'81\'5b\'83\'5e\'81\'5b\'82\'aa\'93\'ae\'82\'a2\'82\'c4\'82\'a2\'82\'e9\'82\'a0\'82\'a2\'82\'be\'81\'41
+\f0 \
+
+\f2 \'89\'ba\'90\'fc\'82\'c2\'82\'ab\'82\'cc\'89\'70\'8c\'ea\'82\'f0\'90\'ba\'82\'c9\'8f\'6f\'82\'b5\'82\'c4\'93\'c7\'82\'f1\'82\'c5\'82\'dd\'82\'e6\'82\'a4\'81\'42
+\f0 \
+\
+
+\f2 \'90\'ba\'82\'cd\'83\'57\'83\'83\'83\'62\'83\'57\'82\'b3\'82\'ea\'82\'c8\'82\'a2\'82\'af\'82\'c7\'81\'41
+\f0 \
+
+\f2 \'82\'bf\'82\'e1\'82\'f1\'82\'c6\'81\'75\'98\'62\'82\'b7\'97\'cd\'81\'76\'82\'cc\'83\'8c\'83\'78\'83\'8b\'83\'41\'83\'62\'83\'76\'82\'cd\'82\'c5\'82\'ab\'82\'c4\'82\'a2\'82\'dc\'82\'b7\'81\'49
+\f0 \
+</div>\
+<button id="iosNoticeBtn" type="button" class="ios-ok-btn">OK 
+\f2 \'81\'5e
+\f0  
+\f2 \'82\'cd\'82\'b6\'82\'df\'82\'e9
+\f0 </button>\
+</div>\
+</div>\
+\
+<footer>Bryan\'92s English School</footer>\
+\
+<!-- RESULT PAGES (4 colors) with header/footer, full glow -->\
+<div id="resRed" class="resultPage">\
+<div class="resultInner glowRed">\
+<header>\
+<div class="h1">THE BOO-RICULUM</div>\
+<div class="h2">EIGO PERA PERA</div>\
+<div class="h3">January Week 1 \'96 Speaking Practice</div>\
+</header>\
+<div class="resultCenter">\
+<div>\
+<div id="msgRed" class="resultMsg">
+\f2 \'83\'75\'81\'5b\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80\'8c\'a9\'82\'c4\'82\'c8\'82\'a2\'82\'c5\'82\'b5\'82\'e5\'81\'49
+\f0 </div>\
+<div id="scoreRed" class="resultScore">0/15
+\f2 \'81\'69
+\f0 0%
+\f2 \'81\'6a
+\f0 </div>\
+<div>\
+<button class="btnSmall btnRestart" data-restart>
+\f2 \'82\'e0\'82\'a4\'88\'ea\'93\'78
+\f0 </button>\
+<a class="btnSmall btnMenu" href="index.html">
+\f2 \'83\'81\'83\'6a\'83\'85\'81\'5b\'82\'d6
+\f0 </a>\
+</div>\
+</div>\
+</div>\
+<footer>Bryan\'92s English School</footer>\
+</div>\
+</div>\
+<div id="resOrange" class="resultPage">\
+<div class="resultInner glowOrange">\
+<header>\
+<div class="h1">THE BOO-RICULUM</div>\
+<div class="h2">EIGO PERA PERA</div>\
+<div class="h3">January Week 1 \'96 Speaking Practice</div>\
+</header>\
+<div class="resultCenter">\
+<div>\
+<div id="msgOrange" class="resultMsg">YouTube
+\f2 \'8c\'a9\'82\'b7\'82\'ac\'81\'49\'83\'75\'81\'5b\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80\'82\'e0\'82\'e2\'82\'eb\'82\'a4\'81\'49
+\f0 </div>\
+<div id="scoreOrange" class="resultScore">0/15
+\f2 \'81\'69
+\f0 0%
+\f2 \'81\'6a
+\f0 </div>\
+<div>\
+<button class="btnSmall btnRestart" data-restart>
+\f2 \'82\'e0\'82\'a4\'88\'ea\'93\'78
+\f0 </button>\
+<a class="btnSmall btnMenu" href="index.html">
+\f2 \'83\'81\'83\'6a\'83\'85\'81\'5b\'82\'d6
+\f0 </a>\
+</div>\
+</div>\
+</div>\
+<footer>Bryan\'92s English School</footer>\
+</div>\
+</div>\
+<div id="resBlue" class="resultPage">\
+<div class="resultInner glowBlue">\
+<header>\
+<div class="h1">THE BOO-RICULUM</div>\
+<div class="h2">EIGO PERA PERA</div>\
+<div class="h3">January Week 1 \'96 Speaking Practice</div>\
+</header>\
+<div class="resultCenter">\
+<div>\
+<div id="msgBlue" class="resultMsg">
+\f2 \'82\'a2\'82\'a2\'82\'cb\'81\'49\'82\'a0\'82\'c6\'8f\'ad\'82\'b5\'82\'c5\'83\'70\'81\'5b\'83\'74\'83\'46\'83\'4e\'83\'67\'81\'49
+\f0 </div>\
+<div id="scoreBlue" class="resultScore">0/15
+\f2 \'81\'69
+\f0 0%
+\f2 \'81\'6a
+\f0 </div>\
+<div>\
+<button class="btnSmall btnRestart" data-restart>
+\f2 \'82\'e0\'82\'a4\'88\'ea\'93\'78
+\f0 </button>\
+<a class="btnSmall btnMenu" href="index.html">
+\f2 \'83\'81\'83\'6a\'83\'85\'81\'5b\'82\'d6
+\f0 </a>\
+</div>\
+</div>\
+</div>\
+<footer>Bryan\'92s English School</footer>\
+</div>\
+</div>\
+<div id="resGold" class="resultPage">\
+<div class="resultInner glowGold">\
+<header>\
+<div class="h1">THE BOO-RICULUM</div>\
+<div class="h2">EIGO PERA PERA</div>\
+<div class="h3">January Week 1 \'96 Speaking Practice</div>\
+</header>\
+<div class="resultCenter">\
+<div>\
+<div id="msgGold" class="resultMsg">
+\f2 \'82\'b7\'82\'b2\'82\'a2\'81\'49\'82\'a0\'82\'c8\'82\'bd\'82\'cd\'92\'6e\'8b\'85\'82\'c5\'88\'ea\'94\'d4\'93\'aa\'82\'aa\'82\'a2\'82\'a2\'81\'49
+\f0 </div>\
+<div id="scoreGold" class="resultScore">15/15
+\f2 \'81\'69
+\f0 100%
+\f2 \'81\'6a
+\f0 </div>\
+<div>\
+<button class="btnSmall btnRestart" data-restart>
+\f2 \'82\'e0\'82\'a4\'88\'ea\'93\'78
+\f0 </button>\
+<a class="btnSmall btnMenu" href="index.html">
+\f2 \'83\'81\'83\'6a\'83\'85\'81\'5b\'82\'d6
+\f0 </a>\
+</div>\
+</div>\
+</div>\
+<footer>Bryan\'92s English School</footer>\
+</div>\
+</div>\
+\
+<!-- Final result sounds -->\
+<audio id="a_r05" src="assets/audio/result_0-5.mp3" preload="auto"></audio>\
+<audio id="a_r610" src="assets/audio/result_6-10.mp3" preload="auto"></audio>\
+<audio id="a_r1114" src="assets/audio/result_11-14.mp3" preload="auto"></audio>\
+<audio id="a_r15" src="assets/audio/result_15.mp3" preload="auto"></audio>\
+\
+<script>\
+const DUR_MS=7500; // sweep/mic window\
+let idx=0, SR=null, listening=false, streamAllowed=false, isBusy=false;\
+const firstScores=new Array(15).fill(null); let firstPerfectCount=0;\
+\
+function $(sel)\{return document.querySelector(sel)\}\
+\
+const enEl=$('#en'), jpEl=$('#jp'), hiraEl=$('#hira');\
+const beginBtn=$('#beginBtn'), retryBtn=$('#retryBtn'), nextBtn=$('#nextBtn');\
+const scoreBox=$('#scoreBox'), meterText=$('#meterText'), sweep=$('#sweep'), counter=$('#counter');\
+const playBtn=$('#playBtn');\
+\
+// 
+\f1 \uc0\u55356 \u57166 
+\f0  Platform detection\
+const ua = navigator.userAgent || '';\
+const platform = navigator.platform || '';\
+const isIpad = /iPad/.test(ua) || (platform === 'MacIntel' && navigator.maxTouchPoints > 1);\
+const isIOSPhone = /iPhone|iPod/.test(ua);\
+const isIOS = isIpad || isIOSPhone;\
+\
+// Sage filenames\
+const sage=["whatisyourgoalthisyear","whyisitimportanttoyou","howwillyoureachyourgoal","whohelpsyoustaymotivated","whathabitdoyouwanttochange","doyoulikemakingresolutions","whatdoyouwanttotrythisyear","whatssomethingnewyoulearnedrecently","isiteasytokeepgoals","whathappenswhenyoudonttry","whatmakesyoufeelproud","whatsyourdreamforthefuture","howdoyoustaypositive","whoinspiresyou","howcanenglishhelpyourgoals"];\
+// Preload Sage\
+const sageBank=\{\}; sage.forEach(f=>\{const a=new Audio('./audio/'+f+'.mp3'); a.preload='auto'; a.load(); sageBank[f]=a;\});\
+\
+// Per-question score sounds\
+const SFX=\{low:new Audio('assets/audio/0-43.mp3'), mid:new Audio('assets/audio/44-74.mp3'), high:new Audio('assets/audio/75-99.mp3'), max:new Audio('assets/audio/100.mp3')\};\
+Object.values(SFX).forEach(a=>\{a.preload='auto'; a.load();\});\
+\
+// Results audio\
+const RES=\{red:$('#a_r05'), orange:$('#a_r610'), blue:$('#a_r1114'), gold:$('#a_r15')\};\
+\
+const ITEMS=[\
+\{en:"What is your goal this year?",jp:"
+\f2 \'8d\'a1\'94\'4e\'82\'cc\'96\'da\'95\'57\'82\'cd\'89\'bd\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'b1\'82\'c6\'82\'b5
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'e0\'82\'ad\'82\'d0\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'c8\'82\'f1
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"Why is it important to you?",jp:"
+\f2 \'82\'a0\'82\'c8\'82\'bd\'82\'c9\'82\'c6\'82\'c1\'82\'c4\'82\'c8\'82\'ba\'91\'e5\'90\'d8\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'a0\'82\'c8\'82\'bd
+\f0  
+\f2 \'82\'c9
+\f0  
+\f2 \'82\'c6\'82\'c1\'82\'c4
+\f0  
+\f2 \'82\'c8\'82\'ba
+\f0  
+\f2 \'82\'bd\'82\'a2\'82\'b9\'82\'c2
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"How will you reach your goal?",jp:"
+\f2 \'82\'c7\'82\'a4\'82\'e2\'82\'c1\'82\'c4\'96\'da\'95\'57\'82\'f0\'92\'42\'90\'ac\'82\'b5\'82\'dc\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'c7\'82\'a4\'82\'e2\'82\'c1\'82\'c4
+\f0  
+\f2 \'82\'e0\'82\'ad\'82\'d0\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'bd\'82\'c1\'82\'b9\'82\'a2
+\f0  
+\f2 \'82\'b5\'82\'dc\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"Who helps you stay motivated?",jp:"
+\f2 \'82\'e2\'82\'e9\'8b\'43\'82\'f0\'95\'db\'82\'c2\'82\'cc\'82\'f0\'92\'4e\'82\'aa\'8f\'95\'82\'af\'82\'c4\'82\'ad\'82\'ea\'82\'dc\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'e2\'82\'e9\'82\'ab
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'bd\'82\'e0\'82\'c2
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'be\'82\'ea
+\f0  
+\f2 \'82\'aa
+\f0  
+\f2 \'82\'bd\'82\'b7\'82\'af\'82\'c4
+\f0  
+\f2 \'82\'ad\'82\'ea
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"What habit do you want to change?",jp:"
+\f2 \'95\'cf\'82\'a6\'82\'bd\'82\'a2\'8f\'4b\'8a\'b5\'82\'cd\'89\'bd\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'a9\'82\'a6\'82\'bd\'82\'a2
+\f0  
+\f2 \'82\'b5\'82\'e3\'82\'a4\'82\'a9\'82\'f1
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'c8\'82\'f1
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"Do you like making resolutions?",jp:"
+\f2 \'90\'56\'94\'4e\'82\'cc\'96\'da\'95\'57\'82\'f0\'97\'a7\'82\'c4\'82\'e9\'82\'cc\'82\'cd\'8d\'44\'82\'ab\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'b5\'82\'f1\'82\'cb\'82\'f1
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'e0\'82\'ad\'82\'d0\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'bd\'82\'c4\'82\'e9
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'b7\'82\'ab
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"What do you want to try this year?",jp:"
+\f2 \'8d\'a1\'94\'4e\'92\'a7\'90\'ed\'82\'b5\'82\'bd\'82\'a2\'82\'b1\'82\'c6\'82\'cd\'89\'bd\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'b1\'82\'c6\'82\'b5
+\f0  
+\f2 \'82\'bf\'82\'e5\'82\'a4\'82\'b9\'82\'f1
+\f0  
+\f2 \'82\'b5\'82\'bd\'82\'a2
+\f0  
+\f2 \'82\'b1\'82\'c6
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'c8\'82\'f1
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"What\'92s something new you learned recently?",jp:"
+\f2 \'8d\'c5\'8b\'df\'90\'56\'82\'b5\'82\'ad\'8a\'77\'82\'f1\'82\'be\'82\'b1\'82\'c6\'82\'cd\'89\'bd\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'b3\'82\'a2\'82\'ab\'82\'f1
+\f0  
+\f2 \'82\'a0\'82\'bd\'82\'e7\'82\'b5\'82\'ad
+\f0  
+\f2 \'82\'dc\'82\'c8\'82\'f1\'82\'be
+\f0  
+\f2 \'82\'b1\'82\'c6
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'c8\'82\'f1
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"Is it easy to keep goals?",jp:"
+\f2 \'96\'da\'95\'57\'82\'f0\'91\'b1\'82\'af\'82\'e9\'82\'cc\'82\'cd\'8a\'c8\'92\'50\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'e0\'82\'ad\'82\'d0\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'c2\'82\'c3\'82\'af\'82\'e9
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'a9\'82\'f1\'82\'bd\'82\'f1
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"What happens when you don\'92t try?",jp:"
+\f2 \'92\'a7\'90\'ed\'82\'b5\'82\'c8\'82\'a2\'82\'c6\'82\'c7\'82\'a4\'82\'c8\'82\'e8\'82\'dc\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'bf\'82\'e5\'82\'a4\'82\'b9\'82\'f1
+\f0  
+\f2 \'82\'b5\'82\'c8\'82\'a2
+\f0  
+\f2 \'82\'c6
+\f0  
+\f2 \'82\'c7\'82\'a4
+\f0  
+\f2 \'82\'c8\'82\'e8
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"What makes you feel proud?",jp:"
+\f2 \'89\'bd\'82\'aa\'82\'a0\'82\'c8\'82\'bd\'82\'f0\'8c\'d6\'82\'e7\'82\'b5\'82\'ad\'82\'b3\'82\'b9\'82\'dc\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'c8\'82\'c9
+\f0  
+\f2 \'82\'aa
+\f0  
+\f2 \'82\'a0\'82\'c8\'82\'bd
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'d9\'82\'b1\'82\'e7\'82\'b5\'82\'ad
+\f0  
+\f2 \'82\'b3\'82\'b9
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"What\'92s your dream for the future?",jp:"
+\f2 \'8f\'ab\'97\'88\'82\'cc\'96\'b2\'82\'cd\'89\'bd\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'b5\'82\'e5\'82\'a4\'82\'e7\'82\'a2
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'e4\'82\'df
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'c8\'82\'f1
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"How do you stay positive?",jp:"
+\f2 \'82\'c7\'82\'a4\'82\'e2\'82\'c1\'82\'c4\'91\'4f\'8c\'fc\'82\'ab\'82\'c5\'82\'a2\'82\'e7\'82\'ea\'82\'dc\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'c7\'82\'a4\'82\'e2\'82\'c1\'82\'c4
+\f0  
+\f2 \'82\'dc\'82\'a6\'82\'de\'82\'ab
+\f0  
+\f2 \'82\'c5
+\f0  
+\f2 \'82\'a2\'82\'e7\'82\'ea
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"Who inspires you?",jp:"
+\f2 \'82\'a0\'82\'c8\'82\'bd\'82\'c9\'89\'65\'8b\'bf\'82\'f0\'97\'5e\'82\'a6\'82\'e9\'90\'6c\'82\'cd\'92\'4e\'82\'c5\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'a0\'82\'c8\'82\'bd
+\f0  
+\f2 \'82\'c9
+\f0  
+\f2 \'82\'a6\'82\'a2\'82\'ab\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'f0
+\f0  
+\f2 \'82\'a0\'82\'bd\'82\'a6\'82\'e9
+\f0  
+\f2 \'82\'d0\'82\'c6
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'be\'82\'ea
+\f0  
+\f2 \'82\'c5\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\},\
+\{en:"How can English help your goals?",jp:"
+\f2 \'89\'70\'8c\'ea\'82\'cd\'82\'a0\'82\'c8\'82\'bd\'82\'cc\'96\'da\'95\'57\'82\'c9\'82\'c7\'82\'a4\'96\'f0\'97\'a7\'82\'bf\'82\'dc\'82\'b7\'82\'a9\'81\'42
+\f0 ",hira:"(
+\f2 \'82\'a6\'82\'a2\'82\'b2
+\f0  
+\f2 \'82\'cd
+\f0  
+\f2 \'82\'a0\'82\'c8\'82\'bd
+\f0  
+\f2 \'82\'cc
+\f0  
+\f2 \'82\'e0\'82\'ad\'82\'d0\'82\'e5\'82\'a4
+\f0  
+\f2 \'82\'c9
+\f0  
+\f2 \'82\'c7\'82\'a4
+\f0  
+\f2 \'82\'e2\'82\'ad\'82\'be\'82\'bf
+\f0  
+\f2 \'82\'dc\'82\'b7
+\f0  
+\f2 \'82\'a9
+\f0 )"\}\
+].sort(()=>Math.random()-0.5);\
+\
+/* ---------- UTIL ---------- */\
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));\
+function normalize(s)\{return s.toLowerCase().replace(/[\'92\'91\'b4`]/g,"'").replace(/[^a-z0-9'\\s]/g,' ').replace(/\\s+/g,' ').trim()\}\
+function toSet(s)\{return new Set(normalize(s).split(' ').filter(Boolean))\}\
+function mountWords(t)\{enEl.innerHTML=t.split(/\\s+/).map(w=>`<span class="word">$\{w\}</span>`).join(' ')\}\
+function clearHearts()\{document.querySelectorAll('.heart').forEach(h=>h.remove())\}\
+function popHeartAt(el)\{const h=document.createElement('span');h.className='heart';h.textContent='
+\f4 \uc0\u10084 
+\f0 ';const r=el.getBoundingClientRect();h.style.left=(r.left+r.width/2)+'px';h.style.top=r.top+'px';document.body.appendChild(h);setTimeout(()=>h.remove(),900)\}\
+function markSpoken(sp)\{const set=toSet(sp);enEl.querySelectorAll('.word').forEach(w=>\{const v=normalize(w.textContent);if(set.has(v)&&!w.classList.contains('blue'))\{w.classList.add('blue');popHeartAt(w)\}\})\}\
+function finalizeColors()\{enEl.querySelectorAll('.word').forEach(w=>\{if(!w.classList.contains('blue'))w.classList.add('red')\})\}\
+function keywordScore(t,sp)\{const k=toSet(t),said=toSet(sp);let hit=0,total=0;k.forEach(x=>\{if(x.length>2)\{total++;if(said.has(x))hit++\}\});return total?Math.round((hit/total)*100):0\}\
+function stripForFile(s)\{return s.toLowerCase().replace(/[^a-z0-9]/g,'')\}\
+\
+function setReady()\{meterText.innerHTML='Ready<br><small>
+\f2 \'83\'58\'83\'5e\'83\'93\'83\'6f\'83\'43
+\f0 </small>'\}\
+function setListening()\{meterText.textContent='Listening'\}\
+function setFinished()\{meterText.innerHTML='Finished<br><small>
+\f2 \'82\'a8\'82\'ed\'82\'e8\'81\'49
+\f0 </small>'\}\
+\
+function startSweep()\{sweep.style.setProperty('--dur',DUR_MS+'ms');sweep.classList.remove('run');void sweep.offsetWidth;sweep.classList.add('run')\}\
+function stopSweep()\{sweep.classList.remove('run')\}\
+function updateCounter()\{counter.textContent=`$\{idx+1\} / 15`\}\
+\
+async function countdown321()\{\
+const colors=['#ff7eb9','#7dd3fc','#a6f7b2'];\
+const nums=[3,2,1];\
+for(let i=0;i<nums.length;i++)\{\
+meterText.innerHTML=`<span class="popNum" style="color:$\{colors[i]\}">$\{nums[i]\}</span>`;\
+await sleep(700);\
+\}\
+\}\
+\
+async function ensureMicPermission()\{\
+try\{\
+const s=await navigator.mediaDevices.getUserMedia(\{audio:true\});\
+s.getTracks().forEach(t=>t.stop());\
+streamAllowed=true;\
+\}catch(e)\{\
+alert('
+\f2 \'83\'7d\'83\'43\'83\'4e\'82\'aa\'8e\'67\'82\'a6\'82\'dc\'82\'b9\'82\'f1\'81\'42
+\f0 Chrome 
+\f2 \'82\'f0\'8e\'67\'97\'70\'82\'b5\'82\'c4\'82\'ad\'82\'be\'82\'b3\'82\'a2\'81\'42
+\f0 ');\
+\}\
+\}\
+function makeRecognizer()\{\
+const R=window.SpeechRecognition||window.webkitSpeechRecognition;\
+if(!R)return null;\
+const r=new R();\
+r.lang='en-US';\
+r.continuous=true;\
+r.interimResults=true;\
+try\{r.maxAlternatives=5;\}catch(_)\{\}return r;\
+\}\
+\
+function playAudioWithWait(a)\{\
+return new Promise(resolve=>\{\
+try\{a.pause();a.currentTime=0;\}catch(_)\{\}\
+const done=()=>\{a.onended=null;resolve()\};\
+const tryPlay=()=>\{\
+const p=a.play();\
+if(p&&p.then)\{p.then(()=>\{\}).catch(()=>\{setTimeout(tryPlay,120);\});\}\
+\};\
+const safety=setTimeout(()=>\{a.onended=null;resolve()\},Math.max(3000,(a.duration||3)*1000+200));\
+a.addEventListener('ended',()=>clearTimeout(safety),\{once:true\});\
+a.onended=done;\
+tryPlay();\
+\});\
+\}\
+\
+function chooseScoreSfx(score)\{\
+if(score===100) return SFX.max;\
+if(score>=75) return SFX.high;\
+if(score>=44) return SFX.mid;\
+return SFX.low;\
+\}\
+\
+function disableControls(disabled)\{\
+[beginBtn,retryBtn,nextBtn,playBtn].forEach(b=>\{ if(b)\{ b.disabled=disabled; \} \});\
+\}\
+function resetVisuals()\{\
+stopSweep(); void sweep.offsetWidth;\
+clearHearts();\
+enEl.querySelectorAll('.word').forEach(w=>w.classList.remove('blue','red'));\
+scoreBox.style.display='none';\
+setReady();\
+\}\
+function showItem()\{\
+const it=ITEMS[idx];\
+mountWords(it.en);\
+jpEl.textContent=it.jp;\
+hiraEl.textContent=it.hira;\
+resetVisuals();\
+updateCounter();\
+\}\
+\
+/* ---------- ROUND FLOW: iOS shadowing (no mic) ---------- */\
+async function beginRoundIOS()\{\
+if(isBusy) return;\
+isBusy = true;\
+\
+resetVisuals();\
+disableControls(true);\
+\
+// 3,2,1\
+await countdown321();\
+\
+// GO + meter only (no speech recognition)\
+meterText.innerHTML=`<span class="popNum flashGo" style="color:#fff680">GO!</span>`;\
+await sleep(120);\
+setListening();\
+startSweep();\
+\
+await sleep(DUR_MS);\
+\
+setFinished();\
+stopSweep();\
+\
+// No score, just practice. Show BOTH Retry & Next.\
+scoreBox.style.display='none';\
+beginBtn.style.display='none';\
+retryBtn.style.display='inline-block';\
+nextBtn.style.display='inline-block';\
+\
+disableControls(false);\
+isBusy = false;\
+\}\
+\
+/* ---------- ROUND FLOW: full mic mode (Android / desktop) ---------- */\
+async function beginRound()\{\
+if(isIOS)\{\
+return beginRoundIOS();\
+\}\
+\
+if(isBusy) return;\
+isBusy=true;\
+\
+const R=window.SpeechRecognition||window.webkitSpeechRecognition;\
+if(!R)\{\
+alert('
+\f2 \'82\'b1\'82\'cc\'83\'75\'83\'89\'83\'45\'83\'55\'82\'c5\'82\'cd\'89\'b9\'90\'ba\'94\'46\'8e\'af\'82\'aa\'8e\'67\'82\'a6\'82\'dc\'82\'b9\'82\'f1\'81\'42
+\f0 Chrome 
+\f2 \'82\'f0\'8e\'67\'97\'70\'82\'b5\'82\'c4\'82\'ad\'82\'be\'82\'b3\'82\'a2\'81\'42
+\f0 ');\
+isBusy=false;\
+return;\
+\}\
+if(!streamAllowed)\{\
+await ensureMicPermission();\
+if(!streamAllowed)\{ isBusy=false; return; \}\
+\}\
+\
+resetVisuals();\
+disableControls(true);\
+\
+// Countdown 3,2,1\
+await countdown321();\
+\
+// GO! \'97 pulse + start mic exactly now\
+meterText.innerHTML=`<span class="popNum flashGo" style="color:#fff680">GO!</span>`;\
+\
+let heard=""; listening=true; SR=makeRecognizer();\
+if(SR)\{\
+SR.onresult=(e)=>\{\
+let txt="";\
+for(let i=e.resultIndex;i<e.results.length;i++)\{\
+txt+=e.results[i][0].transcript+" ";\
+\}\
+heard=(heard+" "+txt).trim();\
+markSpoken(heard);\
+\};\
+SR.onend=()=>\{ if(listening)\{ try\{ SR.start(); \}catch(_)\{ \} \} \};\
+try\{ SR.start(); \}catch(_)\{\}\
+\}\
+\
+await sleep(120);\
+setListening();\
+startSweep();\
+\
+await sleep(DUR_MS);\
+\
+listening=false;\
+try\{ SR && SR.stop(); \}catch(_)\{\}\
+setFinished();\
+stopSweep();\
+finalizeColors();\
+\
+const s=keywordScore(ITEMS[idx].en,heard);\
+scoreBox.textContent='
+\f2 \'83\'58\'83\'52\'83\'41\'81\'46
+\f0 '+s+'
+\f2 \'81\'93
+\f0 ';\
+scoreBox.style.display='block';\
+\
+if(firstScores[idx]===null)\{\
+firstScores[idx]=s;\
+if(s===100) firstPerfectCount++;\
+await playAudioWithWait(chooseScoreSfx(s));\
+\}\
+\
+if(s===100)\{\
+nextBtn.style.display='inline-block';\
+retryBtn.style.display='none';\
+beginBtn.style.display='none';\
+\}else\{\
+retryBtn.style.display='inline-block';\
+nextBtn.style.display='none';\
+beginBtn.style.display='none';\
+\}\
+\
+disableControls(false);\
+isBusy=false;\
+\}\
+\
+/* ---------- RESULTS ---------- */\
+function avgPercent()\{\
+const sum=firstScores.reduce((a,b)=>a+(b??0),0);\
+return Math.round(sum/15);\
+\}\
+function hideAllResults()\{\
+['resRed','resOrange','resBlue','resGold'].forEach(id=>\{\
+const el=$('#'+id);\
+if(el) el.style.display='none';\
+\});\
+\}\
+\
+async function showResults()\{\
+// 
+\f1 \uc0\u55356 \u57166 
+\f0  iOS: no score, just cute message\
+if(isIOS)\{\
+hideAllResults();\
+const msgBlue = document.getElementById('msgBlue');\
+const scoreBlue = document.getElementById('scoreBlue');\
+if(msgBlue)\{\
+msgBlue.textContent =\
+"
+\f2 \'82\'a8\'82\'c2\'82\'a9\'82\'ea\'82\'b3\'82\'dc\'81\'49
+\f0 \\n\\n
+\f2 \'82\'e0\'82\'b5\'8d\'a1\'81\'41\'82\'b1\'82\'cc\'83\'51\'81\'5b\'83\'80\'82\'f0
+\f0  Android 
+\f2 \'82\'e2
+\f0  
+\f2 \'83\'70\'83\'5c\'83\'52\'83\'93
+\f0  
+\f2 \'82\'c5\'97\'56\'82\'f1\'82\'c5\'82\'a2\'82\'bd\'82\'e7\'81\'41
+\f0 \\n" +\
+"
+\f2 \'83\'7d\'83\'43\'83\'4e\'82\'c5\'96\'7b\'8b\'43\'83\'6f\'83\'67\'83\'8b\'82\'aa\'82\'c5\'82\'ab\'82\'c4\'81\'41\'82\'e0\'82\'c1\'82\'c6\'83\'68\'83\'4c\'83\'68\'83\'4c\'82\'cc\'83\'51\'81\'5b\'83\'80\'82\'c9\'82\'c8\'82\'e8\'82\'dc\'82\'b7\'81\'42
+\f0 \\n\\n" +\
+"
+\f2 \'82\'c5\'82\'e0\'81\'41
+\f0 iPad / iPhone 
+\f2 \'82\'cc
+\f0  
+\f2 \'83\'79\'83\'89\'83\'79\'83\'89\'82\'ea\'82\'f1\'82\'b5\'82\'e3\'82\'a4\'83\'82\'81\'5b\'83\'68
+\f0  
+\f2 \'82\'c5\'82\'e0\'81\'41
+\f0 \\n" +\
+"
+\f2 \'82\'bf\'82\'e1\'82\'f1\'82\'c6\'81\'75\'98\'62\'82\'b7\'97\'cd\'81\'76\'82\'cc\'83\'8c\'83\'78\'83\'8b\'83\'41\'83\'62\'83\'76\'82\'cd\'82\'c5\'82\'ab\'82\'c4\'82\'a2\'82\'dc\'82\'b7\'81\'42
+\f0 \\n\\n" +\
+"
+\f2 \'82\'a2\'82\'c2\'82\'a9
+\f0  Android 
+\f2 \'82\'e2
+\f0  
+\f2 \'83\'70\'83\'5c\'83\'52\'83\'93
+\f0  
+\f2 \'82\'c5\'97\'56\'82\'f1\'82\'be\'82\'e7\'81\'41
+\f0 \\n" +\
+"
+\f2 \'82\'bb\'82\'cc\'82\'c6\'82\'ab\'82\'cd\'83\'75\'81\'5b\'83\'6e\'81\'5b\'82\'e0\'83\'72\'83\'62\'83\'4e\'83\'8a\'82\'b7\'82\'e9\'82\'ad\'82\'e7\'82\'a2\'81\'41
+\f0 \\n" +\
+"
+\f2 \'82\'e0\'82\'c1\'82\'c6\'82\'e0\'82\'c1\'82\'c6\'8a\'79\'82\'b5\'82\'ad\'82\'c8\'82\'e9\'82\'e6\'81\'49
+\f0 ";\
+\}\
+if(scoreBlue)\{\
+scoreBlue.textContent = "";\
+\}\
+$('#resBlue').style.display='block';\
+await playAudioWithWait(RES.blue);\
+return;\
+\}\
+\
+// Normal (Android / desktop) scoring\
+const pct=avgPercent();\
+const xOf15=firstPerfectCount;\
+let page='resBlue', snd=RES.blue, scoreSel='#scoreBlue';\
+if(pct<=43)\{page='resRed'; snd=RES.red; scoreSel='#scoreRed';\}\
+else if(pct<=74)\{page='resOrange'; snd=RES.orange; scoreSel='#scoreOrange';\}\
+else if(pct===100)\{page='resGold'; snd=RES.gold; scoreSel='#scoreGold';\}\
+\
+const se=$(scoreSel);\
+if(se) se.textContent=`$\{xOf15\}/15
+\f2 \'81\'69
+\f0 $\{pct\}%
+\f2 \'81\'6a
+\f0 `;\
+\
+hideAllResults();\
+$('#'+page).style.display='block';\
+await playAudioWithWait(snd);\
+\
+if(page==='resGold')\{\
+for(let i=0;i<160;i++)\{\
+setTimeout(()=>\{\
+const c=document.createElement('div');\
+c.className='confetti';\
+c.style.left=(Math.random()*100)+'vw';\
+c.style.background=`hsl($\{Math.random()*360\},100%,60%)`;\
+c.style.animationDuration=(0.9+Math.random()*0.9)+'s';\
+document.body.appendChild(c);\
+setTimeout(()=>c.remove(),1900);\
+\}, i*10);\
+\}\
+\}\
+\}\
+\
+/* ---------- BUTTONS ---------- */\
+beginBtn.addEventListener('click', async()=>\{\
+if(isIOS)\{\
+showItem();\
+beginRound();\
+return;\
+\}\
+if(!streamAllowed) await ensureMicPermission();\
+if(!streamAllowed) return;\
+showItem();\
+beginRound();\
+\});\
+retryBtn.addEventListener('click', ()=>\{\
+showItem();\
+beginRound();\
+\});\
+nextBtn.addEventListener('click', ()=>\{\
+if(isBusy) return;\
+idx++;\
+if(idx>=ITEMS.length)\{\
+nextBtn.style.display='none';\
+retryBtn.style.display='none';\
+beginBtn.style.display='none';\
+showResults();\
+return;\
+\}\
+showItem();\
+nextBtn.style.display='none';\
+retryBtn.style.display='none';\
+beginBtn.style.display='inline-block';\
+\});\
+\
+playBtn.addEventListener('click', ()=>\{\
+const it=ITEMS[idx];\
+const key=stripForFile(it.en);\
+const a=sageBank[key]||new Audio('./audio/'+key+'.mp3');\
+a.preload='auto';\
+a.play().catch(()=>\{\});\
+\});\
+\
+// Restart on all result pages\
+Array.from(document.querySelectorAll('[data-restart]')).forEach(b=>b.addEventListener('click', ()=>\{\
+hideAllResults();\
+for(let i=0;i<firstScores.length;i++) firstScores[i]=null;\
+firstPerfectCount=0;\
+idx=0;\
+showItem();\
+beginBtn.style.display='inline-block';\
+retryBtn.style.display='none';\
+nextBtn.style.display='none';\
+\}));\
+\
+/* ---------- INIT ---------- */\
+showItem();\
+\
+/* ---------- HELP MODAL ---------- */\
+const helpBtnEl=$('#helpBtn');\
+const helpModal=$('#helpModal');\
+if(helpBtnEl && helpModal)\{\
+const closeEls=helpModal.querySelectorAll('[data-close-help]');\
+const openHelp=()=>\{helpModal.classList.add('show');helpModal.setAttribute('aria-hidden','false');\};\
+const closeHelp=()=>\{helpModal.classList.remove('show');helpModal.setAttribute('aria-hidden','true');\};\
+helpBtnEl.addEventListener('click',openHelp);\
+closeEls.forEach(el=>el.addEventListener('click',closeHelp));\
+helpModal.addEventListener('click',e=>\{if(e.target===helpModal)closeHelp();\});\
+document.addEventListener('keydown',e=>\{if(e.key==='Escape')closeHelp();\});\
+\}\
+\
+/* ---------- iOS notice overlay ---------- */\
+const iosNotice = document.getElementById('iosNotice');\
+const iosNoticeBtn = document.getElementById('iosNoticeBtn');\
+if(isIOS && iosNotice && iosNoticeBtn)\{\
+iosNotice.classList.add('show');\
+iosNotice.setAttribute('aria-hidden','false');\
+iosNoticeBtn.addEventListener('click', ()=>\{\
+iosNotice.classList.remove('show');\
+iosNotice.setAttribute('aria-hidden','true');\
+\});\
+\}\
+</script>\
+</body>\
+</html>}

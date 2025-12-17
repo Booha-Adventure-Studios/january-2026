@@ -1,0 +1,1273 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;\f2\fnil\fcharset128 HiraginoSans-W3;
+\f3\fnil\fcharset0 LucidaGrande;\f4\fnil\fcharset77 ZapfDingbatsITC;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+<meta charset="utf-8" />\
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />\
+<title>The Booha Adventure \'97 Year One</title>\
+\
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+JP:wght@500;700&display=swap" rel="stylesheet" />\
+\
+<style>\
+:root\{--zoom:1;--tx:0px;--ty:0px;\}\
+*\{box-sizing:border-box;margin:0;padding:0\}\
+\
+html,body\{\
+  width:100%;\
+  height:100%;\
+  overflow-x:hidden;\
+  overflow-y:auto;\
+  background:#0b1c11;\
+  font-family:system-ui,"Noto Sans JP",sans-serif;\
+\}\
+\
+/* Viewport + world */\
+.viewport\{\
+  position:relative;\
+  width:100vw;\
+  min-height:100vh;\
+  overflow:visible;\
+\}\
+\
+.world\{\
+  position:absolute;\
+  left:50%;\
+  top:50%;\
+  transform:translate(calc(-50% + var(--tx)),calc(-50% + var(--ty))) scale(var(--zoom));\
+  transform-origin:center;\
+  transition:transform .65s cubic-bezier(.22,.65,.2,1);\
+\}\
+\
+/* Maze locked to 1024\'d71536 (2:3) image */\
+#maze\{\
+  position:relative;\
+  width:min(100vw, calc(100vh * (2/3)));\
+  aspect-ratio:2 / 3;\
+  background:url('assets/maze.png') center / 100% 100% no-repeat;\
+  margin:0 auto;\
+  touch-action:pan-y; /* allow vertical scroll on mobile */\
+\}\
+\
+/* Boo-riculum Tree (inside the maze) */\
+#booTree\{\
+  position:absolute;\
+  left:83.84%;\
+  top:8.40%;\
+  transform:translate(-50%, -50%);\
+  width:18%;              /* not gigantic */\
+  aspect-ratio:1 / 1;\
+  opacity:0;\
+  cursor:pointer;\
+  z-index:15;\
+  transition:\
+    opacity 1.8s ease-out,\
+    filter 2s ease-out;\
+  /* subtle base glow */\
+  filter:drop-shadow(0 0 5px #00ffaa40);\
+\}\
+\
+#booTree.glow \{\
+  opacity: 1;\
+  filter: drop-shadow(0 0 8px #00ffcc88);\
+  animation: treeFlicker 4s infinite;\
+\}\
+\
+\
+/* Booha */\
+#booha\{\
+  position:absolute;\
+  width:68px;\
+  height:68px;\
+  transform:translate(-50%,-50%) scale(1);\
+  z-index:12;\
+  pointer-events:none;\
+  opacity:0;\
+  filter:drop-shadow(0 0 10px #ffe17a) drop-shadow(0 4px 18px #000a);\
+\}\
+\
+@keyframes bob\{\
+  0%,100%\{transform:translateY(0)\}\
+  50%\{transform:translateY(-6px)\}\
+\}\
+\
+.bobbing\{animation:bob 3.6s ease-in-out infinite\}\
+\
+@keyframes glowPulse\{\
+  0%\{filter:drop-shadow(0 0 2px #fff6) drop-shadow(0 0 6px #ffd86d);\}\
+  50%\{filter:drop-shadow(0 0 14px #fff) drop-shadow(0 0 28px #ffd86d);\}\
+  100%\{filter:drop-shadow(0 0 10px #ffe17a) drop-shadow(0 4px 18px #000a);\}\
+\}\
+\
+/* Poof smoke */\
+.smoke\{\
+  position:absolute;\
+  width:160px;\
+  height:160px;\
+  left:0;\
+  top:0;\
+  transform:translate(-50%,-50%) scale(.5);\
+  pointer-events:none;\
+  z-index:10;\
+  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.9)0%,rgba(255,255,255,.5)30%,rgba(255,255,255,0)70%);\
+  animation:poof 1.2s ease-out forwards;\
+\}\
+\
+@keyframes poof\{\
+  0%\{opacity:1;transform:scale(.5);\}\
+  60%\{opacity:.6;transform:scale(2);\}\
+  100%\{opacity:0;transform:scale(3);\}\
+\}\
+\
+/* Gold glitter trail */\
+.spark\{\
+  position:absolute;\
+  width:4.4px;\
+  height:4.4px;\
+  border-radius:50%;\
+  pointer-events:none;\
+  background:radial-gradient(circle at 40% 40%,#fff,#ffd86d 60%,transparent 80%);\
+  box-shadow:0 0 6px #fff6cc,0 0 12px #ffd86d,0 0 20px #ffec9c;\
+  opacity:.97;\
+  animation:spark 1s ease-out forwards;\
+\}\
+\
+@keyframes spark\{\
+  0%\{transform:translate(0,0) scale(1);opacity:1\}\
+  50%\{opacity:.9\}\
+  100%\{transform:translate(0,12px) scale(.7);opacity:0\}\
+\}\
+\
+/* Fairy glitter for big explosion */\
+.fairy\{\
+  position:absolute;\
+  width:6px;\
+  height:6px;\
+  border-radius:50%;\
+  pointer-events:none;\
+  background:radial-gradient(circle,#fff 0%,currentColor 60%,transparent 80%);\
+  box-shadow:0 0 10px currentColor,0 0 26px currentColor,0 0 46px currentColor;\
+  opacity:.9;\
+  animation:drift var(--dur,2600ms) cubic-bezier(.2,.7,.1,1) forwards,\
+             twinkle .8s infinite alternate;\
+  z-index:20;\
+\}\
+\
+@keyframes drift\{\
+  0%\{transform:translate(-50%,-50%) scale(.9)\}\
+  100%\{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.15);opacity:0\}\
+\}\
+\
+@keyframes twinkle\{\
+  0%\{filter:brightness(1)\}\
+  100%\{filter:brightness(1.8)\}\
+\}\
+\
+/* Maze shake */\
+@keyframes mazeShake\{\
+  0%,100%\{transform:translate(0,0);\}\
+  25%\{transform:translate(-2px,1px);\}\
+  50%\{transform:translate(2px,-1px);\}\
+  75%\{transform:translate(-1px,-2px);\}\
+\}\
+\
+@keyframes treeFlicker \{\
+  0%   \{ filter: drop-shadow(0 0 6px #00ffcc40); \}\
+  8%   \{ filter: drop-shadow(0 0 10px #00ffcc90); \}\
+  15%  \{ filter: drop-shadow(0 0 7px #00ffcc50); \}\
+  22%  \{ filter: drop-shadow(0 0 12px #00ffeecc); \}\
+  32%  \{ filter: drop-shadow(0 0 8px #00ffcc60); \}\
+  45%  \{ filter: drop-shadow(0 0 14px #00ffeeee); \}\
+  58%  \{ filter: drop-shadow(0 0 7px #00ffcc40); \}\
+  72%  \{ filter: drop-shadow(0 0 11px #00ffeecc); \}\
+  90%  \{ filter: drop-shadow(0 0 9px #00ffcc70); \}\
+  100% \{ filter: drop-shadow(0 0 6px #00ffcc40); \}\
+\}\
+\
+  \
+.viewport.shake\{\
+  animation:mazeShake 0.35s ease-out;\
+\}\
+\
+/* Checkpoints */\
+.stop\{\
+  position:absolute;\
+  width:18px;\
+  height:18px;\
+  border-radius:50%;\
+  transform:translate(-50%,-50%);\
+  opacity:0;\
+  pointer-events:none;\
+  z-index:11;\
+\}\
+\
+.stop.hidden\{opacity:0;transform:scale(.6)\}\
+.stop.active\{\
+  opacity:1;\
+  pointer-events:auto;\
+  animation:pulse 2s ease-in-out infinite;\
+\}\
+.stop.old\{opacity:.8;pointer-events:auto;\}\
+\
+@keyframes pulse\{\
+  0%,100%\{filter:brightness(1)\}\
+  50%\{filter:brightness(1.4)\}\
+\}\
+\
+/* Modal window */\
+.modal\{\
+  position:fixed;\
+  inset:0;\
+  display:none;\
+  align-items:center;\
+  justify-content:center;\
+  background:#0008;\
+  z-index:120;\
+\}\
+\
+.modal.show\{display:flex\}\
+\
+.card\{\
+  --glow:#9ad;\
+  position:relative;\
+  width:min(760px,92vw);\
+  background:#0f1836;\
+  border:1px solid #ffffff26;\
+  border-radius:18px;\
+  padding:22px 24px 20px;\
+  color:#fff;\
+  text-align:center;\
+  transform:scale(.92);\
+  opacity:0;\
+  animation:pop .45s cubic-bezier(.2,.8,.2,1) forwards,\
+             breathe 3.2s ease-in-out .45s infinite;\
+  box-shadow:0 0 0 1px #ffffff10 inset,\
+             0 0 18px var(--glow),\
+             0 0 38px var(--glow);\
+\}\
+\
+@keyframes pop\{\
+  to\{transform:scale(1);opacity:1\}\
+\}\
+\
+@keyframes breathe\{\
+  0%,100%\{box-shadow:0 0 0 1px #ffffff10 inset,0 0 18px var(--glow),0 0 38px var(--glow)\}\
+  50%\{box-shadow:0 0 0 1px #ffffff10 inset,0 0 28px var(--glow),0 0 58px var(--glow)\}\
+\}\
+\
+.card .title-en\{\
+  font-family:"Cinzel",serif;\
+  font-weight:900;\
+  font-size:clamp(22px,3.2vw,30px);\
+  text-shadow:0 0 14px var(--glow),0 0 28px var(--glow);\
+\}\
+\
+.card .title-jp\{\
+  font-family:"Noto Sans JP",sans-serif;\
+  margin-top:6px;\
+  font-weight:700;\
+  opacity:.9;\
+\}\
+\
+.placeholders\{\
+  display:flex;\
+  gap:16px;\
+  justify-content:center;\
+  margin-top:18px;\
+\}\
+\
+.box\{\
+  width:180px;\
+  height:120px;\
+  border-radius:16px;\
+  background:linear-gradient(145deg,#0e1531,#121e45);\
+  border:1px solid #ffffff22;\
+  box-shadow:0 0 18px var(--glow), inset 0 0 0 1px #ffffff10;\
+  display:grid;\
+  place-items:center;\
+  font-family:"Cinzel",serif;\
+  font-weight:700;\
+\}\
+\
+/* wakaba icon in WordWall deck */\
+.wakaba-icon\{\
+  width:13px;\
+  height:13px;\
+  object-fit:contain;\
+  display:inline-block;\
+  vertical-align:middle;\
+  image-rendering:crisp-edges;\
+  pointer-events:none;\
+\}\
+\
+.card .hint\{\
+  opacity:.8;\
+  margin-top:12px;\
+  font-size:.95rem;\
+\}\
+\
+/* Close (x) button */\
+.close-btn\{\
+  position:absolute;\
+  top:8px;\
+  right:10px;\
+  border:none;\
+  background:transparent;\
+  color:#ffffffcc;\
+  font-size:18px;\
+  cursor:pointer;\
+  padding:4px 6px;\
+\}\
+.close-btn:hover\{color:#fff\}\
+\
+/* Tools (Bryan) */\
+.tools\{\
+  position:fixed;\
+  left:12px;\
+  bottom:12px;\
+  display:flex;\
+  gap:8px;\
+  z-index:200;\
+\}\
+\
+.btn\{\
+  padding:10px 14px;\
+  font-weight:700;\
+  border-radius:12px;\
+  border:1px solid #ffffff26;\
+  background:#203a27;\
+  color:#e5edff;\
+  cursor:pointer;\
+  font-size:13px;\
+\}\
+.btn:hover\{background:#25452f\}\
+\
+.tools .btn\{\
+  opacity:.45;\
+\}\
+.tools .btn:hover\{\
+  opacity:.9;\
+\}\
+\
+/* Start button */\
+.start-wrap\{\
+  position:fixed;\
+  top:12px;\
+  left:12px;\
+  z-index:210;\
+\}\
+.start-btn\{\
+  padding:10px 18px;\
+\}\
+\
+/* Mobile tweaks */\
+@media (max-width:768px)\{\
+  .btn\{\
+    padding:11px 16px;\
+    font-size:14px;\
+  \}\
+  .tools\{gap:6px;\}\
+  #booha\{width:60px;height:60px;\}\
+  .card\{padding:18px 16px 18px;\}\
+\}\
+</style>\
+</head>\
+<body>\
+  \
+<!-- 
+\f1 \uc0\u55357 \u56613 
+\f0  Token check script -->\
+<script>\
+  (async function() \{\
+    const API_BASE = 'https://www.bryanharper.tokyo';\
+    const GATE_URL = 'https://www.bryanharper.tokyo/booha-gate';\
+\
+    function kickOut(message) \{\
+      alert(\
+        (message || 'Your session has expired. Please log in again.') +\
+        '\\n\\n
+\f2 \'83\'5a\'83\'62\'83\'56\'83\'87\'83\'93\'82\'cc\'8a\'6d\'94\'46\'82\'c9\'96\'e2\'91\'e8\'82\'aa\'94\'ad\'90\'b6\'82\'b5\'82\'dc\'82\'b5\'82\'bd\'81\'42\'82\'e0\'82\'a4\'88\'ea\'93\'78\'83\'75\'81\'5b\'83\'6e\'81\'5b\'83\'51\'81\'5b\'83\'67\'82\'a9\'82\'e7\'83\'8d\'83\'4f\'83\'43\'83\'93\'82\'b5\'82\'c4\'82\'ad\'82\'be\'82\'b3\'82\'a2\'81\'42
+\f0 '\
+      );\
+      window.location.href = GATE_URL;\
+    \}\
+\
+    const params = new URLSearchParams(window.location.search);\
+    const token = params.get('token');\
+\
+    console.log('[Booha Adventure] token from URL:', token);\
+\
+    if (!token) \{\
+      kickOut('No session found. Please log in through the Booha Gate.');\
+      return;\
+    \}\
+\
+    try \{\
+      const url = API_BASE + '/_functions/verifyToken?token=' + encodeURIComponent(token);\
+      console.log('[Booha Adventure] calling:', url);\
+\
+      const res = await fetch(url, \{\
+        method: 'GET',\
+        headers: \{ 'Accept': 'application/json' \}\
+      \});\
+\
+      if (!res.ok) \{\
+        console.warn('[Booha Adventure] HTTP error status:', res.status);\
+        kickOut('Session check failed. Please log in again.');\
+        return;\
+      \}\
+\
+      const data = await res.json();\
+      console.log('[Booha Adventure] verifyToken response:', data);\
+\
+      if (!data.valid) \{\
+        if (data.expired) \{\
+          kickOut('Your session has expired. Please log in again.');\
+        \} else \{\
+          kickOut('Your session is invalid. Please log in again.');\
+        \}\
+        return;\
+      \}\
+\
+      console.log('
+\f1 \uc0\u9989 
+\f0  Token valid \'97 welcome', data.firstName, data.lastName, 'role:', data.role);\
+\
+      // 
+\f1 \uc0\u55357 \u56393 
+\f0  NEW: remember the token for this browser session\
+      try \{\
+        sessionStorage.setItem('boohaToken', token);\
+        console.log('[Booha Adventure] stored token in sessionStorage');\
+      \} catch (e) \{\
+        console.warn('[Booha Adventure] could not access sessionStorage:', e);\
+      \}\
+\
+      if (data.expiresAt) \{\
+        const now = new Date();\
+        const expiresAt = new Date(data.expiresAt);\
+        const msRemaining = expiresAt.getTime() - now.getTime();\
+\
+        console.log('[Booha Adventure] ms remaining until expiry:', msRemaining);\
+\
+        if (msRemaining > 0) \{\
+          setTimeout(() => \{\
+            kickOut('Your session has expired. Please log in again.');\
+          \}, msRemaining);\
+        \} else \{\
+          kickOut('Your session has expired. Please log in again.');\
+        \}\
+      \}\
+\
+    \} catch (err) \{\
+      console.error('[Booha Adventure] token verification error:', err);\
+      kickOut('There was a problem verifying your session. Please log in again.');\
+    \}\
+  \})();\
+</script>\
+\
+<script>\
+window.addEventListener('DOMContentLoaded', () => \{\
+  const params = new URLSearchParams(window.location.search);\
+  const token = params.get('token');\
+  console.log('[Booha Adventure 
+\f3 \uc0\u8594 
+\f0  Boo-Riculum] token:', token);\
+\
+  const booRicBase = 'https://booha-adventure-studios.github.io/Boo-Riculum-2026/';\
+\
+  // 1) Prefer an existing <a> that points to Boo-Riculum\
+  let booRicLink = document.querySelector('a[href*="Boo-Riculum-2026"]');\
+\
+  // 2) Fallback: maybe the tree itself is clickable (img/div)\
+  const booTree = document.getElementById('booTree');\
+  if (!booRicLink && booTree) \{\
+    booRicLink = booTree;\
+  \}\
+\
+  if (!booRicLink) \{\
+    console.warn('
+\f1 \uc0\u10060 
+\f0  Could not find a Boo-Riculum link or #booTree element');\
+    return;\
+  \}\
+\
+  // If we DO have a token, build the target URL\
+  if (token) \{\
+    const targetUrl =\
+      booRicBase +\
+      (booRicBase.includes('?') ? '&' : '?') +\
+      'token=' + encodeURIComponent(token);\
+\
+    console.log('[Booha Adventure 
+\f3 \uc0\u8594 
+\f0  Boo-Riculum] URL with token:', targetUrl);\
+\
+    // If it's an actual <a>, overwrite its href\
+    if (booRicLink.tagName && booRicLink.tagName.toLowerCase() === 'a') \{\
+      booRicLink.href = targetUrl;\
+    \} else \{\
+      // Otherwise, use a click handler (for img/div)\
+      booRicLink.style.cursor = 'pointer';\
+      booRicLink.addEventListener('click', () => \{\
+        window.location.href = targetUrl;\
+      \});\
+    \}\
+  \} else \{\
+    // No token at all 
+\f3 \uc0\u8594 
+\f0  always send them back to Gate\
+    const handler = (e) => \{\
+      if (e) e.preventDefault();\
+      alert(\
+        'No session found. Please log in through the Booha Gate.\\n\\n' +\
+        '
+\f2 \'83\'5a\'83\'62\'83\'56\'83\'87\'83\'93\'82\'aa\'82\'a0\'82\'e8\'82\'dc\'82\'b9\'82\'f1\'81\'42\'82\'dc\'82\'b8\'83\'75\'81\'5b\'83\'6e\'81\'5b\'83\'51\'81\'5b\'83\'67\'82\'a9\'82\'e7\'83\'8d\'83\'4f\'83\'43\'83\'93\'82\'b5\'82\'c4\'82\'ad\'82\'be\'82\'b3\'82\'a2\'81\'42
+\f0 '\
+      );\
+      window.location.href = 'https://www.bryanharper.tokyo/booha-gate';\
+    \};\
+\
+    if (booRicLink.tagName && booRicLink.tagName.toLowerCase() === 'a') \{\
+      booRicLink.addEventListener('click', handler);\
+    \} else \{\
+      booRicLink.style.cursor = 'pointer';\
+      booRicLink.addEventListener('click', handler);\
+    \}\
+  \}\
+\});\
+</script>\
+\
+\
+\
+<!-- Now your adventure HTML continues normally... -->\
+\
+<div class="start-wrap">\
+  <button class="btn start-btn" id="start">Start</button>\
+</div>\
+\
+<div class="viewport" id="viewport">\
+  <div class="world" id="world">\
+    <div id="maze">\
+      <!-- Boo-riculum tree lives *inside* the maze -->\
+      <img id="booTree" src="assets/BooTree.png" alt="boo tree">\
+    </div>\
+  </div>\
+</div>\
+\
+<!-- Booha ghost -->\
+<img id="booha" src="assets/BoohaYellow.png" alt="booha"/>\
+\
+<!-- Bottom-left tools -->\
+<div class="tools">\
+  <button class="btn" id="bryanBtn">BRYAN</button>\
+  <button class="btn" id="exitBryanBtn" style="display:none;">EXIT BRYAN</button>\
+</div>\
+\
+<!-- Modal window -->\
+<div class="modal" id="modal">\
+  <div class="card" id="card">\
+    <button class="close-btn" id="close-modal" aria-label="Close">
+\f4 \uc0\u10005 
+\f0 </button>\
+\
+    <div class="title-en" id="title-en">January \'97 Week 1</div>\
+    <div class="title-jp" id="title-jp">1
+\f2 \'8c\'8e\'81\'40\'91\'e6
+\f0 1
+\f2 \'8f\'54
+\f0 </div>\
+\
+    <div class="placeholders">\
+\
+      <!-- Study Deck -->\
+      <div class="box deck-btn" id="deck-study">\
+        <div class="deck-en">Study</div>\
+        <div class="deck-jp">
+\f2 \'83\'58\'83\'5e\'83\'66\'83\'42\'81\'5b
+\f0 </div>\
+      </div>\
+\
+      <!-- WordWall Deck (with wakaba icon) -->\
+      <div class="box deck-btn" id="deck-wordwall">\
+        <div class="deck-en">\
+          WordWall\
+          <img src="assets/wakaba.png" alt="" class="wakaba-icon" />\
+        </div>\
+        <div class="deck-jp">
+\f2 \'83\'8f\'81\'5b\'83\'68\'83\'45\'83\'48\'81\'5b\'83\'8b
+\f0 </div>\
+      </div>\
+\
+      <!-- Booha Deck -->\
+      <div class="box deck-btn" id="deck-booha">\
+        <div class="deck-en">Booha</div>\
+        <div class="deck-jp">
+\f2 \'83\'75\'81\'5b\'83\'6e\'81\'5b
+\f0 </div>\
+      </div>\
+\
+    </div>\
+\
+    <div class="hint">
+\f2 \'83\'4c\'83\'89\'83\'4c\'83\'89\'82\'b5\'82\'c4\'82\'a2\'82\'e9\'8f\'54\'82\'c9\'82\'e0\'82\'c7\'82\'c1\'82\'c4\'82\'cb\'81\'49
+\f0 </div>\
+  </div>\
+</div>\
+\
+<script>\
+// ----------------------------------------------------------\
+// BOOHA MAZE \'97 FULL SCRIPT WITH BRYAN MODE + TREE + COORDS\
+// ----------------------------------------------------------\
+\
+/* --------------------------------------\
+   Basic Constants\
+-------------------------------------- */\
+const MONTHS_EN=['January','February','March','April','May','June','July','August','September','October','November','December'];\
+const MONTHS_JP=['1
+\f2 \'8c\'8e
+\f0 ','2
+\f2 \'8c\'8e
+\f0 ','3
+\f2 \'8c\'8e
+\f0 ','4
+\f2 \'8c\'8e
+\f0 ','5
+\f2 \'8c\'8e
+\f0 ','6
+\f2 \'8c\'8e
+\f0 ','7
+\f2 \'8c\'8e
+\f0 ','8
+\f2 \'8c\'8e
+\f0 ','9
+\f2 \'8c\'8e
+\f0 ','10
+\f2 \'8c\'8e
+\f0 ','11
+\f2 \'8c\'8e
+\f0 ','12
+\f2 \'8c\'8e
+\f0 '];\
+\
+const MONTH_COLORS=[\
+  '#38BDF8','#FB7185','#22C55E','#A855F7','#EAB308','#06B6D4',\
+  '#EF4444','#FACC15','#166534','#F97316','#B91C1C','#22D3EE'\
+];\
+\
+// 48 checkpoints\
+const POS = [\
+  \{"x":29.43,"y":6.82\},\{"x":30.04,"y":55.60\},\{"x":72.05,"y":68.51\},\{"x":53.92,"y":13.34\},\
+  \{"x":23.47,"y":82.55\},\{"x":63.67,"y":32.74\},\{"x":32.22,"y":26.27\},\{"x":64.01,"y":82.87\},\
+  \{"x":55.77,"y":59.76\},\{"x":72.68,"y":23.97\},\{"x":44.46,"y":13.17\},\{"x":22.77,"y":63.78\},\
+  \{"x":45.77,"y":41.90\},\{"x":40.14,"y":73.89\},\{"x":37.55,"y":13.26\},\{"x":71.01,"y":59.21\},\
+  \{"x":42.32,"y":26.35\},\{"x":32.22,"y":82.54\},\{"x":56.73,"y":22.94\},\{"x":23.63,"y":89.92\},\
+  \{"x":63.51,"y":42.22\},\{"x":29.35,"y":9.92\},\{"x":41.73,"y":54.84\},\{"x":75.06,"y":80.00\},\
+  \{"x":20.89,"y":37.06\},\{"x":57.92,"y":94.52\},\{"x":69.35,"y":51.11\},\{"x":33.28,"y":89.65\},\
+  \{"x":72.20,"y":35.40\},\{"x":21.96,"y":74.21\},\{"x":55.67,"y":51.01\},\{"x":37.20,"y":26.51\},\
+  \{"x":55.98,"y":73.89\},\{"x":56.25,"y":31.98\},\{"x":55.77,"y":82.86\},\{"x":21.01,"y":45.56\},\
+  \{"x":64.36,"y":59.18\},\{"x":39.35,"y":64.05\},\{"x":71.49,"y":41.59\},\{"x":8.15,"y":86.51\},\
+  \{"x":48.97,"y":63.78\},\{"x":42.08,"y":94.37\},\{"x":82.80,"y":30.00\},\{"x":84.70,"y":74.29\},\
+  \{"x":43.39,"y":82.86\},\{"x":53.47,"y":41.96\},\{"x":29.35,"y":19.92\},\{"x":74.70,"y":94.92\},\
+];\
+\
+const maze=document.getElementById('maze');\
+const booha=document.getElementById('booha');\
+const modal=document.getElementById('modal');\
+const card=document.getElementById('card');\
+const titleEN=document.getElementById('title-en');\
+const titleJP=document.getElementById('title-jp');\
+const closeModalBtn=document.getElementById('close-modal');\
+const startBtn=document.getElementById('start');\
+const bryanBtn=document.getElementById('bryanBtn');\
+const exitBryanBtn=document.getElementById('exitBryanBtn');\
+const viewport=document.getElementById('viewport');\
+const booTree=document.getElementById('booTree');\
+\
+/* --------------------------------------\
+   Audio\
+-------------------------------------- */\
+const bgm=new Audio('audio/sneaky.mp3'); bgm.loop=true;\
+const sfxCheckpoint=new Audio('audio/checkpoint.mp3');\
+let audioPrimed=false;\
+\
+/* --------------------------------------\
+   State\
+-------------------------------------- */\
+let gameStarted=false;\
+let bryanMode=false;\
+let visitedBackup=null;   // for restoring after Bryan mode\
+\
+// Local storage visited[]\
+const VISITED_KEY='boohaMazeVisitedStops';\
+let visited=new Array(POS.length).fill(false);\
+\
+try\{\
+  const stored=JSON.parse(localStorage.getItem(VISITED_KEY));\
+  if(Array.isArray(stored) && stored.length===POS.length) visited=stored;\
+\}catch(e)\{\}\
+\
+function saveVisited()\{\
+  try\{ localStorage.setItem(VISITED_KEY,JSON.stringify(visited)); \}\
+  catch(e)\{\}\
+\}\
+\
+/* --------------------------------------\
+   Startup Audio\
+-------------------------------------- */\
+function primeAudio()\{\
+  if(audioPrimed) return;\
+  audioPrimed=true;\
+  bgm.currentTime=0;\
+  bgm.play().catch(()=>\{\});\
+\}\
+\
+/* --------------------------------------\
+   Unlock window 
+\f3 \uc0\u8594 
+\f0  Sunday 2025-12-28\
+-------------------------------------- */\
+let todayIndex=0;\
+let WINDOW_START=0, WINDOW_END=0;\
+\
+const UNLOCK_START = new Date(2025,11,28);\
+\
+function getCurrentIndexFromDate()\{\
+  const now=new Date();\
+  const todayMidnight=new Date(now.getFullYear(),now.getMonth(),now.getDate());\
+  const startMidnight=new Date(UNLOCK_START.getFullYear(),UNLOCK_START.getMonth(),UNLOCK_START.getDate());\
+  const diffMs=todayMidnight - startMidnight;\
+  if(diffMs<0) return -1;\
+  const diffDays=Math.floor(diffMs/86400000);\
+  const idx=Math.floor(diffDays/7);  // 0-based\
+  return Math.min(idx,POS.length-1);\
+\}\
+\
+function updateWindowFromCurrentIndex(idx)\{\
+  if(idx<0)\{ WINDOW_START=WINDOW_END=-1; return; \}\
+  WINDOW_END=idx;\
+  WINDOW_START=Math.max(0,idx-3);\
+\}\
+\
+function getStopState(i)\{\
+  if(bryanMode) return "live";\
+  if(todayIndex<0) return "future";\
+  if(i<WINDOW_START) return "past";\
+  if(i<=WINDOW_END) return "live";\
+  return "future";\
+\}\
+\
+/* --------------------------------------\
+   Create Stops\
+-------------------------------------- */\
+const stops=[];\
+POS.forEach((p,i)=>\{\
+  const el=document.createElement('div');\
+  el.className='stop hidden';\
+  el.style.left=p.x+'%';\
+  el.style.top=p.y+'%';\
+\
+  el.addEventListener('click',(e)=>\{\
+    e.stopPropagation();\
+    if(!el.classList.contains('active') && !el.classList.contains('old')) return;\
+    onStopClick(i);\
+  \});\
+\
+  maze.appendChild(el);\
+  stops.push(\{el,i\});\
+\});\
+\
+/* --------------------------------------\
+   Color Helpers\
+-------------------------------------- */\
+function monthColor(i)\{ return MONTH_COLORS[Math.floor(i/4)]; \}\
+\
+/* --------------------------------------\
+   Booha Position Helpers\
+-------------------------------------- */\
+function placeBoohaXY(x,y)\{\
+  booha.style.left=x+'px';\
+  booha.style.top=y+'px';\
+\}\
+\
+function startPosition()\{\
+  const r=maze.getBoundingClientRect();\
+  return\{\
+    x:r.left+window.scrollX+r.width*0.065,\
+    y:r.top+window.scrollY+r.height*0.085\
+  \};\
+\}\
+\
+function stopPx(i,rect)\{\
+  const n=POS[i];\
+  return\{\
+    x:rect.left+(n.x/100)*rect.width+window.scrollX,\
+    y:rect.top+(n.y/100)*rect.height+window.scrollY\
+  \};\
+\}\
+\
+function easeInOutCubic(t)\{\
+  return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;\
+\}\
+\
+/* --------------------------------------\
+   Spark Trail\
+-------------------------------------- */\
+function spawnSpark(x,y)\{\
+  const s=document.createElement('i');\
+  s.className='spark';\
+  s.style.left=x+'px';\
+  s.style.top=y+'px';\
+  document.body.appendChild(s);\
+  setTimeout(()=>s.remove(),1000);\
+\}\
+\
+/* --------------------------------------\
+   BIG Explosion (iOS tuned)\
+-------------------------------------- */\
+function fairyBurst(i)\{\
+  const color=monthColor(i);\
+  const rect=maze.getBoundingClientRect();\
+  const \{x:cx,y:cy\}=stopPx(i,rect);\
+\
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);\
+  const count = isIOS ? 120 : 220;\
+  const radiusMin = isIOS ? 40 : 50;\
+  const radiusMax = isIOS ? 180 : 260;\
+\
+  viewport.classList.add('shake');\
+  setTimeout(()=>viewport.classList.remove('shake'),380);\
+\
+  for(let n=0;n<count;n++)\{\
+    const a=Math.random()*Math.PI*2;\
+    const len=radiusMin + Math.pow(Math.random(),.6)*(radiusMax-radiusMin);\
+    const dx=Math.cos(a)*len,dy=Math.sin(a)*len;\
+\
+    const tw=document.createElement('i');\
+    tw.className='fairy';\
+    tw.style.color=color;\
+    tw.style.left=cx+'px';\
+    tw.style.top=cy+'px';\
+\
+    tw.style.setProperty('--dx',dx+'px');\
+    tw.style.setProperty('--dy',dy+'px');\
+\
+    const dur = isIOS ? 1700+Math.random()*900 : 2100+Math.random()*1200;\
+    tw.style.setProperty('--dur', dur+'ms');\
+    tw.style.animationDelay=(Math.random()*120)+'ms';\
+\
+    document.body.appendChild(tw);\
+    setTimeout(()=>tw.remove(),dur+700);\
+  \}\
+\}\
+\
+/* --------------------------------------\
+   Style Stop States\
+-------------------------------------- */\
+function styleLive(el,color)\{\
+  el.classList.remove('hidden','old');\
+  el.classList.add('active');\
+  el.style.opacity=1;\
+  el.style.pointerEvents='auto';\
+  el.style.background=`radial-gradient(circle,$\{color\} 0%,$\{color\} 60%,#0000 100%)`;\
+  el.style.boxShadow=`0 0 0 2px #0008 inset,0 0 18px $\{color\},0 0 38px $\{color\}`;\
+\}\
+\
+function stylePast(el,color)\{\
+  el.classList.remove('hidden','active');\
+  el.classList.add('old');\
+  el.style.opacity=0.8;\
+  el.style.pointerEvents='auto';\
+  el.style.background=`radial-gradient(circle,$\{color\}33 0%,$\{color\}55 60%,#0000 100%)`;\
+  el.style.boxShadow=`0 0 0 1px #ffffff10,0 0 10px $\{color\}55,0 0 22px $\{color\}55`;\
+\}\
+\
+function applyStopStates()\{\
+  stops.forEach((\{el,i\})=>\{\
+    const state=getStopState(i);\
+    const color=monthColor(i);\
+    el.classList.remove('hidden','active','old');\
+\
+    if(state==='future')\{\
+      el.classList.add('hidden');\
+      el.style.opacity=0;\
+      el.style.pointerEvents='none';\
+      el.style.background='transparent';\
+      el.style.boxShadow='none';\
+    \}else if(state==='past')\{\
+      stylePast(el,color);\
+    \}else\{\
+      styleLive(el,color);\
+    \}\
+  \});\
+\}\
+\
+/* --------------------------------------\
+   Move Booha\
+-------------------------------------- */\
+let currentIndex=-1;\
+let moving=false;\
+\
+function moveBoohaToXY(ex,ey)\{\
+  return new Promise(resolve=>\{\
+    moving=true;\
+    const rect=maze.getBoundingClientRect();\
+\
+    const sx=parseFloat(booha.style.left) || (rect.left+window.scrollX);\
+    const sy=parseFloat(booha.style.top) || (rect.top+window.scrollY);\
+\
+    const dx=ex-sx, dy=ey-sy;\
+    const dist=Math.hypot(dx,dy);\
+    const dur=Math.max(5200,Math.min(14000,dist*6.5));\
+\
+    const t0=performance.now();\
+\
+    function step(t)\{\
+      const k=Math.min(1,(t-t0)/dur);\
+      const e=easeInOutCubic(k);\
+      const x=sx+dx*e, y=sy+dy*e;\
+      placeBoohaXY(x,y);\
+\
+      for(let n=0;n<2;n++)\{\
+        if(Math.random()<.9) spawnSpark(x+(Math.random()*4-2),y+(Math.random()*4-2));\
+      \}\
+\
+      if(k<1) requestAnimationFrame(step);\
+      else\{\
+        placeBoohaXY(ex,ey);\
+        moving=false;\
+        resolve();\
+      \}\
+    \}\
+    requestAnimationFrame(step);\
+  \});\
+\}\
+\
+function moveBooha(i)\{\
+  const rect=maze.getBoundingClientRect();\
+  const \{x,y\}=stopPx(i,rect);\
+  return moveBoohaToXY(x,y);\
+\}\
+\
+/* --------------------------------------\
+   Checkpoint Arrival\
+-------------------------------------- */\
+async function playCheckpoint()\{\
+  try\{\
+    sfxCheckpoint.currentTime=0;\
+    await sfxCheckpoint.play();\
+  \}catch(e)\{\}\
+  await new Promise(r=>setTimeout(r,4000));\
+\}\
+\
+function setWindowTitles(i)\{\
+  const m=Math.floor(i/4);\
+  const w=(i%4)+1;\
+  const color=monthColor(i);\
+  titleEN.textContent=`$\{MONTHS_EN[m]\} \'97 Week $\{w\}`;\
+  titleJP.textContent=`$\{MONTHS_JP[m]\}
+\f2 \'81\'40\'91\'e6
+\f0 $\{w\}
+\f2 \'8f\'54
+\f0 `;\
+  card.style.setProperty('--glow',color);\
+\}\
+\
+function openWindow()\{\
+  modal.classList.add('show');\
+  card.style.animation='none';\
+  void card.offsetWidth;\
+  card.style.animation=null;\
+\}\
+\
+function closeWindow()\{ modal.classList.remove('show'); \}\
+\
+async function arriveAt(i)\{\
+  const isNew = !visited[i];\
+\
+  if(isNew)\{\
+    await playCheckpoint();\
+    fairyBurst(i);\
+    visited[i]=true;\
+    if(!bryanMode) saveVisited();\
+    setTimeout(()=>\{ setWindowTitles(i); openWindow(); \},2000);\
+  \} else \{\
+    setWindowTitles(i);\
+    openWindow();\
+  \}\
+\}\
+\
+/* --------------------------------------\
+   Clicking a Stop\
+-------------------------------------- */\
+async function onStopClick(i)\{\
+  if(!gameStarted) return;\
+  if(moving) return;\
+  closeWindow();\
+\
+  const rect=maze.getBoundingClientRect();\
+  const \{x,y\}=stopPx(i,rect);\
+\
+  if(currentIndex!==i)\{\
+    await moveBoohaToXY(x,y);\
+    currentIndex=i;\
+  \}\
+\
+  await arriveAt(i);\
+\}\
+\
+/* --------------------------------------\
+   Next (if you want to hook one later)\
+-------------------------------------- */\
+async function goNext()\{\
+  if(!gameStarted || moving) return;\
+  closeWindow();\
+\
+  let next;\
+  if(currentIndex<WINDOW_START || currentIndex>WINDOW_END)\{\
+    next=WINDOW_START;\
+  \}else\{\
+    next=currentIndex+1;\
+    if(next>WINDOW_END) next=WINDOW_START;\
+  \}\
+\
+  await moveBooha(next);\
+  currentIndex=next;\
+  await arriveAt(currentIndex);\
+\}\
+\
+/* --------------------------------------\
+   Starting Poof\
+-------------------------------------- */\
+function poofAtStart()\{\
+  const pos=startPosition();\
+  const smoke=document.createElement('div');\
+  smoke.className='smoke';\
+  smoke.style.left=pos.x+'px';\
+  smoke.style.top=pos.y+'px';\
+  document.body.appendChild(smoke);\
+\
+  setTimeout(()=>smoke.remove(),1200);\
+\
+  booha.style.left=pos.x+'px';\
+  booha.style.top=pos.y+'px';\
+  booha.style.animation='glowPulse 2s ease-out';\
+\
+  setTimeout(()=>\{\
+    booha.style.opacity=1;\
+    booha.classList.add('bobbing');\
+  \},400);\
+\}\
+\
+/* --------------------------------------\
+   Resize \'97 Keep Booha at Checkpoint\
+-------------------------------------- */\
+function realignBoohaToCurrent()\{\
+  if(currentIndex<0) return;\
+  const rect=maze.getBoundingClientRect();\
+  const \{x,y\}=stopPx(currentIndex,rect);\
+  placeBoohaXY(x,y);\
+\}\
+\
+/* --------------------------------------\
+   Close Modal\
+-------------------------------------- */\
+closeModalBtn.onclick=(e)=>\{\
+  e.stopPropagation();\
+  closeWindow();\
+\};\
+\
+/* --------------------------------------\
+   BRYAN MODE \'97 Enter\
+-------------------------------------- */\
+bryanBtn.onclick=()=>\{\
+  const pwd = prompt("Enter BRYAN password");\
+  if(pwd===null) return;\
+\
+  if(pwd==="him141amra803")\{\
+    bryanMode=true;\
+    exitBryanBtn.style.display="inline-block";\
+\
+    visitedBackup = [...visited];                 // backup\
+    visited = new Array(POS.length).fill(false);  // reset for re-explosions\
+\
+    applyStopStates();\
+    alert("BRYAN MODE ACTIVATED.\\nCoordinates ON.");\
+    enableCoordinates();\
+  \} else \{\
+    alert("Incorrect password.");\
+  \}\
+\};\
+\
+/* --------------------------------------\
+   BRYAN MODE \'97 EXIT\
+-------------------------------------- */\
+exitBryanBtn.onclick=()=>\{\
+  bryanMode=false;\
+  exitBryanBtn.style.display="none";\
+\
+  if(visitedBackup) visited = [...visitedBackup];\
+  saveVisited();\
+  disableCoordinates();\
+  applyStopStates();\
+  alert("Exited Bryan Mode.");\
+\};\
+\
+/* --------------------------------------\
+   START GAME BUTTON\
+-------------------------------------- */\
+startBtn.onclick=()=>\{\
+  if(gameStarted) return;\
+  gameStarted=true;\
+  primeAudio();\
+  closeWindow();\
+\
+  poofAtStart();\
+\
+  if(todayIndex<0 || todayIndex>=POS.length) return;\
+\
+  const rect=maze.getBoundingClientRect();\
+  const \{x,y\}=stopPx(todayIndex,rect);\
+\
+  setTimeout(async ()=>\{\
+    await moveBoohaToXY(x,y);\
+    currentIndex=todayIndex;\
+    await arriveAt(currentIndex);\
+  \},1300);\
+\};\
+\
+/* --------------------------------------\
+   Initial Setup\
+-------------------------------------- */\
+window.onload=()=>\{\
+  const pos=startPosition();\
+  placeBoohaXY(pos.x,pos.y);\
+\
+  todayIndex=getCurrentIndexFromDate();\
+  updateWindowFromCurrentIndex(todayIndex);\
+  applyStopStates();\
+\
+  // BooTree glow + link\
+  if(booTree)\{\
+    setTimeout(()=>\{ booTree.classList.add('glow'); \},1500);\
+    booTree.addEventListener('click',()=>\{\
+      window.open(\
+        "https://booha-adventure-studios.github.io/Boo-Riculum-2026/",\
+        "_blank"\
+      );\
+    \});\
+  \}\
+\};\
+\
+window.addEventListener('resize',()=>\{\
+  requestAnimationFrame(realignBoohaToCurrent);\
+\});\
+\
+/* --------------------------------------\
+   DECK BUTTON CLICK HANDLERS (Add GitHub URLs later)\
+-------------------------------------- */\
+document.getElementById("deck-study").onclick = ()=>\{\
+  alert("Study Deck URL coming soon!");\
+\};\
+document.getElementById("deck-wordwall").onclick = ()=>\{\
+  alert("WordWall Deck URL coming soon!");\
+\};\
+document.getElementById("deck-booha").onclick = ()=>\{\
+  alert("Booha Deck URL coming soon!");\
+\};\
+\
+/* --------------------------------------\
+   BRYAN MODE \'97 COORDINATE TOOL\
+-------------------------------------- */\
+let coordPanel=null;\
+let coordToggleBtn=null;\
+let coordMarkers=[];\
+\
+function enableCoordinates()\{\
+  if(!coordPanel)\{\
+    coordPanel=document.createElement("div");\
+    coordPanel.style.position="fixed";\
+    coordPanel.style.bottom="80px";\
+    coordPanel.style.right="12px";\
+    coordPanel.style.background="#0b1c11cc";\
+    coordPanel.style.color="#fff";\
+    coordPanel.style.padding="10px 14px";\
+    coordPanel.style.border="1px solid #ffffff33";\
+    coordPanel.style.borderRadius="8px";\
+    coordPanel.style.fontFamily="monospace";\
+    coordPanel.style.zIndex="9999";\
+    coordPanel.textContent="Tap the maze";\
+    document.body.appendChild(coordPanel);\
+  \}\
+\
+  if(!coordToggleBtn)\{\
+    coordToggleBtn=document.createElement("button");\
+    coordToggleBtn.textContent="Hide Coordinates";\
+    coordToggleBtn.style.position="fixed";\
+    coordToggleBtn.style.bottom="12px";\
+    coordToggleBtn.style.right="12px";\
+    coordToggleBtn.style.zIndex="9999";\
+    coordToggleBtn.style.padding="8px 12px";\
+    coordToggleBtn.style.fontWeight="700";\
+    coordToggleBtn.style.borderRadius="8px";\
+    coordToggleBtn.style.border="1px solid #ffffff33";\
+    coordToggleBtn.style.background="#203a27";\
+    coordToggleBtn.style.color="#fff";\
+    coordToggleBtn.style.cursor="pointer";\
+    coordToggleBtn.onclick=toggleCoordinates;\
+    document.body.appendChild(coordToggleBtn);\
+  \}\
+\
+  maze.addEventListener("click", coordClick);\
+  coordPanel.style.display="block";\
+  coordToggleBtn.style.display="block";\
+\}\
+\
+function disableCoordinates()\{\
+  maze.removeEventListener("click", coordClick);\
+  if(coordPanel) coordPanel.style.display="none";\
+  if(coordToggleBtn) coordToggleBtn.style.display="none";\
+\
+  coordMarkers.forEach(m=>m.remove());\
+  coordMarkers=[];\
+\}\
+\
+let coordsHidden=false;\
+function toggleCoordinates()\{\
+  coordsHidden=!coordsHidden;\
+  coordPanel.style.display = coordsHidden ? "none" : "block";\
+  coordMarkers.forEach(m=>m.style.display = coordsHidden ? "none" : "block");\
+  coordToggleBtn.textContent = coordsHidden ? "Show Coordinates" : "Hide Coordinates";\
+\}\
+\
+function coordClick(e)\{\
+  const rect=maze.getBoundingClientRect();\
+  const px = ((e.clientX - rect.left) / rect.width) * 100;\
+  const py = ((e.clientY - rect.top) / rect.height) * 100;\
+\
+  coordPanel.textContent = `X: $\{px.toFixed(2)\}%, Y: $\{py.toFixed(2)\}%`;\
+\
+  const marker=document.createElement("div");\
+  marker.style.position="absolute";\
+  marker.style.left=e.pageX+"px";\
+  marker.style.top=e.pageY+"px";\
+  marker.style.width="10px";\
+  marker.style.height="10px";\
+  marker.style.background="#00ff00";\
+  marker.style.borderRadius="50%";\
+  marker.style.border="2px solid #fff";\
+  marker.style.zIndex="9998";\
+  marker.style.pointerEvents="none";\
+\
+  document.body.appendChild(marker);\
+  coordMarkers.push(marker);\
+\}\
+</script>\
+</body>\
+</html>}

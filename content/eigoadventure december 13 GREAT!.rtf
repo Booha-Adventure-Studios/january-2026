@@ -1,0 +1,1139 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleColorEmoji;\f2\fnil\fcharset128 HiraginoSans-W3;
+\f3\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="ja">\
+<head>\
+<meta charset="utf-8" />\
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />\
+<title>Booha Eigo Adventure \'96 January Week 1</title>\
+<meta name="theme-color" content="#0b1530" />\
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+JP:wght@500;700;900&display=swap" rel="stylesheet" />\
+\
+<style>\
+:root\{\
+  --bg:#0b1530;--ink:#fff;--gold1:#fdd86d;--gold2:#ffb347;--outline:#ffffff26;--radius:26px;\
+  --goldGlow:0 0 8px #facc15,0 0 20px #fde68a;--purpleGlow:0 0 20px #c084fc,0 0 40px #c084fc;\
+  --talkGlow:0 0 14px rgba(250,204,21,.9),0 0 34px rgba(253,230,138,.65),0 0 54px rgba(192,132,252,.45);\
+\}\
+*\{box-sizing:border-box;margin:0;padding:0;\}\
+body\{\
+  background:var(--bg);\
+  color:var(--ink);\
+  font-family:'Noto Sans JP',sans-serif;\
+  min-height:100vh;\
+  display:flex;\
+  flex-direction:column;\
+  align-items:center;\
+  overflow-x:hidden;\
+\}\
+header\{text-align:center;padding:26px 12px 12px\}\
+.h1\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(34px,6.2vw,56px);\} \
+.h2\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(18px,4.2vw,32px);\} \
+.h3\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(16px,3.6vw,22px);\} \
+.h4\{font-weight:800;font-size:clamp(14px,3.4vw,20px);color:#cfe1ff;\}\
+\
+main\{\
+  flex:1;\
+  display:flex;\
+  flex-direction:column;\
+  align-items:center;\
+  width:100%;\
+  max-width:700px;\
+  text-align:center;\
+  padding:0 1rem;\
+\}\
+\
+.sageWrapper\{position:relative;width:100%;margin-top:1rem;\}\
+\
+/* Rainbow question box (tap to listen) */\
+#sageBox\{\
+  width:100%;\
+  min-height:104px;\
+  border:1px solid var(--outline);\
+  border-radius:var(--radius);\
+  overflow:hidden;\
+  position:relative;\
+  margin-bottom:1rem;\
+  display:flex;\
+  align-items:center;\
+  justify-content:center;\
+  text-align:center;\
+  box-shadow:0 6px 24px rgba(0,0,0,.4);\
+  background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));\
+  cursor:pointer;\
+  user-select:none;\
+  -webkit-tap-highlight-color:transparent;\
+\}\
+#sageBox::before\{\
+  content:'';\
+  position:absolute;\
+  inset:0;\
+  z-index:0;\
+  animation:stripeSlide 18s linear infinite;\
+  background:repeating-linear-gradient(\
+    to bottom,\
+    #ff6ec7 0 28px,\
+    #5ee6ff 28px 56px,\
+    #ffd166 56px 84px,\
+    #8aff80 84px 112px,\
+    #c77dff 112px 140px,\
+    #fff680 140px 168px\
+  );\
+  background-size:100% 600px;\
+\}\
+@keyframes stripeSlide\{from\{background-position-y:0\}to\{background-position-y:-600px\}\}\
+\
+#sageBox.talking\{\
+  box-shadow:var(--talkGlow);\
+  transform:translateY(-1px);\
+\}\
+\
+#sageText\{\
+  position:relative;\
+  z-index:1;\
+  font-weight:900;\
+  font-size:clamp(1.05rem,4.4vw,1.7rem);\
+  line-height:1.15;\
+  color:#0b1530;\
+  text-shadow:0 1px 0 rgba(255,255,255,.6);\
+  padding:12px 16px;\
+  display:flex;\
+  flex-wrap:wrap;\
+  justify-content:center;\
+  align-items:center;\
+  text-align:center;\
+  max-width:100%;\
+  overflow:hidden;\
+\}\
+.word\{\
+  opacity:0;\
+  margin:0 .25rem .12rem;\
+  transition:opacity .25s ease;\
+  max-width:100%;\
+  overflow-wrap:anywhere;\
+  word-break:break-word;\
+\}\
+\
+.tapHint\{\
+  margin-top:-10px;\
+  margin-bottom:10px;\
+  font-size:.95rem;\
+  color:#fdd86d;\
+  text-shadow:var(--goldGlow);\
+  line-height:1.25;\
+\}\
+.tapHint small\{display:block;color:#ffe27a;margin-top:3px;\}\
+\
+/* Student box */\
+.studentWrapper\{position:relative;width:100%;\}\
+#studentBox\{\
+  width:100%;\
+  min-height:92px;\
+  border:1px solid var(--outline);\
+  border-radius:var(--radius);\
+  overflow:hidden;\
+  position:relative;\
+  margin-bottom:1rem;\
+  display:flex;\
+  align-items:center;\
+  justify-content:center;\
+  text-align:center;\
+  box-shadow:0 6px 24px rgba(0,0,0,.4);\
+  background:#fff;\
+  color:#000;\
+  transition:box-shadow .3s,background .3s,transform .15s;\
+  padding:0.8rem 1rem;\
+  font-weight:900;\
+  font-size:clamp(1.05rem,4.2vw,1.3rem);\
+\}\
+#studentBox.listening\{box-shadow:var(--purpleGlow);\}\
+#studentBox.shake\{animation:shake .3s;\}\
+@keyframes shake\{0%,100%\{transform:translateX(0);\}25%\{transform:translateX(-5px);\}75%\{transform:translateX(5px);\}\}\
+\
+/* Erase button (Android/Desktop only) */\
+.eraseBtn\{\
+  position:absolute;\
+  right:-10px;\
+  top:50%;\
+  transform:translateY(-50%);\
+  border:none;\
+  border-radius:999px;\
+  padding:10px 14px;\
+  font-weight:900;\
+  cursor:pointer;\
+  background:linear-gradient(135deg,#93c5fd,#3b82f6);\
+  color:#00163a;\
+  box-shadow:0 0 14px rgba(59,130,246,.55);\
+  display:none;\
+\}\
+.eraseBtn small\{display:block;font-size:.75em;opacity:.85;\}\
+\
+.statusLine\{\
+  margin-top:-6px;\
+  margin-bottom:10px;\
+  font-size:.95rem;\
+  color:#c7d2fe;\
+  text-shadow:0 0 10px rgba(59,130,246,.35);\
+  line-height:1.25;\
+\}\
+.statusLine small\{display:block;color:#93c5fd;margin-top:3px;\}\
+\
+/* answer options */\
+#options\{width:100%;margin-top:0.5rem;\}\
+#options .option\{\
+  border:2px solid var(--outline);\
+  border-radius:var(--radius);\
+  padding:1rem;\
+  margin:0.5rem 0;\
+  width:100%;\
+  font-size:clamp(1.05rem,4vw,1.35rem);\
+  font-weight:800;\
+  background:#00000040;\
+  color:#fff;\
+  cursor:pointer;\
+  transition:opacity .2s,background .3s,border-color .3s,transform .1s;\
+\}\
+#options .option:hover\{transform:translateY(-1px);\} \
+#options .option.selected\{\
+  background:#1d4ed8;\
+  border-color:#bfdbfe;\
+  box-shadow:0 0 12px rgba(59,130,246,.7);\
+\}\
+#options.locked .option\{\
+  cursor:not-allowed;\
+  opacity:.55;\
+\}\
+\
+/* hint text */\
+#hintBox\{\
+  margin-top:.8rem;\
+  font-size:1rem;\
+  color:#fdd86d;\
+  text-shadow:var(--goldGlow);\
+  line-height:1.4;\
+  min-height:2.2em;\
+\}\
+#hintBox small\{display:block;color:#ffe27a;margin-top:4px;\}\
+\
+.btnRow\{\
+  display:flex;\
+  gap:1rem;\
+  justify-content:center;\
+  margin-top:1rem;\
+  flex-direction:column;\
+  align-items:center;\
+\}\
+.nextBtn\{\
+  padding:.7rem 1.8rem;\
+  border-radius:var(--radius);\
+  color:#000;\
+  font-weight:900;\
+  font-family:'Cinzel',serif;\
+  font-size:1.1rem;\
+  border:none;\
+  cursor:pointer;\
+  display:none;\
+  background:linear-gradient(135deg,#f9a8d4,#ec4899);\
+  animation:pinkShimmer 2s infinite;\
+\}\
+@keyframes pinkShimmer\{0%,100%\{box-shadow:0 0 10px #f9a8d4,0 0 20px #ec4899;\}50%\{box-shadow:0 0 20px #f472b6,0 0 40px #db2777;\}\}\
+\
+#pointsContainer\{display:flex;flex-direction:column;align-items:center;margin-top:0.8rem;\}\
+#pointsCircle\{\
+  width:90px;height:90px;border-radius:50%;\
+  background:linear-gradient(135deg,var(--gold1),var(--gold2));\
+  display:flex;align-items:center;justify-content:center;\
+  font-family:'Cinzel',serif;font-size:2rem;font-weight:900;\
+  box-shadow:var(--goldGlow);\
+  position:relative;overflow:hidden;text-shadow:0 0 10px #fff,0 0 20px #fff;z-index:1;\
+\}\
+#pointsCircle span\{position:relative;z-index:2;color:#000;\}\
+#pointsCircle::after\{\
+  content:'';position:absolute;width:140%;height:140%;\
+  background:radial-gradient(circle at 50% 50%,rgba(255,255,255,0.6) 0%,rgba(255,255,255,0) 70%);\
+  animation:pulse 2.5s infinite ease-in-out;z-index:0;\
+\}\
+@keyframes pulse\{0%,100%\{transform:scale(1);\}50%\{transform:scale(1.3);opacity:0.6;\}\}\
+#scoreLabel\{margin-top:8px;font-family:'Cinzel',serif;font-size:1rem;color:#fdd86d;text-shadow:var(--goldGlow);animation:goldShimmer 2s infinite;\}\
+@keyframes goldShimmer\{0%,100%\{text-shadow:0 0 8px #facc15,0 0 20px #fde68a;\}50%\{text-shadow:0 0 14px #ffef9f,0 0 30px #fde68a;\}\}\
+#counter\{margin-top:4px;font-family:'Cinzel',serif;color:#fff;font-size:1rem;text-shadow:0 0 6px rgba(255,255,255,.4);\}\
+footer\{text-align:center;color:#fff;padding:16px 0 22px;font-family:'Cinzel',serif;font-weight:900;font-size:clamp(14px,2.8vw,20px);\}\
+\
+/* 
+\f1 \uc0\u9989 
+\f0  Mobile: slightly smaller but bolder question text */\
+@media (max-width:520px)\{\
+  #sageText\{font-weight:900;font-size:1.22rem;\}\
+\}\
+\
+/* 
+\f1 \uc0\u55357 \u56600 
+\f0  Standard Booha QUIT button (small version) */\
+.top-nav-btn\{\
+  position:fixed;top:10px;left:10px;z-index:12001;\
+  border-radius:999px;padding:6px 14px;\
+  border:1px solid #ffffff66;background:rgba(15,23,42,.95);\
+  color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.04em;\
+  cursor:pointer;display:flex;align-items:center;gap:4px;\
+  box-shadow:0 0 12px rgba(0,0,0,.6);backdrop-filter:blur(4px);\
+\}\
+.top-nav-btn .jp\{font-size:.72em;\}\
+.top-nav-btn .en\{font-size:.8em;\}\
+\
+/* 
+\f1 \uc0\u10067 
+\f0  Glowing help button */\
+.help-btn\{\
+  position:fixed;top:10px;right:10px;z-index:12001;\
+  width:40px;height:40px;border-radius:999px;\
+  border:1px solid #ffffff88;\
+  background:radial-gradient(circle at 30% 30%,#7dd3fc,#1e3a8a 65%,#020617 100%);\
+  color:#fff;font-weight:900;font-size:20px;cursor:pointer;\
+  display:flex;align-items:center;justify-content:center;\
+  box-shadow:0 0 12px rgba(125,211,252,.9),0 0 28px rgba(59,130,246,.9),0 0 52px rgba(56,189,248,.9);\
+  backdrop-filter:blur(4px);\
+\}\
+\
+/* 
+\f1 \uc0\u55358 \u56991 
+\f0  Help modal */\
+.help-modal\{position:fixed;inset:0;z-index:12000;display:none;align-items:center;justify-content:center;\}\
+.help-modal.show\{display:flex;\}\
+.help-backdrop\{position:absolute;inset:0;background:rgba(15,23,42,.8);backdrop-filter:blur(6px);\}\
+.help-dialog\{\
+  position:relative;z-index:1;max-width:720px;width:calc(100% - 32px);max-height:80vh;\
+  border-radius:20px;border:1px solid #ffffff33;\
+  background:radial-gradient(circle at top,#111827,#020617 55%);\
+  box-shadow:0 22px 70px rgba(0,0,0,.9);\
+  padding:18px 18px 20px;display:flex;flex-direction:column;\
+\}\
+.help-dialog h2\{font-family:'Cinzel',serif;font-size:1.2rem;text-align:center;margin-bottom:6px;\}\
+.help-sub\{font-size:.85rem;text-align:center;color:#c7d2fe;margin-bottom:10px;\}\
+.help-body\{margin-top:6px;padding-right:4px;font-size:.9rem;line-height:1.6;color:#e5e7f5;overflow-y:auto;\}\
+.help-body h3\{font-size:.9rem;margin:10px 0 4px;color:#bfdbfe;\}\
+.help-body ul\{padding-left:1.1rem;margin:4px 0 10px;\}\
+.help-body li\{margin-bottom:4px;\}\
+.help-close\{position:absolute;top:8px;right:10px;border:none;background:transparent;color:#e5e7f5;font-size:22px;cursor:pointer;\}\
+\
+/* 
+\f1 \uc0\u9989 
+\f0  Results overlay */\
+.resultsOverlay\{position:fixed;inset:0;display:none;align-items:center;justify-content:center;z-index:14000;text-align:center;padding:20px;\}\
+.resultsInner\{width:min(720px, calc(100% - 28px));border-radius:26px;border:1px solid #ffffff33;background:radial-gradient(circle at top,#111827,#020617 58%);box-shadow:0 26px 80px rgba(0,0,0,.9);padding:22px 18px 18px;color:#fff;\}\
+.resultsTitle\{font-family:'Cinzel',serif;font-weight:900;font-size:clamp(26px,6vw,42px);margin-bottom:10px;\}\
+.resultsScore\{font-weight:900;font-size:clamp(24px,5.8vw,44px);margin:10px 0 14px;\}\
+.resultsMsg\{font-weight:900;font-size:clamp(18px,4vw,26px);margin:8px 0 16px;\}\
+.resultsBtns\{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;\}\
+.rb\{border:none;border-radius:999px;padding:12px 18px;font-weight:900;cursor:pointer;\}\
+.rb.green\{background:linear-gradient(135deg,#4ade80,#22c55e);color:#022c22;\}\
+.rb.blue\{background:linear-gradient(135deg,#93c5fd,#3b82f6);color:#00163a;\}\
+\
+/* iPad / iPhone overlay */\
+.ios-overlay\{position:fixed;inset:0;z-index:13000;display:none;align-items:center;justify-content:center;\}\
+.ios-overlay-inner\{max-width:420px;width:calc(100% - 40px);border-radius:24px;background:#f9fafb;color:#0f172a;padding:18px 18px 20px;box-shadow:0 22px 60px rgba(0,0,0,.8);font-size:.9rem;\}\
+.ios-overlay-inner h2\{font-family:'Cinzel',serif;font-size:1.1rem;text-align:center;margin-bottom:6px;\}\
+.ios-overlay-inner p\{margin:6px 0;line-height:1.45;\}\
+.ios-overlay-inner strong\{font-weight:800;\}\
+.ios-ok\{margin-top:10px;display:block;width:100%;border:none;border-radius:999px;padding:10px 0;font-weight:800;font-family:'Noto Sans JP',system-ui,sans-serif;background:linear-gradient(135deg,#4ade80,#22c55e);color:#022c22;cursor:pointer;\}\
+</style>\
+</head>\
+\
+<body>\
+<!-- 
+\f1 \uc0\u55357 \u56600 
+\f0  Quit + 
+\f1 \uc0\u10067 
+\f0  Help -->\
+<button type="button" class="top-nav-btn" onclick="window.location.href='index.html'">\
+  <span class="jp">
+\f2 \'82\'e2\'82\'df\'82\'e9
+\f0 </span>\
+  <span class="en">QUIT</span>\
+</button>\
+<button id="helpBtn" type="button" class="help-btn">?</button>\
+\
+<header>\
+  <div class="h1">THE BOO-RICULUM</div>\
+  <div class="h2">Eigo Adventure \'96 January Week 1</div>\
+  <div class="h3">
+\f2 \'82\'50\'8c\'8e\'91\'e6\'82\'50\'8f\'54
+\f0  \'96 
+\f2 \'89\'70\'8c\'ea\'83\'41\'83\'68\'83\'78\'83\'93\'83\'60\'83\'83\'81\'5b
+\f0 </div>\
+</header>\
+\
+<main>\
+  <div class="sageWrapper">\
+    <div id="sageBox" role="button" aria-label="Tap to listen">\
+      <div id="sageText"></div>\
+    </div>\
+    <div class="tapHint">
+\f2 \'82\'b1\'82\'b1\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'c4
+\f0  Sage 
+\f2 \'82\'f0\'95\'b7\'82\'b1\'82\'a4\'81\'49
+\f0 <small>Tap the rainbow box to listen to Sage.</small></div>\
+  </div>\
+\
+  <div class="studentWrapper">\
+    <div id="studentBox"></div>\
+    <button id="eraseBtn" class="eraseBtn" type="button">
+\f2 \'82\'af\'82\'b7
+\f0 <small>Erase</small></button>\
+  </div>\
+\
+  <div id="statusLine" class="statusLine" style="display:none"></div>\
+\
+  <div id="options"></div>\
+  <div id="hintBox"></div>\
+\
+  <div class="btnRow">\
+    <div id="pointsContainer">\
+      <div id="pointsCircle"><span id="pointsValue">0</span></div>\
+      <div id="scoreLabel">SCORE</div>\
+      <div id="counter">1 / 15</div>\
+    </div>\
+    <button class="nextBtn" id="nextBtn">Next 
+\f3 \uc0\u9654 
+\f0 </button>\
+  </div>\
+</main>\
+\
+<footer>Bryan\'92s English School</footer>\
+\
+<!-- 
+\f1 \uc0\u10067 
+\f0  Help popup -->\
+<div id="helpModal" class="help-modal" aria-hidden="true">\
+  <div class="help-backdrop" data-close-help></div>\
+  <div class="help-dialog">\
+    <button class="help-close" type="button" data-close-help>\'d7</button>\
+    <h2>
+\f2 \'97\'56\'82\'d1\'95\'fb
+\f0  
+\f2 \'81\'5e
+\f0  How to Play</h2>\
+    <div class="help-sub">Booha Eigo Adventure Game</div>\
+    <div class="help-body">\
+      <h3>
+\f2 \'93\'fa\'96\'7b\'8c\'ea
+\f0 </h3>\
+      <ul>\
+        <li><strong>
+\f2 \'93\'f8\'82\'cc\'8e\'bf\'96\'e2\'83\'7b\'83\'62\'83\'4e\'83\'58
+\f0 </strong>
+\f2 \'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'c4\'81\'41
+\f0 Sage 
+\f2 \'82\'cc\'82\'b5\'82\'c2\'82\'e0\'82\'f1\'81\'69\'89\'70\'8c\'ea\'81\'6a\'82\'f0\'95\'b7\'82\'ab\'82\'dc\'82\'b7\'81\'42\'81\'69\'98\'62\'82\'b5\'82\'c4\'82\'a2\'82\'e9\'8a\'d4\'82\'cd\'8c\'f5\'82\'e8\'82\'dc\'82\'b7\'81\'6a
+\f0 </li>\
+        <li>
+\f2 \'89\'ba\'82\'cc\'82\'53\'82\'c2\'82\'a9\'82\'e7\'93\'9a\'82\'a6\'82\'f0\'91\'49\'82\'d1\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li><strong>
+\f2 \'83\'70\'83\'5c\'83\'52\'83\'93\'81\'45
+\f0 Android
+\f2 \'81\'46
+\f0 </strong>
+\f2 \'90\'ba\'82\'c5\'93\'9a\'82\'a6\'82\'dc\'82\'b7\'81\'42
+\f0 <strong>
+\f2 \'8c\'be\'82\'c1\'82\'bd\'89\'70\'8c\'ea\'82\'be\'82\'af
+\f0 </strong>
+\f2 \'82\'aa\'94\'92\'82\'a2\'83\'7b\'83\'62\'83\'4e\'83\'58\'82\'c9\'95\'5c\'8e\'a6\'82\'b3\'82\'ea\'82\'dc\'82\'b7\'81\'42\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'c4\'82\'e0\'93\'ae\'82\'ab\'82\'dc\'82\'b9\'82\'f1\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'82\'dc\'82\'bf\'82\'aa\'82\'a6\'82\'bd\'82\'e7\'81\'41\'94\'92\'82\'a2\'83\'7b\'83\'62\'83\'4e\'83\'58\'82\'cc\'95\'b6\'8e\'9a\'82\'cd
+\f0 <strong>
+\f2 \'8f\'c1\'82\'a6\'82\'e9\'82\'dc\'82\'c5\'8e\'63\'82\'e8\'82\'dc\'82\'b7
+\f0 </strong>
+\f2 \'81\'42
+\f0 <strong>
+\f2 \'81\'75\'82\'af\'82\'b7\'81\'76
+\f0 </strong>
+\f2 \'83\'7b\'83\'5e\'83\'93\'81\'69\'82\'dc\'82\'bd\'82\'cd\'83\'7b\'83\'62\'83\'4e\'83\'58\'82\'f0\'83\'5e\'83\'62\'83\'76\'81\'6a\'82\'c5\'8f\'c1\'82\'b5\'82\'c4\'81\'41\'82\'e0\'82\'a4\'88\'ea\'89\'f1\'81\'49
+\f0 </li>\
+        <li><strong>iPad / iPhone
+\f2 \'81\'46
+\f0 </strong>
+\f2 \'93\'9a\'82\'a6\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b7\'82\'e9\'82\'c6\'94\'92\'82\'a2\'83\'7b\'83\'62\'83\'4e\'83\'58\'82\'c9\'93\'fc\'82\'e8\'81\'41
+\f0 <strong>
+\f2 \'8e\'a9\'93\'ae\'82\'c5\'83\'60\'83\'46\'83\'62\'83\'4e
+\f0 </strong>
+\f2 \'82\'b3\'82\'ea\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+        <li>
+\f2 \'90\'b3\'89\'f0\'81\'46
+\f0 <strong>ding</strong>
+\f2 \'81\'7b\'8e\'86\'90\'81\'90\'e1\'81\'5e\'95\'73\'90\'b3\'89\'f0\'81\'46
+\f0 <strong>fart</strong>
+\f2 \'81\'7b\'83\'75\'83\'8b\'83\'75\'83\'8b
+\f0 </li>\
+        <li>
+\f2 \'82\'ba\'82\'f1\'82\'d4\'82\'c5
+\f0 <strong>15
+\f2 \'96\'e2
+\f0 </strong>
+\f2 \'81\'42\'8d\'c5\'8c\'e3\'82\'c9\'8c\'8b\'89\'ca\'89\'e6\'96\'ca\'82\'c6\'89\'b9\'82\'aa\'8f\'6f\'82\'dc\'82\'b7\'81\'42
+\f0 </li>\
+      </ul>\
+\
+      <h3>English</h3>\
+      <ul>\
+        <li>Tap the <strong>rainbow question box</strong> to hear Sage. (It glows while speaking.)</li>\
+        <li>Choose the correct sentence from the 4 options.</li>\
+        <li><strong>Computers & Android:</strong> answer by speaking. Only what you <strong>say</strong> appears in the white box. Tapping does nothing.</li>\
+        <li>If you\'92re wrong, the text stays until you erase it. Tap <strong>Erase</strong> (or tap the white box) to clear and try again.</li>\
+        <li><strong>iPad / iPhone:</strong> tap an option to move it into the box and it <strong>auto-checks</strong>.</li>\
+        <li>Correct: <strong>ding</strong> + confetti. Wrong: <strong>fart</strong> + shake.</li>\
+        <li>There are <strong>15 questions</strong>. At the end, you get a results screen + sound.</li>\
+      </ul>\
+    </div>\
+  </div>\
+</div>\
+\
+<!-- iPad / iPhone overlay -->\
+<div id="iosOverlay" class="ios-overlay" aria-hidden="true">\
+  <div class="ios-overlay-inner">\
+    <h2>iPad / iPhone 
+\f2 \'83\'82\'81\'5b\'83\'68
+\f0 </h2>\
+    <p><strong>
+\f2 \'83\'74\'83\'8b\'82\'cc\'89\'b9\'90\'ba\'83\'60\'83\'46\'83\'62\'83\'4e\'81\'69\'98\'62\'82\'b7\'83\'6f\'81\'5b\'83\'57\'83\'87\'83\'93\'81\'6a\'82\'cd\'83\'70\'83\'5c\'83\'52\'83\'93\'81\'45
+\f0 Android
+\f2 \'82\'be\'82\'af\'82\'c5\'82\'b7\'81\'42
+\f0 </strong></p>\
+    <p>iPad / iPhone 
+\f2 \'82\'cd\'81\'41\'93\'9a\'82\'a6\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b7\'82\'e9\'82\'c6\'8e\'a9\'93\'ae\'82\'c5\'83\'60\'83\'46\'83\'62\'83\'4e\'82\'b3\'82\'ea\'82\'dc\'82\'b7\'81\'42
+\f0 </p>\
+    <p><strong>Full speaking mode is only on computers/Android.</strong></p>\
+    <p>On iPad/iPhone, tap an answer to auto-check.</p>\
+    <button id="iosOverlayOk" class="ios-ok">OK</button>\
+  </div>\
+</div>\
+\
+<!-- 
+\f1 \uc0\u9989 
+\f0  Results overlay -->\
+<div id="resultsOverlay" class="resultsOverlay" aria-hidden="true">\
+  <div class="resultsInner">\
+    <div class="resultsTitle">RESULT</div>\
+    <div id="resultsScore" class="resultsScore">0/15
+\f2 \'81\'69
+\f0 0%
+\f2 \'81\'6a
+\f0 </div>\
+    <div id="resultsMsg" class="resultsMsg">
+\f2 \'82\'a8\'82\'c2\'82\'a9\'82\'ea\'82\'b3\'82\'dc\'81\'49
+\f0 </div>\
+    <div class="resultsBtns">\
+      <button id="restartBtn" class="rb green">
+\f2 \'82\'e0\'82\'a4\'88\'ea\'93\'78
+\f0  / Restart</button>\
+      <button class="rb blue" onclick="window.location.href='index.html'">
+\f2 \'83\'81\'83\'6a\'83\'85\'81\'5b
+\f0  / Menu</button>\
+    </div>\
+  </div>\
+</div>\
+\
+<!-- 
+\f1 \uc0\u9989 
+\f0  Results audio (local) -->\
+<audio id="r05"  src="assets/audio/result_0-5.mp3"  preload="auto"></audio>\
+<audio id="r610" src="assets/audio/result_6-10.mp3" preload="auto"></audio>\
+<audio id="r1114"src="assets/audio/result_11-14.mp3" preload="auto"></audio>\
+<audio id="r15"  src="assets/audio/result_15.mp3"  preload="auto"></audio>\
+\
+<script>\
+/* =========================================\
+   Booha Eigo Adventure \'96 stable rebuild\
+   - Tap rainbow box: play Sage question audio\
+   - iOS: tap option auto-check\
+   - Android/Desktop: speech only, manual mic toggle by tapping white box\
+   - No emojis\
+   - JP/EN text (JP first)\
+   - Questions + answers shuffle on refresh, but Sage filenames stay q01..q15\
+   - Rainbow question text always fits in its container\
+   ========================================= */\
+\
+const SFX = \{ ding: "assets/audio/ding.mp3", fart: "assets/audio/fart.mp3" \};\
+\
+const RES = \{\
+  r05:  document.getElementById('r05'),\
+  r610: document.getElementById('r610'),\
+  r1114:document.getElementById('r1114'),\
+  r15:  document.getElementById('r15')\
+\};\
+\
+const isIOS = /iP(hone|od|ad)/.test(navigator.userAgent) ||\
+  (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);\
+\
+const $ = function(s)\{ return document.querySelector(s); \};\
+const sageBox = $('#sageBox');\
+const sageText = $('#sageText');\
+const studentBox = $('#studentBox');\
+const eraseBtn = $('#eraseBtn');\
+const statusLine = $('#statusLine');\
+const optionsBox = $('#options');\
+const hintBox = $('#hintBox');\
+const nextBtn = $('#nextBtn');\
+const pointsValue = $('#pointsValue');\
+const counter = $('#counter');\
+\
+const helpBtn = $('#helpBtn');\
+const helpModal = $('#helpModal');\
+\
+const resultsOverlay = document.getElementById('resultsOverlay');\
+const resultsScore = document.getElementById('resultsScore');\
+const resultsMsg = document.getElementById('resultsMsg');\
+const restartBtn = document.getElementById('restartBtn');\
+\
+const iosOverlay = document.getElementById('iosOverlay');\
+const iosOverlayOk = document.getElementById('iosOverlayOk');\
+\
+function setHint(jp, en)\{\
+  hintBox.innerHTML = jp + '<small>' + en + '</small>';\
+\}\
+\
+function setMicStatus(on)\{\
+  if(!statusLine) return;\
+  if(isIOS)\{\
+    statusLine.style.display='none';\
+    return;\
+  \}\
+  statusLine.style.display='block';\
+  if(on)\{\
+    statusLine.innerHTML = '
+\f2 \'95\'b7\'82\'a2\'82\'c4\'82\'e9\'82\'e6
+\f0 \'85<small>Listening...</small>';\
+  \} else \{\
+    statusLine.innerHTML = '
+\f2 \'94\'92\'82\'a2\'83\'7b\'83\'62\'83\'4e\'83\'58\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'c4\'83\'58\'83\'5e\'81\'5b\'83\'67
+\f0 <small>Tap white box to start</small>';\
+  \}\
+\}\
+\
+/* ===== New content (fixed index1 for Sage filenames) ===== */\
+let questions=[\
+  \{index1:1, q:"What is your goal this year?", a:0, answers:[\
+    "I want to improve my English this year.","I want to turn into a banana.","My goal is to sleep for one year.","I want to live on Mars with aliens."]\},\
+  \{index1:2, q:"Why is it important to you?", a:0, answers:[\
+    "It is important because it helps my future.","Because my shoes told me to.","Because pizza is watching me.","I don\'92t know, my cat decided."]\},\
+  \{index1:3, q:"How will you reach your goal?", a:0, answers:[\
+    "I will study and practice every day.","I will close my eyes and hope.","I will shout my goal at the moon.","I will wait for magic."]\},\
+  \{index1:4, q:"Who helps you stay motivated?", a:0, answers:[\
+    "My family and teachers help me.","A talking sandwich helps me.","My pillow gives me advice.","Nobody, I talk to the wall."]\},\
+  \{index1:5, q:"What habit do you want to change?", a:0, answers:[\
+    "I want to stop procrastinating.","I want to stop breathing air.","I want to stop being human.","I want to stop existing on Mondays."]\},\
+  \{index1:6, q:"Do you like making resolutions?", a:0, answers:[\
+    "Yes, I like making resolutions.","No, resolutions are scared of me.","I only make food, not resolutions.","I make resolutions for my socks."]\},\
+  \{index1:7, q:"What do you want to try this year?", a:0, answers:[\
+    "I want to try something new this year.","I want to try flying without wings.","I want to try eating rocks.","I want to try sleeping in class forever."]\},\
+  \{index1:8, q:"What\'92s something new you learned recently?", a:0, answers:[\
+    "I learned a new English word.","I learned how to talk to chairs.","I learned that water is dry.","I learned nothing since birth."]\},\
+  \{index1:9, q:"Is it easy to keep goals?", a:0, answers:[\
+    "No, it is not always easy.","Yes, goals walk by themselves.","Goals are easy because they disappear.","Goals are easy when you never try."]\},\
+  \{index1:10, q:"What happens when you don\'92t try?", a:0, answers:[\
+    "You cannot improve if you don\'92t try.","You turn into a potato.","The world stops spinning.","Nothing, everything does itself."]\},\
+  \{index1:11, q:"What makes you feel proud?", a:0, answers:[\
+    "Doing my best makes me feel proud.","Eating ten cakes makes me proud.","Falling asleep in class makes me proud.","Forgetting everything makes me proud."]\},\
+  \{index1:12, q:"What\'92s your dream for the future?", a:0, answers:[\
+    "I want to have a happy future.","I want to be a rock.","I want to live inside a video game.","I want to disappear forever."]\},\
+  \{index1:13, q:"How do you stay positive?", a:0, answers:[\
+    "I stay positive by thinking positively.","I stay positive by yelling at clouds.","I stay positive by running away.","I don\'92t, I hide under a desk."]\},\
+  \{index1:14, q:"Who inspires you?", a:0, answers:[\
+    "My family inspires me.","A flying spoon inspires me.","A random tree inspires me.","Nobody, inspiration is scary."]\},\
+  \{index1:15, q:"How can English help your goals?", a:0, answers:[\
+    "English can help me in my future.","English helps my shoes run faster.","English helps me talk to fish.","English has no use at all."]\}\
+];\
+\
+function shuffle(a)\{\
+  for(let i=a.length-1;i>0;i--)\{\
+    const j=Math.floor(Math.random()*(i+1));\
+    const tmp=a[i]; a[i]=a[j]; a[j]=tmp;\
+  \}\
+  return a;\
+\}\
+\
+/* Shuffle question order + answer order (on refresh) */\
+questions = shuffle(questions.map(function(q)\{\
+  const correct = q.answers[q.a];\
+  const mixed = shuffle(q.answers.slice());\
+  return Object.assign(\{\}, q, \{ answers:mixed, correct:correct \});\
+\}));\
+\
+let current=0, points=0;\
+let gotCorrect=false, firstAttempt=true;\
+\
+let recog=null;\
+let listening=false;\
+\
+let iosSelectedIndex=null;\
+let iosFirstAttempt=true;\
+\
+function playSfx(path)\{\
+  const a=new Audio(path);\
+  a.preload='auto';\
+  a.play().catch(function()\{\});\
+\}\
+\
+function playAudioFile(path)\{\
+  return new Promise(function(resolve)\{\
+    const a=new Audio(path);\
+    a.onended=resolve;\
+    a.onerror=resolve;\
+    a.play().catch(function()\{ resolve(); \});\
+    setTimeout(resolve, 9000);\
+  \});\
+\}\
+\
+/* Sage filename convention: q01_what_is_your_goal_this_year.mp3 */\
+function qAudioFilename(qText, index1)\{\
+  const n = String(index1).padStart(2,'0');\
+  const slug = qText\
+    .toLowerCase()\
+    .replace(/[\'92\'91\'b4`]/g,"'")\
+    .replace(/\\s+/g,' ')\
+    .trim()\
+    .replace(/\\?/g,'')\
+    .replace(/[^a-z0-9\\s]/g,'')\
+    .replace(/\\s+/g,'_');\
+  return 'q' + n + '_' + slug + '.mp3';\
+\}\
+\
+function currentQuestion()\{ return questions[current]; \}\
+\
+async function playQuestionAudioForCurrent()\{\
+  const q = currentQuestion();\
+  const file = qAudioFilename(q.q, q.index1);\
+  sageBox.classList.add('talking');\
+  try\{\
+    await playAudioFile('audio/questions/' + file);\
+  \} finally \{\
+    sageBox.classList.remove('talking');\
+  \}\
+\}\
+\
+function pulsePoints()\{\
+  const circle=document.getElementById('pointsCircle');\
+  circle.style.transform='scale(1.3)';\
+  setTimeout(function()\{ circle.style.transform='scale(1)'; \},300);\
+\}\
+\
+function updateUI()\{\
+  pointsValue.textContent=points;\
+  counter.textContent=(current+1) + ' / ' + questions.length;\
+\}\
+\
+/* Make rainbow question text fit */\
+function fitSageText()\{\
+  const box = sageBox;\
+  const el = sageText;\
+  if(!box || !el) return;\
+\
+  const maxPx = 32;\
+  const minPx = 14;\
+  let size = maxPx;\
+  el.style.fontSize = size + 'px';\
+\
+  for(let i=0;i<80;i++)\{\
+    const fitsH = el.scrollHeight <= box.clientHeight - 10;\
+    const fitsW = el.scrollWidth  <= box.clientWidth  - 10;\
+    if(fitsH && fitsW) break;\
+    size -= 1;\
+    if(size <= minPx) break;\
+    el.style.fontSize = size + 'px';\
+  \}\
+\}\
+\
+function animateWords(t)\{\
+  sageText.innerHTML='';\
+  const parts = t.split(' ');\
+  for(let i=0;i<parts.length;i++)\{\
+    const s=document.createElement('span');\
+    s.className='word';\
+    s.textContent=parts[i];\
+    sageText.appendChild(s);\
+    (function(span,delay)\{ setTimeout(function()\{ span.style.opacity=1; \}, delay); \})(s, 110*i);\
+  \}\
+  requestAnimationFrame(function()\{\
+    fitSageText();\
+    setTimeout(fitSageText, 250);\
+  \});\
+\}\
+\
+function normalize(s)\{\
+  return (s||"")\
+    .toLowerCase()\
+    .replace(/[\'92\'91\'b4`]/g,"'")\
+    .replace(/'s\\b/g,"s")\
+    .replace(/'/g,"")\
+    .replace(/[^a-z0-9\\s]/g,' ')\
+    .replace(/\\s+/g,' ')\
+    .trim();\
+\}\
+\
+function strictMatch(s,a)\{\
+  const ns=normalize(s), na=normalize(a);\
+  if(!ns||!na) return false;\
+  const sa=ns.split(' '), aa=na.split(' ');\
+  const overlap=aa.filter(function(w)\{ return sa.includes(w); \}).length;\
+  const extra=sa.filter(function(w)\{ return !aa.includes(w); \});\
+  return overlap/aa.length>=0.9 && extra.length<=2;\
+\}\
+\
+function confetti(n)\{\
+  n = n || 80;\
+  for(let i=0;i<n;i++)\{\
+    const c=document.createElement('div');\
+    c.style.cssText='position:fixed;width:10px;height:10px;left:'+(Math.random()*100)+'%;top:-10px;background:hsl('+(Math.random()*360)+',100%,70%);opacity:.9;pointer-events:none;z-index:9999;';\
+    document.body.appendChild(c);\
+    const d=900+Math.random()*1200;\
+    c.animate([\{transform:'translateY(0)'\},\{transform:'translateY(100vh) rotate(720deg)'\}],\{duration:d,easing:'ease-out'\});\
+    setTimeout(function()\{ c.remove(); \}, d);\
+  \}\
+\}\
+\
+function setModeUI()\{\
+  if(isIOS)\{\
+    if(statusLine) statusLine.style.display='none';\
+    eraseBtn.style.display='none';\
+    optionsBox.classList.remove('locked');\
+    studentBox.classList.remove('listening');\
+    studentBox.style.cursor='default';\
+  \} else \{\
+    eraseBtn.style.display='inline-block';\
+    optionsBox.classList.add('locked');\
+    studentBox.style.cursor='pointer';\
+    setMicStatus(false);\
+  \}\
+\}\
+\
+function renderAnswers()\{\
+  optionsBox.innerHTML='';\
+  const q=currentQuestion();\
+  for(let i=0;i<q.answers.length;i++)\{\
+    const a=q.answers[i];\
+    const d=document.createElement('div');\
+    d.className='option';\
+    d.dataset.index=i;\
+    d.textContent=a;\
+\
+    d.addEventListener('click',function()\{\
+      if(!isIOS)\{\
+        setHint('
+\f2 \'83\'70\'83\'5c\'83\'52\'83\'93\'81\'45
+\f0 Android 
+\f2 \'82\'cd\'90\'ba\'82\'c5\'93\'9a\'82\'a6\'82\'e9\'82\'e6\'81\'42
+\f0 ','On computers/Android, answer by speaking.');\
+        return;\
+      \}\
+      document.querySelectorAll('.option').forEach(function(o)\{ o.classList.remove('selected'); \});\
+      d.classList.add('selected');\
+      iosSelectedIndex=i;\
+      studentBox.textContent=a;\
+      checkIOSAnswer();\
+    \});\
+\
+    optionsBox.appendChild(d);\
+  \}\
+\}\
+\
+async function wrongAndroidDesktop()\{\
+  studentBox.classList.add('shake');\
+  studentBox.style.background='#fee2e2';\
+  playSfx(SFX.fart);\
+  setHint('
+\f2 \'82\'bf\'82\'aa\'82\'a4\'81\'42\'8c\'a9\'82\'c4\'82\'a9\'82\'e7\'8f\'c1\'82\'b5\'82\'c4\'82\'e0\'82\'a4\'88\'ea\'89\'f1\'81\'42
+\f0 ','Wrong. Look, erase, and try again.');\
+  await new Promise(function(r)\{ setTimeout(r, 320); \});\
+  studentBox.classList.remove('shake');\
+\}\
+\
+async function wrongIOS()\{\
+  playSfx(SFX.fart);\
+  studentBox.classList.add('shake');\
+  studentBox.style.background='#fee2e2';\
+  setHint('
+\f2 \'82\'bf\'82\'aa\'82\'a4\'81\'42\'82\'e0\'82\'a4\'88\'ea\'89\'f1\'81\'42
+\f0 ','Wrong. Try again.');\
+  await new Promise(function(r)\{ setTimeout(r, 950); \});\
+  studentBox.classList.remove('shake');\
+  studentBox.style.background='#fff';\
+  studentBox.textContent='';\
+  iosSelectedIndex=null;\
+  document.querySelectorAll('.option').forEach(function(o)\{ o.classList.remove('selected'); \});\
+\}\
+\
+function correctCommon()\{\
+  gotCorrect=true;\
+  playSfx(SFX.ding);\
+  confetti(70);\
+  points += firstAttempt ? 1 : 0;\
+  pulsePoints();\
+  updateUI();\
+  setHint('
+\f2 \'90\'b3\'89\'f0\'81\'42\'82\'c2\'82\'ac\'82\'d6\'81\'42
+\f0 ','Correct. Tap Next.');\
+  nextBtn.style.display='inline-block';\
+\}\
+\
+async function checkIOSAnswer()\{\
+  if(gotCorrect) return;\
+  const q=currentQuestion();\
+  if(iosSelectedIndex===null) return;\
+  const answer=q.answers[iosSelectedIndex];\
+  if(answer===q.correct)\{\
+    if(!iosFirstAttempt) firstAttempt=false;\
+    correctCommon();\
+  \} else \{\
+    iosFirstAttempt=false;\
+    firstAttempt=false;\
+    await wrongIOS();\
+  \}\
+\}\
+\
+function ensureRecog()\{\
+  const R=window.SpeechRecognition||window.webkitSpeechRecognition;\
+  if(!R)\{\
+    setMicStatus(false);\
+    setHint('
+\f2 \'82\'b1\'82\'cc\'92\'5b\'96\'96\'82\'cd\'89\'b9\'90\'ba\'94\'46\'8e\'af\'82\'c9\'91\'ce\'89\'9e\'82\'b5\'82\'c4\'82\'a2\'82\'dc\'82\'b9\'82\'f1\'81\'42
+\f0 ','Speech recognition is not supported on this device.');\
+    return;\
+  \}\
+  if(recog) return;\
+\
+  recog=new R();\
+  recog.lang='en-US';\
+  recog.interimResults=true;\
+\
+  recog.onstart=function()\{\
+    listening=true;\
+    studentBox.classList.add('listening');\
+    setMicStatus(true);\
+  \};\
+\
+  recog.onend=function()\{\
+    listening=false;\
+    studentBox.classList.remove('listening');\
+    setMicStatus(false);\
+  \};\
+\
+  recog.onerror=function()\{\
+    setMicStatus(false);\
+    setHint('
+\f2 \'83\'7d\'83\'43\'83\'4e\'82\'f0\'8b\'96\'89\'c2\'82\'b5\'82\'c4\'82\'cb\'81\'42
+\f0 ','Please allow microphone access.');\
+  \};\
+\
+  recog.onresult=function(e)\{\
+    let t='';\
+    for(const r of e.results)\{\
+      t += r[0].transcript + ' ';\
+      if(r.isFinal)\{\
+        const finalText=t.trim();\
+        studentBox.textContent=finalText;\
+        checkSpeech(finalText);\
+      \}\
+    \}\
+    const interim = t.trim();\
+    if(interim && !gotCorrect)\{\
+      studentBox.textContent=interim;\
+    \}\
+  \};\
+\}\
+\
+function startMic()\{\
+  if(isIOS) return;\
+  if(!recog) ensureRecog();\
+  if(!recog) return;\
+  if(!listening)\{\
+    try\{recog.start();\}catch(e)\{\}\
+  \}\
+\}\
+\
+function stopMic()\{\
+  if(recog && listening)\{\
+    try\{recog.stop();\}catch(e)\{\}\
+  \} else \{\
+    setMicStatus(false);\
+  \}\
+\}\
+\
+async function checkSpeech(spoken)\{\
+  if(isIOS || gotCorrect) return;\
+  const q=currentQuestion();\
+\
+  const matchIndex=q.answers.findIndex(function(ans)\{ return strictMatch(spoken,ans); \});\
+  if(matchIndex===-1)\{\
+    firstAttempt=false;\
+    await wrongAndroidDesktop();\
+    return;\
+  \}\
+\
+  const isCorrect = strictMatch(spoken, q.correct);\
+  if(isCorrect)\{\
+    correctCommon();\
+    stopMic();\
+  \} else \{\
+    firstAttempt=false;\
+    await wrongAndroidDesktop();\
+  \}\
+\}\
+\
+function clearAnswer()\{\
+  studentBox.textContent='';\
+  studentBox.style.background='#fff';\
+  setHint('
+\f2 \'82\'e0\'82\'a4\'88\'ea\'89\'f1\'8c\'be\'82\'c1\'82\'c4\'82\'cb\'81\'42
+\f0 ','Say it again.');\
+\}\
+\
+function loadQuestion()\{\
+  gotCorrect=false;\
+  firstAttempt=true;\
+  iosSelectedIndex=null;\
+  iosFirstAttempt=true;\
+\
+  hintBox.textContent='';\
+  studentBox.textContent='';\
+  studentBox.style.background='#fff';\
+  nextBtn.style.display='none';\
+\
+  const q=currentQuestion();\
+  animateWords(q.q);\
+  renderAnswers();\
+  updateUI();\
+  setModeUI();\
+\}\
+\
+function showResults()\{\
+  stopMic();\
+  const total=questions.length;\
+  const pct=Math.round((points/total)*100);\
+  resultsScore.textContent = points + '/' + total + '
+\f2 \'81\'69
+\f0 ' + pct + '%
+\f2 \'81\'6a
+\f0 ';\
+\
+  let msg = '
+\f2 \'82\'a2\'82\'a2\'82\'cb\'81\'42\'82\'a0\'82\'c6\'8f\'ad\'82\'b5\'81\'42
+\f0 ';\
+  let snd = RES.r1114;\
+\
+  if(points<=5)\{ msg='
+\f2 \'83\'75\'81\'5b\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80\'8c\'a9\'82\'c4\'82\'c8\'82\'a2\'82\'c5\'82\'b5\'82\'e5\'81\'42
+\f0 '; snd=RES.r05; \}\
+  else if(points<=10)\{ msg='YouTube
+\f2 \'8c\'a9\'82\'b7\'82\'ac\'81\'42\'83\'75\'81\'5b\'83\'8a\'83\'4c\'83\'85\'83\'89\'83\'80\'82\'e0\'82\'e2\'82\'eb\'82\'a4\'81\'42
+\f0 '; snd=RES.r610; \}\
+  else if(points===15)\{ msg='
+\f2 \'82\'b7\'82\'b2\'82\'a2\'81\'42\'83\'70\'81\'5b\'83\'74\'83\'46\'83\'4e\'83\'67\'81\'42
+\f0 '; snd=RES.r15; \}\
+\
+  resultsMsg.textContent = msg;\
+  resultsOverlay.style.display='flex';\
+  resultsOverlay.setAttribute('aria-hidden','false');\
+\
+  try\{ snd.currentTime=0; snd.play(); \}catch(e)\{\}\
+  if(points===15) confetti(140);\
+\}\
+\
+/* Rainbow tap: Sage audio */\
+let audioLock=false;\
+async function onTapSage()\{\
+  if(audioLock) return;\
+  audioLock=true;\
+  try\{ await playQuestionAudioForCurrent(); \}\
+  finally\{ audioLock=false; \}\
+\}\
+sageBox.addEventListener('click', onTapSage);\
+\
+/* White box tap: toggle mic (Android/Desktop) */\
+studentBox.addEventListener('click', function()\{\
+  if(isIOS) return;\
+  if(!recog) ensureRecog();\
+  if(!recog) return;\
+\
+  if(listening)\{\
+    stopMic();\
+    setMicStatus(false);\
+  \} else \{\
+    startMic();\
+    setMicStatus(true);\
+  \}\
+\});\
+\
+eraseBtn.addEventListener('click', function()\{ clearAnswer(); \});\
+\
+document.addEventListener('keydown', function(e)\{\
+  if(isIOS) return;\
+  if(e.key==='Backspace' || e.key==='Delete') clearAnswer();\
+\});\
+\
+nextBtn.onclick=function()\{\
+  current++;\
+  if(current>=questions.length)\{\
+    showResults();\
+    return;\
+  \}\
+  loadQuestion();\
+\};\
+\
+restartBtn.onclick=function()\{\
+  resultsOverlay.style.display='none';\
+  resultsOverlay.setAttribute('aria-hidden','true');\
+  current=0; points=0;\
+\
+  /* reshuffle answers + question order again */\
+  questions = shuffle(questions.map(function(q)\{\
+    const mixed = shuffle(q.answers.slice());\
+    return Object.assign(\{\}, q, \{ answers:mixed \});\
+  \}));\
+  loadQuestion();\
+\};\
+\
+/* Help modal */\
+if(helpBtn && helpModal)\{\
+  const closeEls=helpModal.querySelectorAll('[data-close-help]');\
+  const openHelp=function()\{ helpModal.classList.add('show'); helpModal.setAttribute('aria-hidden','false'); \};\
+  const closeHelp=function()\{ helpModal.classList.remove('show'); helpModal.setAttribute('aria-hidden','true'); \};\
+  helpBtn.addEventListener('click', openHelp);\
+  closeEls.forEach(function(el)\{ el.addEventListener('click', closeHelp); \});\
+  helpModal.addEventListener('click', function(e)\{ if(e.target===helpModal) closeHelp(); \});\
+  document.addEventListener('keydown', function(e)\{ if(e.key==='Escape') closeHelp(); \});\
+\}\
+\
+/* Init */\
+window.onload=function()\{\
+  loadQuestion();\
+\
+  if(isIOS)\{\
+    setHint('iPad / iPhone
+\f2 \'81\'46\'93\'9a\'82\'a6\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b7\'82\'e9\'82\'c6\'8e\'a9\'93\'ae\'83\'60\'83\'46\'83\'62\'83\'4e\'81\'42
+\f0 ', 'iPad/iPhone: Tap an answer to auto-check.');\
+    if(iosOverlay)\{\
+      iosOverlay.style.display='flex';\
+      iosOverlay.setAttribute('aria-hidden','false');\
+      if(iosOverlayOk)\{\
+        iosOverlayOk.addEventListener('click', function()\{\
+          iosOverlay.style.display='none';\
+          iosOverlay.setAttribute('aria-hidden','true');\
+        \});\
+      \}\
+    \}\
+  \} else \{\
+    setHint('
+\f2 \'94\'92\'82\'a2\'83\'7b\'83\'62\'83\'4e\'83\'58\'82\'f0\'83\'5e\'83\'62\'83\'76\'82\'b5\'82\'c4\'83\'58\'83\'5e\'81\'5b\'83\'67
+\f0 ','Tap white box to start');\
+    setMicStatus(false);\
+  \}\
+\};\
+</script>\
+}
